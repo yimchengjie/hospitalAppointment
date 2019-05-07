@@ -40,44 +40,39 @@ public class UserSelect extends HttpServlet {
 		int pagesize=8;
 		int count=0;
 		int totalPage=0;
+		List<User> allUsers=null;
 		List<User> users=null;
-		String selectmsg=(String) request.getParameter("selectmsg");
 		
-		System.out.println("-----"+selectmsg);
+		String selectmsg=(String) request.getParameter("selectmsg");
 		int currentPage=request.getParameter("pageIndex")==null?1:Integer.parseInt(request.getParameter("pageIndex"));
 		String way=request.getParameter("way")==null?"all":request.getParameter("way");//如果传进来的way是空就是all
 		if (way.equals("all")) {
-			users =new UserMapperImpl().selectAll();
+			allUsers =new UserMapperImpl().selectAll();
 		}
 		else if (way.equals("name")) {//第二次来还是要传入way
-			users =new UserMapperImpl().getSelectByName(selectmsg);
+			allUsers =new UserMapperImpl().getSelectByName(selectmsg);
 			//模糊查询
 		}else if (way.equals("gender")) {
-			users =new UserMapperImpl().getSelectByGender(selectmsg);
+			allUsers =new UserMapperImpl().getSelectByGender(selectmsg);
 		}
 		else if (way.equals("idcard")) {
-			users =new UserMapperImpl().getSelectByGender(selectmsg);
+			allUsers =new UserMapperImpl().getSelectByIdcard(selectmsg);
 		}
-		else if (way.equals("phone")) {
-			users =new UserMapperImpl().getSelectByGender(selectmsg);
+		else if (way.equals("tel")) {
+			allUsers =new UserMapperImpl().getSelectByPhone(selectmsg);
 		}
 		
-		for (User user : users) {
-			System.out.println(user);
-		}
-		System.out.println("currentPage"+currentPage);
-		count =users.size();//users
-		System.out.println("count"+count);
+		count=allUsers.size();
 		totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
-		System.out.println("totalPage"+totalPage);
-		users=new UserMapperImpl().getPage(pagesize, currentPage,totalPage,users);
+		users=new UserMapperImpl().getPage(pagesize,currentPage,totalPage,allUsers);
+		System.err.println("totalPage"+totalPage);
 		
 			//List<Student> list= 传入一个当前页面和size
+			request.getSession().setAttribute("allUsers", allUsers);
 			request.getSession().setAttribute("users", users);
+			request.getSession().setAttribute("pagesize", pagesize);
 			request.getSession().setAttribute("pageIndex", currentPage);
 			request.getSession().setAttribute("totalPage", totalPage);
-			request.getSession().setAttribute("way", way);
-			request.getSession().setAttribute("selectmsg", selectmsg);
 //			request.getRequestDispatcher("jsp/UserManegeMain.jsp").forward(request, response);
 			
 			
