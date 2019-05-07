@@ -224,7 +224,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="span1_of_1 section_room"> 
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-								<input type="text" name="Time" class="timepicker" value="选择时间">	 
+								<select id="Time"  >
+									<option id="" >请选择时间</option>
+									<option value="1">9：00-9：30</option>
+									<option value="2">9：30-10：00</option>         
+									<option value="3">10：00-10:30</option>
+									<option value="4">10：30-11：00</option>         
+									<option value="5">11：00-11:30</option>
+									<option value="6">13：30-14：00</option>         
+									<option value="7">14：00-14:30</option>
+									<option value="8">14：30-15：00</option>         
+									<option value="9">15：00-15:30</option>
+									<option value="10">15：30-16：00</option>         
+									<option value="11">16：00-16:30</6option>
+									<option value="12">16：30-17：00</option> 
+								</select>
+								<!-- <input type="text" name="Time" class= value="选择时间">	 --> 
 							</div>
 							<div class="span1_of_1 section_room">
 								<!-- start_section_room --> 
