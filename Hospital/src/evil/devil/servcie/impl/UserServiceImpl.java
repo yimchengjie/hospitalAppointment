@@ -1,0 +1,36 @@
+package evil.devil.servcie.impl;
+
+import java.util.List;
+
+import evil.devil.dao.UserMapper;
+import evil.devil.dao.impl.UserMapperImpl;
+import evil.devil.entity.User;
+import evil.devil.service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public User Login(Long username, String password) {
+		UserMapper userMapper=new UserMapperImpl();
+		List<User> users=userMapper.selectAll();
+		for (User user : users) {
+			if(user.getTel().equals(username)&&user.getPassword().equals(password))
+				return user;
+		}
+		return null;
+	}
+
+	@Override
+	public int Register(String username, String password, String idcard, Long tel, String gender) {
+		User user=new User();
+		user.setGender(gender);
+		user.setName(username);
+		user.setIdcard(idcard);
+		user.setTel(tel);
+		user.setPassword(password);
+		user.setType(0);
+		UserMapper userMapper=new UserMapperImpl();
+		return userMapper.insert(user);
+	}
+	
+}
