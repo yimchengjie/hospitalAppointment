@@ -175,8 +175,12 @@
 						if(data=="success"){
 							alert("注册成功");
 						}
-						else if(data=="error"){
-							alert("注册失败");	
+						else if(data=="erroridcard"){
+							alert("注册失败,该身份证号已注册");	
+							
+						}
+						else if(data=="errortel"){
+							alert("注册失败,该手机号已注册");	
 							
 						}
 					},

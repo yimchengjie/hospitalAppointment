@@ -45,8 +45,13 @@ public class RegisterServlet extends HttpServlet {
 		String idcard=request.getParameter("idcard");
 		Long tel=Long.parseLong(request.getParameter("tel"));
 		UserService userService=new UserServiceImpl();
-		if(userService.Register(username, password, idcard, tel, gender)==1)
-		response.getWriter().append("success");
+		int flag=userService.Register(username, password, idcard, tel, gender);
+		if(flag==1)
+			response.getWriter().append("success");
+		else if(flag==-1)
+			response.getWriter().append("erroridcard");
+		else if(flag==-2)
+			response.getWriter().append("errortel");
 	}
 
 }

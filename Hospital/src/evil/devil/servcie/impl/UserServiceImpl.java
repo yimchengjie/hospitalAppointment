@@ -22,6 +22,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int Register(String username, String password, String idcard, Long tel, String gender) {
+		UserMapper userMapper=new UserMapperImpl();
+		List<User> users=userMapper.selectAll();
+		for (User user : users) {
+			if(user.getIdcard().equals(idcard))
+				return -1;
+			if(user.getTel().equals(tel))
+				return -2;
+		}
 		User user=new User();
 		user.setGender(gender);
 		user.setName(username);
@@ -29,7 +37,7 @@ public class UserServiceImpl implements UserService {
 		user.setTel(tel);
 		user.setPassword(password);
 		user.setType(0);
-		UserMapper userMapper=new UserMapperImpl();
+		
 		return userMapper.insert(user);
 	}
 	
