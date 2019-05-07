@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		String type=request.getParameter("type");
 		System.out.println(username+"\t"+password);
+		//普通用户登录
 		if(type.equals("user")) {
 			UserService usrservice=new UserServiceImpl();
 			User user=usrservice.Login(Long.parseLong(username), password);
@@ -49,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 				response.getWriter().append("error");
 			}
 		}
+		//管理员登录
 		else if(type.equals("admin")) {
 			AdminService adminService=new AdminServiceImpl();
 			Admin admin=adminService.Login(username, password);

@@ -73,7 +73,7 @@
 						var id = $(".modal-body input").eq(7).attr("value");
 						$.ajax({
 							type: "get",
-							url: "useredit",
+							url: "UserEdit",
 							async: true
 						});
 
@@ -85,21 +85,15 @@
 				$(".delete").click(
 					function() {
 							var id = $(this).parent().parent().parent().children().eq(0).html();
+							$(this).parent().parent().parent().remove();
 							$.ajax({
 							type: "post",
 							url: "UserDelete",
 							async: false, //异步
 							data:'id='+id, 
-							dataType: "json",
+							dataType: "text",
 							success: function(data) {
-								var html = '';
-								alert("删除成功");
-								/*$.each(data, function(commentIndex, comment) {
-									html += '<div class="comment"><h6>' + comment['username'] +
-										':</h6><p class="para"' + comment['content'] +
-										'</p></div>';
-								});
-								$('#resText').html(html);*/
+								alert("删除"+data);
 							}
 
 						});
@@ -208,12 +202,10 @@
 					</c:forEach>
 				</table>
 			</div>
-<%String way=(String)request.getAttribute("way");%>
-<%String selectmsg=(String)request.getAttribute("selectmsg");%>
-			<a href="UserSelect?pageIndex=${pageIndex==1?1:1}&way=<%=way%>&selectmsg=<%=selectmsg%>">首页 </a>
-			<a href="UserSelect?pageIndex=${pageIndex==1?1:pageIndex-1}&way=<%=way%>&selectmsg=<%=selectmsg%>">上一页 </a>
-			<a href="UserSelect?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&way=<%=way%>&selectmsg=<%=selectmsg%>">下一页 </a>
-			<a href="UserSelect?pageIndex=${pageIndex==totalPage?totalPage:totalPage}&way=<%=way%>&selectmsg=<%=selectmsg%>">末页 </a>
+			<a href="PageServlet?pageIndex=${pageIndex==1?1:1}">首页 </a>
+			<a href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}">上一页 </a>
+			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}">下一页 </a>
+			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:totalPage}">末页 </a>
 		</div>
 
 		<div class="container-fluid  col-md-5">
