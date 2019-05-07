@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="evil.devil.entity.*"%>
 <%@page import="java.util.*"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -123,7 +124,7 @@
 								dataType: "text",
 								success: function(data) {
 									alert("查询成功");
-									window.location("jsp/UserManegeMain.jsp");
+									window.location = "UserManegeMain.jsp";
 								}
 							});
 

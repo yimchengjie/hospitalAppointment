@@ -17,7 +17,7 @@ import evil.devil.entity.User;
 /**
  * Servlet implementation class UserSelect
  */
-@WebServlet("/UserSelect")
+@WebServlet("/jsp/UserSelect")
 public class UserSelect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -73,11 +73,11 @@ public class UserSelect extends HttpServlet {
 		users=new UserMapperImpl().getPage(pagesize, currentPage,totalPage,users);
 		
 			//List<Student> list= 传入一个当前页面和size
-			request.setAttribute("users", users);
-			request.setAttribute("pageIndex", currentPage);
-			request.setAttribute("totalPage", totalPage);
-			request.setAttribute("way", way);
-			request.setAttribute("selectmsg", selectmsg);
+			request.getSession().setAttribute("users", users);
+			request.getSession().setAttribute("pageIndex", currentPage);
+			request.getSession().setAttribute("totalPage", totalPage);
+			request.getSession().setAttribute("way", way);
+			request.getSession().setAttribute("selectmsg", selectmsg);
 //			request.getRequestDispatcher("jsp/UserManegeMain.jsp").forward(request, response);
 			
 			
