@@ -9,30 +9,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import evil.devil.dao.impl.UserMapperImpl;
+import evil.devil.dao.impl.AccountMapperImpl;
+import evil.devil.entity.Account;
 import evil.devil.entity.User;
 
-
-
 /**
- * Servlet implementation class UserSelect
+ * Servlet implementation class AccountSelect
  */
-@WebServlet("/jsp/UserSelect")
-public class UserSelect extends HttpServlet {
+@WebServlet("/jsp/AccountSelect")
+public class AccountSelect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public UserSelect() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AccountSelect() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -40,44 +43,44 @@ public class UserSelect extends HttpServlet {
 		int pagesize=8;
 		int count=0;
 		int totalPage=0;
-		List<User> allUsers=null;
-		List<User> users=null;
+		List<Account> allAccounts=null;
+		List<Account> accounts=null;
 		
 		String selectmsg=(String) request.getParameter("selectmsg");
 		int currentPage=request.getParameter("pageIndex")==null?1:Integer.parseInt(request.getParameter("pageIndex"));
 		String way=request.getParameter("way")==null?"all":request.getParameter("way");//如果传进来的way是空就是all
 		if (way.equals("all")) {
-			allUsers =new UserMapperImpl().selectAll();
+			allAccounts =new AccountMapperImpl().selectAll();
 		}
-		else if (way.equals("name")) {//第二次来还是要传入way
-			allUsers =new UserMapperImpl().getSelectByName(selectmsg);
-			//模糊查询
-		}else if (way.equals("gender")) {
-			allUsers =new UserMapperImpl().getSelectByGender(selectmsg);
+		else if (way.equals("userid")) {
+			allAccounts = new AccountMapperImpl().selectByUser(Integer.parseInt(selectmsg));
+			System.out.println("userid");
+			for (Account account : allAccounts) {
+				System.err.println(account);
+			}
+			
+		}else if (way.equals("doctorid")) {
+			allAccounts =new AccountMapperImpl().selectByDoctor(Integer.parseInt(selectmsg));
 		}
-		else if (way.equals("idcard")) {
-			allUsers =new UserMapperImpl().getSelectByIdcard(selectmsg);
+		else if (way.equals("accounttime")) {
+			allAccounts =new AccountMapperImpl().getSelectByAccounttime(selectmsg);
 		}
-		else if (way.equals("tel")) {
-			allUsers =new UserMapperImpl().getSelectByPhone(selectmsg);
+		else if (way.equals("datetime")) {
+			allAccounts =new AccountMapperImpl().getSelectByDatetime(selectmsg);//挑选某一日的
 		}
 		
-		count=allUsers.size();
+		count=allAccounts.size();
 		totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
-		users=new UserMapperImpl().getPage(pagesize,currentPage,totalPage,allUsers);
+		accounts=new AccountMapperImpl().getPage(pagesize,currentPage,totalPage,allAccounts);
 		System.err.println("totalPage"+totalPage);
 		
 			//List<Student> list= 传入一个当前页面和size
-			request.getSession().setAttribute("allUsers", allUsers);
-			request.getSession().setAttribute("users", users);
+			request.getSession().setAttribute("allAccounts", allAccounts);
+			request.getSession().setAttribute("accounts", accounts);
 			request.getSession().setAttribute("pagesize", pagesize);
 			request.getSession().setAttribute("pageIndex", currentPage);
 			request.getSession().setAttribute("totalPage", totalPage);
-			request.getRequestDispatcher("UserManegeMain.jsp").forward(request, response);
-			
-			
-			
-			
+			request.getRequestDispatcher("accountManegeMain.jsp").forward(request, response);
 	}
 
 }

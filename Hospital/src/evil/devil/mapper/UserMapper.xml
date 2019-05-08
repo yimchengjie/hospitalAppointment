@@ -134,7 +134,7 @@
     from user
     where gender= #{gender,jdbcType=VARCHAR}
   </select>
-  <select id="getSelectByIdcard" parameterType="java.lang.String" resultMap="BaseResultMap">
+<select id="getSelectByIdcard" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user

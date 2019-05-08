@@ -14,8 +14,8 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<!-- <link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> -->
 <!--//fonts-->
 
 </head>
@@ -36,25 +36,29 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1><a href="index.html">MediBulk</a></h1>
+						<h1><a href="index.jsp">MediBulk</a></h1>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>
-							<li class="active"><a href="about.html">About Us</a></li>
-							<li><a href="services.html">Our Services</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
+							<li><a href="index.jsp">主页</a></li>
+							<li class="active"><a href="about.jsp">关于我们</a></li>
+							<li><a href="services.jsp">服务</a></li>
+							<li><a href="gallery.jsp">展览</a></li>
+							
+							<!-- <li><a href="#">个人资料</a></li> -->
+							
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">个人资料 <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="icons.html">Icons</a></li>
-										<li><a href="typography.html">Typography</a></li>
+										<li><a href="#">个人信息</a></li>
+										<li><a href="#">病历账单</a></li>
 									</ul>
-							  </li>
-							<li><a href="contact.html">Contact</a></li>
+							  </li> 
+							  
+							<li><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -69,7 +73,7 @@
 <div class="about">
 	<div class="container">
 	<div class="w3-heading-all">
-				<h3>About us</h3>
+				<h3>关于我们</h3>
 			</div>
 		<div class="ab-agile">
 			<div class="col-md-6 aboutleft">
@@ -107,11 +111,13 @@
 					<div class="col-md-4 w3-agile-team-img1">
 					<div class="w3-agile-team-img-head">
 					
+					<!-- 更换照片在style.css里第1284行 -->
+					
 						<h3>Joe Root</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 
 					</div>
@@ -120,9 +126,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3>perry jest</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 					</div>
 					
@@ -131,9 +137,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3>Shakeera ls</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 					</div>
 					
@@ -145,9 +151,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3>sharapova</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 					</div>
 					
@@ -156,9 +162,9 @@
 					<div class="w3-agile-team-img-head">
 						<h3>serina willams</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 					</div>
 					</div>
@@ -166,9 +172,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3>Usain bolt</h3>
 						<div class="team-social">
-						<a href="#"><i class="fa fa-twitter"></i></a>
+						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a>
+						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
 						</div>
 					</div>
 					</div>
@@ -183,11 +189,12 @@
 	<div class="container">
 	<div class="footer_agile_inner_info_w3l">
 		<div class="col-md-4 footer-left">
-			<h2><a href="index.html">MediBulk </a></h2>
+			<h2><a href="index.jsp">MediBulk </a></h2>
 			<p>Lorem ipsum quia dolor
 			sit amet, consectetur, adipisci velit, sed quia non 
 			numquam eius modi tempora.</p>
-			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+			
+			<!-- <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
 															<li><a href="#" class="facebook">
 																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
@@ -200,18 +207,19 @@
 															<li><a href="#" class="pinterest">
 																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
-														</ul>
+														</ul> -->
 		</div>
+		
 		<div class="col-md-4 footer-right">
 			<div class="sign-grds">
 				<div class="sign-gd">
 					<h4>Information </h4>
 					<ul>
-						 <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html" >About</a></li>
-        <li><a href="services.html"> Services</a></li>
-		<li><a href="gallery.html">Portfolio</a></li>
-		<li><a href="contact.html">Contact</a></li>
+						 <li><a href="index.jsp" class="active">主页</a></li>
+        <li><a href="about.jsp" >关于我们</a></li>
+        <li><a href="services.jsp">服务</a></li>
+		<li><a href="gallery.jsp">照片</a></li>
+		<li><a href="contact.jsp">联系</a></li>
 						
 					</ul>
 				</div>
@@ -259,7 +267,7 @@
 		
 		<div class="clearfix"></div>
 			
-		<p class="copy-right">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p class="copy-right">Copyright &copy; 2019.ZheJiangShuilishuidian Hospital.</a></p>
 	</div>
 </div>
 </div>
