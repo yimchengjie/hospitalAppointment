@@ -16,8 +16,12 @@
 <script type="text/javascript">
 			//绑定事件
 			$(function() {
+				//判断用户名是否符合格式
 				var flagname = false;
+
+				//选择登录方式
 				$("[name=LoginType]").click(function(){
+					//普通用户 
 					if($("[name=LoginType]:checked").val()=="admin"){
 						$("#username").text("用户名");
 						$("#inputName").attr("placeholder","用户名");
@@ -25,25 +29,30 @@
 						$('#login').removeAttr("disabled");
 						flagname = true;
 					}
+					//管理员
 					else{
 						$("#username").text("手机号");
 						$("#inputName").attr("placeholder","手机号");
 						$('#login').attr("disabled", "disabled");
 					}
 				})
+				//用户名格式验证
 				$('[name=username]').blur(
 					function() {
 						if($("[name=LoginType]:checked").val()=="admin"){
 							return;
 						}
 						var username = $('[name=username]').val();
-						//用户名---4-8位，不能以数字开头，只能是中文或者英文字符
+						//用户名---手机号的验证方式11位数字 1开头第二位不为1，2，6，9，0
 						var reg = /^1[34578]\d{9}$/;
+						//格式错误
 						if(reg.test(username) == false) {
 							$('#inputName~span').css("visibility", 'visible');
 							flagname = false;
 							$('#login').attr("disabled", "disabled");
-						} else {
+						} 
+						//格式正确
+						else {
 							$('#inputName~span').css("visibility", 'hidden');
 							flagname = true;
 							$('#login').removeAttr("disabled");
@@ -58,6 +67,7 @@
 			json.username=$("#inputName").val();
 			json.password=$("#inputPassword3").val();
 			json.type=$("[name=LoginType]:checked").val();
+			//输入为空不提交
 			if(json.username==""||json.password==""||flagname==false)
 				return;
 			$.ajax({

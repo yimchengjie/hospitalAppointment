@@ -19,26 +19,31 @@
 <script type="text/javascript">
 			//绑定事件
 			$(function() {
+				//判断姓名是否符合格式
 				var flagname = false;
+				//判断密码是否符合格式
 				var flagpwd = false;
+				//判断身份证是否符合格式
 				var flagidcard = false;
+				//判断手机号是否符合格式
 				var flagtel = false;
+				//判断确认密码是否符合格式
 				var flagpwd2=false;
+				
+				//验证姓名格式
 				$('#username').blur(
 					function() {
 						var username = $(this).val();
 						//姓名---2-4位，不能以数字开头，只能是中文或者英文字符
 						var reg =  /^[\u4e00-\u9fa5_a-zA-Z0-9]{2,4}$/;
+						//格式错误
 						if(reg.test(username) == false) {
-							//$('#inputPhone~.glyphicon-ok').css("display", 'none');
-							//$('#inputPhone~.glyphicon-remove').css("display", 'inline');
-							//$('#inputName~.alert').css("display", 'inline');
 							flagname = false;
 							$('#usernameflag').css("display", 'inline');
 							$('#register').attr("disabled", "disabled");
-						} else {
-							//$('#inputPhone~.glyphicon-remove').css("display", 'none');
-							//$('#inputPhone~.glyphicon-ok').css("display", 'inline');
+						} 
+						//格式正确
+						else {
 							$('#usernameflag').css("display", 'none');
 							flagname = true;
 							if(flagname && flagpwd &&flagidcard && flagtel &&flagpwd2) {
@@ -47,21 +52,20 @@
 						}
 					}
 				)
+				//验证手机号格式
 				$('#tel').blur(
 					function() {
 						var tel = $(this).val();
 						//手机号正则
 						var reg = /^1[34578]\d{9}$/;
+						//格式错误
 						if(reg.test(tel) == false) {
-							//$('#inputPhone~.glyphicon-ok').css("display", 'none');
-							//$('#inputPhone~.glyphicon-remove').css("display", 'inline');
-							//$('#inputName~.alert').css("display", 'inline');
 							flagtel = false;
 							$('#telflag').css("display", 'inline');
 							$('#register').attr("disabled", "disabled");
-						} else {
-							//$('#inputPhone~.glyphicon-remove').css("display", 'none');
-							//$('#inputPhone~.glyphicon-ok').css("display", 'inline');
+						} 
+						//格式正确
+						else {
 							$('#telflag').css("display", 'none');
 							flagtel = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
@@ -70,22 +74,21 @@
 						}
 					}
 				)
+				//验证身份证号格式
 				$('#idcard').blur(
 					function() {
 						var idcard = $(this).val();
 						//用户名---4-8位，不能以数字开头，只能是中文或者英文字符
 						var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
+						//格式错误
 						if(reg.test(idcard) == false) {
 							$('#idcardflag').css("display", 'inline');
-							//$('#inputPhone~.glyphicon-ok').css("display", 'none');
-							//$('#inputPhone~.glyphicon-remove').css("display", 'inline');
-							//$('#inputName~.alert').css("display", 'inline');
 							flagidcard = false;
 							$('#register').attr("disabled", "disabled");
-						} else {
+						}
+						//格式正确
+						else {
 							$('#idcardflag').css("display", 'none');
-							//$('#inputPhone~.glyphicon-remove').css("display", 'none');
-							//$('#inputPhone~.glyphicon-ok').css("display", 'inline');
 							flagidcard = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2)  {
 								$('#register').removeAttr("disabled");
@@ -93,38 +96,35 @@
 						}
 					}
 				)
-				
+				//验证密码格式
 				$('#password').blur(
 					function() {
 						var userpwd = $('#password').val();
 						var userpwd2 = $('#password2').val();
 						//用户名---4-8位，不能以数字开头，只能是中文或者英文字符
 						var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]{4,10}$/;
+						//格式错误
 						if(reg.test(userpwd) == false) {
 							$('#passwordflag').css("display", 'inline');
-							//$('#inputPassword3~.glyphicon-remove').css("display", 'inline');
-							//$('#inputPassword3~.alert').css("display", 'inline');
 							flagpwd = false;
 							$('#register').attr("disabled", "disabled");
-						} else {
+						} 
+						//格式正确
+						else {
+							//密码和确认密码不同
 							if(userpwd2!="" && userpwd2!=userpwd){
 								$('#passwordflag2').css("display", "inline");
-								//$('#inputPassword3~.glyphicon-remove').css("display", 'none');
-								//$('#inputPassword3~.glyphicon-ok').css("display", 'inline');
 								flagpwd2 = false;
 							}
+							//密码和确认密码相同
 							else {
 								$('#passwordflag2').css("display", "none");
-								//$('#inputPassword3~.glyphicon-remove').css("display", 'none');
-								//$('#inputPassword3~.glyphicon-ok').css("display", 'inline');
 								flagpwd2 = true;
 								if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 									$('#register').removeAttr("disabled");
 								}
 							}
 							$('#passwordflag').css("display", 'none');
-							//$('#inputPassword3~.glyphicon-remove').css("display", 'none');
-							//$('#inputPassword3~.glyphicon-ok').css("display", 'inline');
 							flagpwd = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -132,23 +132,20 @@
 						}
 					}
 				)
-
+			//验证确认密码
 			$('#password2').blur(
 					function() {
 						var userpwd = $('#password').val();
 						var userpwd2 = $('#password2').val();
-						
-						//用户名---4-8位，不能以数字开头，只能是中文或者英文字符
+						//确认密码和密码不同
 						if(userpwd!=userpwd2) {
 							$('#passwordflag2').css("display", 'inline');
-							//$('#inputPassword3~.glyphicon-remove').css("display", 'inline');
-							//$('#inputPassword3~.alert').css("display", 'inline');
 							flagpwd2 = false;
 							$('#register').attr("disabled", "disabled");
-						} else {
+						} 
+						//确认密码和密码相同
+						else {
 							$('#passwordflag2').css("display", "none");
-							//$('#inputPassword3~.glyphicon-remove').css("display", 'none');
-							//$('#inputPassword3~.glyphicon-ok').css("display", 'inline');
 							flagpwd2 = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -157,7 +154,7 @@
 					}
 				)
 				
-				
+			//提交注册信息
 			$("#register").click(function(){
 				 var json={};
 				json.username=$("#username").val();
@@ -175,9 +172,11 @@
 						if(data=="success"){
 							alert("注册成功");
 						}
-						else if(data=="error"){
-							alert("注册失败");	
-							
+						else if(data=="erroridcard"){
+							alert("注册失败,该身份证号已注册");	
+						}
+						else if(data=="errortel"){
+							alert("注册失败,该手机号已注册");	
 						}
 					},
 					error: function() {
