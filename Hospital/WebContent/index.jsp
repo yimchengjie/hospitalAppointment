@@ -104,12 +104,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="dropdown-menu">
 										<li><a href="#" data-toggle="modal" data-target="#myModal">个人信息</a></li>
 										<li><a href="#" data-toggle="modal" data-target="#Historical">病历账单</a></li>
-										<li><a href="icons.html">图标</a></li>
-										<li><a href="typography.html">排版</a></li>
 									</ul>
 							  </li> 
-							  
-							<li><a href="contact.jsp">联系</a></li>
+							  <li><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -516,11 +513,11 @@ testimonials
 					<h4>Information </h4>
 					<ul>
 
-						 <li><a href="index.html" class="active">Home</a></li>
+						 <!-- <li><a href="index.jsp" class="active">Home</a></li>
         <li><a href="about.jsp" >About</a></li>
-        <li><a href="services.jspl"> Services</a></li>
+        <li><a href="services.jsp"> Services</a></li>
 		<li><a href="gallery.jsp">Portfolio</a></li>
-		<li><a href="contact.jsp">Contact</a></li>
+		<li><a href="contact.jsp">Contact</a></li> -->
 				 <li><a href="index.jsp" class="active">主页</a></li>
         <li><a href="about.jsp" >关于我们</a></li>
         <li><a href="services.jsp">服务</a></li>
@@ -561,7 +558,7 @@ testimonials
 							</div>
 							<div class="w3-address-right">
 								<h6>Location</h6>
-								<p>Broome St, NY 10002,California, USA. 
+								<p>Shuili St, NY 58888,HangZhou, China. 
 								
 								</p>
 							</div>

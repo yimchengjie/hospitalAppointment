@@ -206,7 +206,7 @@
 							</div>
 							<div class="w3-address-right">
 								<h6>Location</h6>
-								<p>Broome St, NY 10002,California, USA. 
+								<p>Shuili St, NY 58888,HangZhou, China.
 								
 								</p>
 							</div>
