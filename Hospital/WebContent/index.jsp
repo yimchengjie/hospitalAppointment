@@ -85,25 +85,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1><a href="index.html">MediBulk</a></h1>
+						<h1><a href="index.jsp">MediBulk</a></h1>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">主页</a></li>
-							<li><a href="about.html">关于我们</a></li>
-							<li><a href="services.html">服务</a></li>
-							<li><a href="gallery.html">展览</a></li>
+							<li class="active"><a href="index.jsp">主页</a></li>
+							<li><a href="about.jsp">关于我们</a></li>
+							<li><a href="services.jsp">服务</a></li>
+							<li><a href="gallery.jsp">展览</a></li>
+							
+							<!-- <li><a href="#">个人资料</a></li> -->
+							
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">软件 <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">个人资料 <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="icons.html">图标</a></li>
-										<li><a href="typography.html">排版</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#myModal">个人信息</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#Historical">病历账单</a></li>
 									</ul>
-							  </li>
-							<li><a href="contact.html">联系</a></li>
+							  </li> 
+							  <li><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -252,8 +255,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							
 						</div>
-						<div class="date_btn"> 
-							<input type="submit" value="预   约" /> 
+						<div class="date_btn" style="margin:20 150;"> 
+							<input type="button" data-toggle="modal" data-target="#resever" class="btn btn-info btn-lg" value="预  约" style="width:200px;"/> 
 						</div> 
 					</form>
 				</div>
@@ -262,16 +265,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- // banner -->
 
 <!-- /About -->
-	<div class="w3-about about-gap" id="about">
+
+
+ 	<div class="w3-about about-gap" id="about">
 		<div class="container">
 			<div class="w3-heading-all">
-				<h3>关于我们</h3>
+				<h3>优质专家</h3>
 			</div>
 		<div class="w3-about-grids">
 				<div class="col-md-6 w3-about-left-grid">
+				
+				<!-- 更换图片在style.css的716行 -->
+				
 					<div class=" w3-about-left-grid-inner-head">
-						<i class="fa fa-microphone" aria-hidden="true"></i>
-						<h3>Lets Talk about Hospitality</h3>
+						<!-- <i class="fa fa-microphone" aria-hidden="true"></i> -->
+						<!-- <h3>Lets Talk about Hospitality</h3> -->
 					</div>
 					<div class=" w3-about-left-grid-inner2-head">
 						<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida, ante egestas egestas vulputate, elit risus maximus mauris, non gravida arcu justo eget est. Cras eu mauris nisl. Maecenas ut scelerisque metus.</h3>
@@ -286,7 +294,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
+						
 								<img src="images/a11.jpg" alt="img" />
+								
 						</div>
 						<div class="clearfix"></div>
 						<div class="col-md-8 w3-about-right-text1">
@@ -295,7 +305,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h3>Ut sed augue porttitor, vehicula eros in, vehicula elit. Aliquam ut ex aliquam risus vestibulum hendrerit.</h3>
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
+						
 								<img src="images/a121.jpg" alt="img" />
+								
 						</div>
 						<div class="clearfix"></div>
 						<div class="col-md-8 w3-about-right-text1">
@@ -304,20 +316,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h3>Ut sed augue porttitor, vehicula eros in, vehicula elit. Aliquam ut ex aliquam risus vestibulum hendrerit.</h3>
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
+						
 							<img src="images/a13.jpg" alt="img" />
+							
 						</div>
 						<div class="clearfix"></div>
 				</div>
 				<div class="clearfix"></div>
 		</div>
 		</div>
-	</div>
+	</div> 
+	
+	
+	
 	<!-- //About -->
 <!-- /services -->
 <div class="services" id="services">
 	<div class="container">
 		<div class="w3-heading-all services-head">
-			<h3>服务</h3>
+			<h3>我们是您最正确的选择</h3>
 		</div>	
 
 		<div class="w3-services-grids">
@@ -421,8 +438,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 </div>
 </div>
+
+
 <!-- //services -->
-<!-- testimonials -->
+<!--  
+testimonials
 	<div class="testimonials" id="testimonials">
 		<div class="container">
 		<div class="w3-heading-all">
@@ -466,7 +486,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</section>
 			</div>
 		</div>
-	</div>
+	</div> 
+	-->
+	
+	
 <!-- //testimonials -->
 <!-- footer -->
 <div class="footer">
@@ -479,16 +502,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			numquam eius modi tempora.</p>
 			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
 															<li><a href="#" class="facebook">
-																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="twitter"> 
-																  <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="instagram">
-																  <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="pinterest">
-																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+												  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
 														</ul>
 		</div>
@@ -497,11 +512,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="sign-gd">
 					<h4>Information </h4>
 					<ul>
-						 <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html" >About</a></li>
-        <li><a href="services.html"> Services</a></li>
-		<li><a href="gallery.html">Portfolio</a></li>
-		<li><a href="contact.html">Contact</a></li>
+
+						 <!-- <li><a href="index.jsp" class="active">Home</a></li>
+        <li><a href="about.jsp" >About</a></li>
+        <li><a href="services.jsp"> Services</a></li>
+		<li><a href="gallery.jsp">Portfolio</a></li>
+		<li><a href="contact.jsp">Contact</a></li> -->
+				 <li><a href="index.jsp" class="active">主页</a></li>
+        <li><a href="about.jsp" >关于我们</a></li>
+        <li><a href="services.jsp">服务</a></li>
+		<li><a href="gallery.jsp">照片</a></li>
+		<li><a href="contact.jsp">联系</a></li>
+
 						
 					</ul>
 				</div>
@@ -536,7 +558,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="w3-address-right">
 								<h6>Location</h6>
-								<p>Broome St, NY 10002,California, USA. 
+								<p>Shuili St, NY 58888,HangZhou, China. 
 								
 								</p>
 							</div>
@@ -549,10 +571,93 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div class="clearfix"></div>
 			
-		<p class="copy-right">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p class="copy-right">Copyright &copy; 2019.ZheJiangShuilishuidian Hospital.</a></p>
 	</div>
 </div>
 </div>
+模态框
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">个人资料</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="username"><span class="glyphicon glyphicon-user"></span>用户姓名</label>
+									<input type="text" class="form-control" id="username" placeholder="用户姓名">
+								</div>
+								<div class="form-group">
+									<label for="userphone"><span class="glyphicon glyphicon-earphone"></span>手机号码</label>
+									<input type="text" class="form-control" id="userphone" placeholder="电话">
+								</div>
+								<div class="form-group">
+									<label for="sex">性别</label>
+									<input type="text" class="form-control" id="userphone" placeholder="性别">
+								</div>
+								<div class="form-group">
+									<label for="usercard">身份证号码</label>
+									<input type="text" class="form-control" id="usercard" placeholder="身份证号码" />
+								</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">修改</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">历史病历</h4>
+						</div>
+						<div class="modal-body">
+							<div class="panel panel-primary">
+								<div class="panel-heading"><span class="glyphicon glyphicon-time"></span>日期1</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期2</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+							
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期3</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="resever" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">請付款</h4>
+						</div>
+						<div class="modal-body"><img src="images/pay.jpg"></div>
+			</div>
 <!-- //footer -->
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
