@@ -75,6 +75,9 @@ public class AccountMapperImpl implements AccountMapper{
 		List<Account> list =session.selectList("evil.devil.dao.AccountMapper.selectByDoctor",id);
 		return list;
 	}
+
+
+	
 	public static void main(String[] args) {
 		AccountMapperImpl accountMapperImpl=new AccountMapperImpl();
 //		Account account=accountMapperImpl.selectByPrimaryKey(1);
