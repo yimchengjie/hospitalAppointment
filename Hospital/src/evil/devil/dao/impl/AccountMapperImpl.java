@@ -78,14 +78,15 @@ public class AccountMapperImpl implements AccountMapper{
 
 
 	
-	public static void main(String[] args) {
-		AccountMapperImpl accountMapperImpl=new AccountMapperImpl();
-//		Account account=accountMapperImpl.selectByPrimaryKey(1);
-//		account.setDoctorId(2);
-//		System.out.println(account.toString());
-//		System.out.println(accountMapperImpl.updateByPrimaryKey(account));
-		System.out.println(accountMapperImpl.selectByDoctor(1));
+	public List<Account> getSelectByAccounttime(String selectmsg) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	public List<Account> getSelectByDatetime(String selectmsg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public List<Account> getPage(int pagesize, int currentPage, int totalPage, List<Account> allAccounts) {
 		int count =allAccounts.size();
