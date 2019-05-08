@@ -116,7 +116,7 @@
 			<div class="container-fluid  col-sm-12" style="height: 120px;"></div>
 			<h1>浙江水利水电医院<small style="color:#DDDDDD;">在线预约挂号</small></h1>
 		</div>
-		<div class="container-fluid  col-sm-4 col-md-offset-2" id="loginform">
+		<div class="container-fluid  col-sm-5 col-md-offset-1" id="loginform">
 			<div class="form-horizontal">
 				<div style="height: 100px; margin-top: 50px;" class="col-sm-12">
 					<h2 style="margin-left: 150px;">登陆</h2>
