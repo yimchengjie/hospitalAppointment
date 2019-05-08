@@ -72,8 +72,8 @@ public class AccountMapperImpl implements AccountMapper{
 	@Override
 	public List<Account> selectByDoctor(Integer id) {
 		// TODO Auto-generated method stub
-		List<Account> account =session.selectList("evil.devil.dao.AccountMapper.selectByDoctor",id);
-		return account;
+		List<Account> list =session.selectList("evil.devil.dao.AccountMapper.selectByDoctor",id);
+		return list;
 	}
 	public static void main(String[] args) {
 		AccountMapperImpl accountMapperImpl=new AccountMapperImpl();
