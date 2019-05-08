@@ -92,18 +92,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="services.html">Our Services</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
+							<li class="active"><a href="index.html">主页</a></li>
+							<li><a href="about.html">关于我们</a></li>
+							<li><a href="services.html">服务</a></li>
+							<li><a href="gallery.html">展览</a></li>
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">软件 <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="icons.html">Icons</a></li>
-										<li><a href="typography.html">Typography</a></li>
+										<li><a href="icons.html">图标</a></li>
+										<li><a href="typography.html">排版</a></li>
 									</ul>
 							  </li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="contact.html">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -265,7 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="w3-about about-gap" id="about">
 		<div class="container">
 			<div class="w3-heading-all">
-				<h3>About us</h3>
+				<h3>关于我们</h3>
 			</div>
 		<div class="w3-about-grids">
 				<div class="col-md-6 w3-about-left-grid">
@@ -317,14 +317,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="services" id="services">
 	<div class="container">
 		<div class="w3-heading-all services-head">
-			<h3>Services</h3>
+			<h3>服务</h3>
 		</div>	
 
 		<div class="w3-services-grids">
 			<div class="col-md-4 w3-services-grids1">
 			<div class="w3-services-grid1">
 				<i class="fa fa-user-md" aria-hidden="true"></i>
-				<h3> Special Team</h3>
+				<h3> 专业团队</h3>
 				<div class="w3-services-grid1-left">
 					<h4>10 </h4>
 					<p>ipsum</p>
@@ -339,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1 ">
 			<div class=" w3-services-grid2">
 		<i class="fa fa-laptop" aria-hidden="true"></i>
-				<h3>Qualified Doctors</h3>
+				<h3>优秀的医生</h3>
 			<div class="w3-services-grid1-left">
 					<h4>20 </h4>
 					<p>basus</p>
@@ -354,7 +354,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid3">
 			<i class="fa fa-hospital-o" aria-hidden="true"></i>
-				<h3>Special sergery</h3>
+				<h3>专业诊室</h3>
 			<div class="w3-services-grid1-left">
 					<h4>15 </h4>
 					<p>mpsum</p>
@@ -373,7 +373,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class="w3-services-grid4">
 							<i class="fa fa-heartbeat" aria-hidden="true"></i>
-				<h3>Cardiac Clinic</h3>
+				<h3>心脏门诊</h3>
 				<div class="w3-services-grid1-left">
 					<h4>25 </h4>
 					<p>ipsum</p>
@@ -388,7 +388,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid5">
 							<i class="fa fa-flask" aria-hidden="true"></i>
-				<h3>Pediatric Clinic</h3>
+				<h3>儿科门诊</h3>
 				<div class="w3-services-grid1-left">
 					<h4>35</h4>
 					<p>ipsum</p>
@@ -403,7 +403,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid6">
 							<i class="fa fa-ambulance" aria-hidden="true"></i>
-				<h3>Emergency Help</h3>
+				<h3>紧急救援</h3>
 				<div class="w3-services-grid1-left">
 					<h4>40 </h4>
 					<p>ipsum</p>
@@ -426,7 +426,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="testimonials" id="testimonials">
 		<div class="container">
 		<div class="w3-heading-all">
-			<h3>Testimonials</h3>
+			<h3>致谢信</h3>
 		</div>
 			<div class="w3ls_testimonials_grids">
 				 <section class="center slider">
