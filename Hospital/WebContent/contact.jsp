@@ -53,8 +53,8 @@
 							<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">个人资料 <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">个人信息</a></li>
-										<li><a href="#">病历账单</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#myModal">个人信息</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#Historical">病历账单</a></li>
 									</ul>
 							  </li> 
 							  
@@ -224,7 +224,80 @@
 </div>
 </div>
 <!-- //footer -->
+<!-- 模態框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">个人资料</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="username"><span class="glyphicon glyphicon-user"></span>用户姓名</label>
+									<input type="text" class="form-control" id="username" placeholder="用户姓名">
+								</div>
+								<div class="form-group">
+									<label for="userphone"><span class="glyphicon glyphicon-earphone"></span>手机号码</label>
+									<input type="text" class="form-control" id="userphone" placeholder="电话">
+								</div>
+								<div class="form-group">
+									<label for="sex">性别</label>
+									<input type="text" class="form-control" id="userphone" placeholder="性别">
+								</div>
+								<div class="form-group">
+									<label for="usercard">身份证号码</label>
+									<input type="text" class="form-control" id="usercard" placeholder="身份证号码" />
+								</div>
 
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">修改</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">历史病历</h4>
+						</div>
+						<div class="modal-body">
+							<div class="panel panel-primary">
+								<div class="panel-heading"><span class="glyphicon glyphicon-time"></span>日期1</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期2</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+							
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期3</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<!-- //Tour-Locations-JavaScript -->
 			<script src="js/SmoothScroll.min.js"></script>

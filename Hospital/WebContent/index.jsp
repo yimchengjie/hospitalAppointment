@@ -104,6 +104,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="dropdown-menu">
 										<li><a href="#" data-toggle="modal" data-target="#myModal">个人信息</a></li>
 										<li><a href="#" data-toggle="modal" data-target="#Historical">病历账单</a></li>
+										<li><a href="icons.html">图标</a></li>
+										<li><a href="typography.html">排版</a></li>
 									</ul>
 							  </li> 
 							  
@@ -503,16 +505,8 @@ testimonials
 			numquam eius modi tempora.</p>
 			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
 															<li><a href="#" class="facebook">
-																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="twitter"> 
-																  <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="instagram">
-																  <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-																  <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div></a></li>
-															<li><a href="#" class="pinterest">
-																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+												  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
 														</ul>
 		</div>
