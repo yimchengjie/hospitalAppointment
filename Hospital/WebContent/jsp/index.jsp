@@ -44,30 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	$("#country2").append("<option>"+doctor.name+"</option>");   
                         }
                      })
-                    /* if($("#country1").val()=="1")
-                    {
-                        var txt1=" <option >沈阳市</option>"; 
-                        var txt2=" <option >大连市</option>";  
-                        var txt3=" <option >北京市</option>";
-						
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }
-                    else if($("#country1").val()=="2")
-                    {
-                        var txt1=" <option >济南市</option>"; 
-                        var txt2=" <option >济宁市</option>";  
-                        var txt3=" <option >天津市</option>";
-
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }
-                    else if($("#country1").val()=="3")
-                    {
-                        var txt1=" <option >火星</option>"; 
-                        var txt2=" <option >彗星星</option>";  
-                        var txt3=" <option >M78星云</option>";
-
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }else */
                     if($("#country1").val()=="0"){
                         $("#country2").append("<option>请选择医生</option>");   
                     }

@@ -55,10 +55,12 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("user", user );
 				DepartmentMapper departmentMapper=new DepartmentMapperImpl();
 				List<Department> departments=departmentMapper.selectAll();
+				//将科室存入session
 				request.getSession().setAttribute("departments", departments );
 				DoctorMapper doctorMapper=new DoctorMapperImpl();
 				List<Doctor> doctors=doctorMapper.selectAll();
 				String doctorsJson=JSON.toJSON(doctors).toString();
+				//将医生存入session
 				request.getSession().setAttribute("doctors", doctorsJson);
 				response.getWriter().append("success");
 			}
