@@ -83,5 +83,15 @@ public class AccountMapperImpl implements AccountMapper{
 //		System.out.println(accountMapperImpl.updateByPrimaryKey(account));
 		System.out.println(accountMapperImpl.selectByDoctor(1));
 	}
+	@Override
+	public List<Account> getPage(int pagesize, int currentPage, int totalPage, List<Account> allAccounts) {
+		int count =allAccounts.size();
+		//最大pagesize
+		if (currentPage==totalPage) {//最后一页
+			allAccounts=allAccounts.subList((currentPage-1)*pagesize, count);//3-4
+		}
+		else { allAccounts=allAccounts.subList((currentPage-1)*pagesize, currentPage*pagesize);}
+		return allAccounts;
+	}
 
 }

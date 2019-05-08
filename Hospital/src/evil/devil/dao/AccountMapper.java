@@ -23,4 +23,6 @@ public interface AccountMapper {
     int updateByPrimaryKey(Account record);
     
     List<Account> selectAll();
+
+	public List<Account> getPage(int pagesize, int currentPage, int totalPage, List<Account> allAccounts);
 }
