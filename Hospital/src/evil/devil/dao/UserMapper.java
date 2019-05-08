@@ -26,4 +26,8 @@ public interface UserMapper {
     public List<User> getSelectByName(String selectmsg);
 
     public List<User> getSelectByGender(String selectmsg);
+
+    public List<User> getSelectByIdcard(String selectmsg);
+
+    public List<User> getSelectByPhone(String selectmsg);
 }

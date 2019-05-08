@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import evil.devil.dao.impl.AccountMapperImpl;
 import evil.devil.dao.impl.UserMapperImpl;
+import evil.devil.entity.Account;
 import evil.devil.entity.User;
 
 /**
@@ -35,17 +37,28 @@ public class PageServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<User> allUsers=(List<User>) request.getSession().getAttribute("allUsers");//得到所有的
-	
+		String flag=request.getParameter("for");
 		int pageIndex=Integer.parseInt(request.getParameter("pageIndex"));
 		int totalPage=(int)request.getSession().getAttribute("totalPage");
-	
 		int pagesize=(int)request.getSession().getAttribute("pagesize");
-		List<User>  users=new UserMapperImpl().getPage(pagesize, pageIndex,totalPage,allUsers);
 		
-		request.getSession().setAttribute("users", users);
-		request.getSession().setAttribute("pageIndex", pageIndex);
-		request.getRequestDispatcher("UserManegeMain.jsp").forward(request, response);
+		if (flag==null||flag=="") {
+			List<User> allUsers=(List<User>) request.getSession().getAttribute("allUsers");//得到所有的
+			List<User>  users=new UserMapperImpl().getPage(pagesize, pageIndex,totalPage,allUsers);
+			request.getSession().setAttribute("users", users);
+			request.getSession().setAttribute("pageIndex", pageIndex);
+			request.getRequestDispatcher("UserManegeMain.jsp").forward(request, response);
+		}else if (flag.equals("account")) {
+			List<Account> allAccounts=(List<Account>) request.getSession().getAttribute("allAccounts");//得到所有的
+			List<Account>  accounts=new AccountMapperImpl().getPage(pagesize, pageIndex,totalPage,allAccounts);
+			request.getSession().setAttribute("accounts", accounts);
+			request.getSession().setAttribute("pageIndex", pageIndex);
+			request.getRequestDispatcher("accountManegeMain.jsp").forward(request, response);
+		}
+		
+	
+		
+	
 	}
 
 }

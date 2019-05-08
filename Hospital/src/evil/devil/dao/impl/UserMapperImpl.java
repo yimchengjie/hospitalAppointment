@@ -102,16 +102,27 @@ static SqlSession session;
 	
 
 	
-	
+	@Override
+	public List<User> getSelectByIdcard(String selectmsg) {
+		List<User> users = session.selectList("evil.devil.dao.UserMapper.getSelectByIdcard",selectmsg);
+		return users;
+	}
+	@Override
+	public List<User> getSelectByPhone(String selectmsg) {
+		String selectmsg1="%"+selectmsg+"%";
+		List<User> users = session.selectList("evil.devil.dao.UserMapper.getSelectByPhone",selectmsg1);
+		return users;
+	}
 
 
 	
 	public static void main(String[] args) {
 		UserMapperImpl u=new UserMapperImpl();
-		List<User> list=u.getSelectByName("毛毛");
+		List<User> list=u.getSelectByPhone("13");
 		for (User user : list) {
 			System.out.println(user);
 		}
 		
 	}
+	
 }
