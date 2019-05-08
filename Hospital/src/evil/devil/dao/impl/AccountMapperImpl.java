@@ -64,24 +64,38 @@ public class AccountMapperImpl implements AccountMapper{
 		return list;
 	}
 	@Override
-	public Account selectByUser(Integer id) {
+	public List<Account> selectByUser(Integer id) {
 		// TODO Auto-generated method stub
-		Account account =session.selectOne("evil.devil.dao.AccountMapper.selectByUser",id);
-		return account;
+		List<Account> list =session.selectList("evil.devil.dao.AccountMapper.selectByUser",id);
+		return list;
 	}
 	@Override
-	public Account selectByDoctor(Integer id) {
+	public List<Account> selectByDoctor(Integer id) {
 		// TODO Auto-generated method stub
-		Account account =session.selectOne("evil.devil.dao.AccountMapper.selectByDoctor",id);
-		return account;
+		List<Account> list =session.selectList("evil.devil.dao.AccountMapper.selectByDoctor",id);
+		return list;
 	}
-	public static void main(String[] args) {
-		AccountMapperImpl accountMapperImpl=new AccountMapperImpl();
-//		Account account=accountMapperImpl.selectByPrimaryKey(1);
-//		account.setDoctorId(2);
-//		System.out.println(account.toString());
-//		System.out.println(accountMapperImpl.updateByPrimaryKey(account));
-		System.out.println(accountMapperImpl.selectByUser(1).getDoctorId());
+
+
+	
+	public List<Account> getSelectByAccounttime(String selectmsg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public List<Account> getSelectByDatetime(String selectmsg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Account> getPage(int pagesize, int currentPage, int totalPage, List<Account> allAccounts) {
+		int count =allAccounts.size();
+		//最大pagesize
+		if (currentPage==totalPage) {//最后一页
+			allAccounts=allAccounts.subList((currentPage-1)*pagesize, count);//3-4
+		}
+		else { allAccounts=allAccounts.subList((currentPage-1)*pagesize, currentPage*pagesize);}
+		return allAccounts;
 	}
 
 }

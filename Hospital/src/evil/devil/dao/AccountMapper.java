@@ -14,13 +14,15 @@ public interface AccountMapper {
 
     Account selectByPrimaryKey(Integer id);
 
-    Account selectByUser(Integer id);
+    List<Account> selectByUser(Integer id);
     
-    Account selectByDoctor(Integer id);
+    List<Account> selectByDoctor(Integer id);
     
     int updateByPrimaryKeySelective(Account record);
 
     int updateByPrimaryKey(Account record);
     
     List<Account> selectAll();
+
+	public List<Account> getPage(int pagesize, int currentPage, int totalPage, List<Account> allAccounts);
 }
