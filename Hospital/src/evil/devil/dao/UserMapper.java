@@ -30,4 +30,5 @@ public interface UserMapper {
     public List<User> getSelectByIdcard(String selectmsg);
 
     public List<User> getSelectByPhone(String selectmsg);
+    
 }
