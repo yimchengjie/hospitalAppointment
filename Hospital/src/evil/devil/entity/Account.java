@@ -1,5 +1,7 @@
 package evil.devil.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Account {
@@ -9,7 +11,7 @@ public class Account {
 
     private Integer doctorId;
 
-    private Date dateTime;
+    private	String dateTime;
 
     private Date accountTime;
 
@@ -41,11 +43,11 @@ public class Account {
         this.doctorId = doctorId;
     }
 
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 

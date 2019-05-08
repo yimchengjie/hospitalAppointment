@@ -64,15 +64,15 @@ public class AccountMapperImpl implements AccountMapper{
 		return list;
 	}
 	@Override
-	public Account selectByUser(Integer id) {
+	public List<Account> selectByUser(Integer id) {
 		// TODO Auto-generated method stub
-		Account account =session.selectOne("evil.devil.dao.AccountMapper.selectByUser",id);
+		List<Account> account =session.selectList("evil.devil.dao.AccountMapper.selectByUser",id);
 		return account;
 	}
 	@Override
-	public Account selectByDoctor(Integer id) {
+	public List<Account> selectByDoctor(Integer id) {
 		// TODO Auto-generated method stub
-		Account account =session.selectOne("evil.devil.dao.AccountMapper.selectByDoctor",id);
+		List<Account> account =session.selectList("evil.devil.dao.AccountMapper.selectByDoctor",id);
 		return account;
 	}
 	public static void main(String[] args) {
@@ -81,7 +81,7 @@ public class AccountMapperImpl implements AccountMapper{
 //		account.setDoctorId(2);
 //		System.out.println(account.toString());
 //		System.out.println(accountMapperImpl.updateByPrimaryKey(account));
-		System.out.println(accountMapperImpl.selectByUser(1).getDoctorId());
+		System.out.println(accountMapperImpl.selectByDoctor(1));
 	}
 
 }

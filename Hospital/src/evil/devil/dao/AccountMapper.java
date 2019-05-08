@@ -14,9 +14,9 @@ public interface AccountMapper {
 
     Account selectByPrimaryKey(Integer id);
 
-    Account selectByUser(Integer id);
+    List<Account> selectByUser(Integer id);
     
-    Account selectByDoctor(Integer id);
+    List<Account> selectByDoctor(Integer id);
     
     int updateByPrimaryKeySelective(Account record);
 
