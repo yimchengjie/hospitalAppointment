@@ -8,10 +8,21 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.alert {
-	font-family: "微软雅黑";
-	font-size: 12px;
-}
+	.alert {
+		font-family: "微软雅黑";
+		font-size: 12px;
+	}
+	#main{
+		background: url("../images/ban6.jpg") no-repeat;
+		min-height:800px;
+		max-height: 800px;
+		width: 100%;
+		overflow: hidden;
+		background-size: 100%;
+	}
+	#loginform{
+		color: white;
+	}
 </style>
 <script type="text/javascript">
 			//绑定事件
@@ -99,62 +110,63 @@
 <title>登陆</title>
 </head>
 <body>
-	<div class="container-fluid  col-sm-4">
-	
-		<div class="form-horizontal">
-
-			<div style="height: 100px; margin-top: 50px;" class="col-sm-12">
-				<h2 class="col-sm-2"></h2>
-				<h2 class="col-sm-10">登陆</h2>
-			</div>
-
-			<div class="form-group" style="height: 30px;">
-				<label id="username" for="inputName" class="col-sm-2 control-label">手机号</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="text"
-						class="form-control" id="inputName" name="username"
-						placeholder="手机号"> 
-						<span style="display: block; color:red; height: 8px; visibility: hidden;" class="alert">手机号不存在</span>
+	<div class="container-fluid"  id="main">
+		<div class="container-fluid  col-sm-12" style="height: 60px;"></div>
+		<div class="container-fluid  col-sm-4 col-md-offset-2 page-header" style="color: white;">
+			<div class="container-fluid  col-sm-12" style="height: 120px;"></div>
+			<h1>浙江水利水电医院<small style="color:#DDDDDD;">在线预约挂号</small></h1>
+		</div>
+		<div class="container-fluid  col-sm-4 col-md-offset-2" id="loginform">
+			<div class="form-horizontal">
+				<div style="height: 100px; margin-top: 50px;" class="col-sm-12">
+					<h2 style="margin-left: 150px;">登陆</h2>
 				</div>
-			</div>
-
-			<div class="form-group" style="height: 30px;">
-				<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="password"
-						class="form-control" id="inputPassword3" name="userpwd"
-						placeholder="密码 "> <span
-						style="display: block; height: 8px; visibility: hidden;"
-						class="alert">密码错误</span>
-				</div>
-			</div>
-			<div class="form-group" style="height: 30px;">
-				<label for="inputName" class="col-sm-2 control-label">登录方式</label>
-				<div class="col-sm-10">
-					<div class="radio" style="float:left;">
-					  <label>
-					    <input type="radio" name="LoginType" id="optionsRadios1" value="user" checked>
-					    普通用户
-					  </label>
-					</div>
-					<div class="radio" style="float:left; margin-left:40px;">
-					  <label>
-					    <input type="radio" name="LoginType" id="optionsRadios2" value="admin">
-					    管理员
-					  </label>
+				<div class="form-group" style="height: 30px;">
+					<label id="username" for="inputName" class="col-sm-2 control-label" style="text-align: center;">手机号:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="text"
+							class="form-control" id="inputName" name="username"
+							placeholder="手机号"> 
+							<span style="display: block; color:red; height: 8px; visibility: hidden;" class="alert">手机号不存在</span>
 					</div>
 				</div>
-			</div>
-			
-			<div class="form-group" style="height: 30px;">
-				<label class="col-sm-2 control-label"></label>
-				<div class="col-sm-10">
-					<button  id="login" style="width: 56%;"
-						class="btn btn-success  btn-block" disabled="disabled">登陆</button>
+				<div class="form-group" style="height: 30px;">
+					<label for="inputPassword3" class="col-sm-2 control-label" style="text-align: center;">密码:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="password"
+							class="form-control" id="inputPassword3" name="userpwd"
+							placeholder="密码 "> <span
+							style="display: block; height: 8px; visibility: hidden;"
+							class="alert">密码错误</span>
+					</div>
 				</div>
+				<div class="form-group" style="height: 30px;">
+					<label for="inputName" class="col-sm-2 control-label">登录方式:</label>
+					<div class="col-sm-10">
+						<div class="radio" style="float:left;">
+						  <label>
+						    <input type="radio" name="LoginType" id="optionsRadios1" value="user" checked>
+						    普通用户
+						  </label>
+						</div>
+						<div class="radio" style="float:left; margin-left:40px;">
+						  <label>
+						    <input type="radio" name="LoginType" id="optionsRadios2" value="admin">
+						    管理员
+						  </label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group" style="height: 30px;">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-10">
+						<button  id="login" style="width: 56%;"
+							class="btn btn-success  btn-block" disabled="disabled">登陆</button>
+					</div>
+				</div>
+
 			</div>
-
-
 		</div>
 	</div>
 </body>
