@@ -79,6 +79,10 @@
 				success: function(data) {
 					if(data=="success"){
 						alert("登录成功");
+						if(json.type=="user")
+						window.location = "index.jsp";
+						else if(json.type=="admin")
+							window.location = "UserManegeMain.jsp";
 					}
 					else if(data=="error"){
 						alert("登录失败,用户名或密码错误");	

@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 <head>
@@ -37,32 +38,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $(function(){
                 $("#country1").change(function(){
                     $("#country2").empty();
-                    console.log($("#country1").val());
-                    if($("#country1").val()=="1")
-                    {
-                        var txt1=" <option >沈阳市</option>"; 
-                        var txt2=" <option >大连市</option>";  
-                        var txt3=" <option >北京市</option>";
-
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }
-                    else if($("#country1").val()=="2")
-                    {
-                        var txt1=" <option >济南市</option>"; 
-                        var txt2=" <option >济宁市</option>";  
-                        var txt3=" <option >天津市</option>";
-
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }
-                    else if($("#country1").val()=="3")
-                    {
-                        var txt1=" <option >火星</option>"; 
-                        var txt2=" <option >彗星星</option>";  
-                        var txt3=" <option >M78星云</option>";
-
-                        $("#country2").append(txt1,txt2,txt3);   
-                    }else
-                    {
+                    var doctors=${sessionScope.doctors};
+                    doctors.forEach(function(doctor) {
+                        if(doctor.departmentId==$("#country1").val()){
+                        	$("#country2").append("<option>"+doctor.name+"</option>");   
+                        }
+                     })
+                    if($("#country1").val()=="0"){
                         $("#country2").append("<option>请选择医生</option>");   
                     }
                 });
@@ -92,18 +74,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">主页</a></li>
-							<li><a href="about.html">关于我们</a></li>
-							<li><a href="services.html">服务</a></li>
-							<li><a href="gallery.html">展览</a></li>
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="services.html">Our Services</a></li>
+							<li><a href="gallery.html">Gallery</a></li>
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">软件 <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="icons.html">图标</a></li>
-										<li><a href="typography.html">排版</a></li>
+										<li><a href="icons.html">Icons</a></li>
+										<li><a href="typography.html">Typography</a></li>
 									</ul>
 							  </li>
-							<li><a href="contact.html">联系</a></li>
+							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -210,10 +192,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="phone_email1"> 
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							<select id="country1" class="frm-field sect" required>
-									<option id="" >请选择科室</option>
-									<option value="1">外科</option>
-									<option value="2">内科</option>         
-									<option value="3">皮肤科</option>
+									<option id="" value="0" >请选择科室</option>
+									<c:forEach items="${departments}" var="department" varStatus="loop">
+									<option value="${department.id}">${department.name}</option>
+									</c:forEach>
 								</select> 
 						</div>
 						<div class="clearfix"> </div>
@@ -224,22 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="span1_of_1 section_room"> 
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-								<select id="Time"  >
-									<option id="" >请选择时间</option>
-									<option value="1">9：00-9：30</option>
-									<option value="2">9：30-10：00</option>         
-									<option value="3">10：00-10:30</option>
-									<option value="4">10：30-11：00</option>         
-									<option value="5">11：00-11:30</option>
-									<option value="6">13：30-14：00</option>         
-									<option value="7">14：00-14:30</option>
-									<option value="8">14：30-15：00</option>         
-									<option value="9">15：00-15:30</option>
-									<option value="10">15：30-16：00</option>         
-									<option value="11">16：00-16:30</6option>
-									<option value="12">16：30-17：00</option> 
-								</select>
-								<!-- <input type="text" name="Time" class= value="选择时间">	 --> 
+								<input type="text" name="Time" class="timepicker" value="选择时间">	 
 							</div>
 							<div class="span1_of_1 section_room">
 								<!-- start_section_room --> 
@@ -265,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="w3-about about-gap" id="about">
 		<div class="container">
 			<div class="w3-heading-all">
-				<h3>关于我们</h3>
+				<h3>About us</h3>
 			</div>
 		<div class="w3-about-grids">
 				<div class="col-md-6 w3-about-left-grid">
@@ -317,14 +284,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="services" id="services">
 	<div class="container">
 		<div class="w3-heading-all services-head">
-			<h3>服务</h3>
+			<h3>Services</h3>
 		</div>	
 
 		<div class="w3-services-grids">
 			<div class="col-md-4 w3-services-grids1">
 			<div class="w3-services-grid1">
 				<i class="fa fa-user-md" aria-hidden="true"></i>
-				<h3> 专业团队</h3>
+				<h3> Special Team</h3>
 				<div class="w3-services-grid1-left">
 					<h4>10 </h4>
 					<p>ipsum</p>
@@ -339,7 +306,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1 ">
 			<div class=" w3-services-grid2">
 		<i class="fa fa-laptop" aria-hidden="true"></i>
-				<h3>优秀的医生</h3>
+				<h3>Qualified Doctors</h3>
 			<div class="w3-services-grid1-left">
 					<h4>20 </h4>
 					<p>basus</p>
@@ -354,7 +321,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid3">
 			<i class="fa fa-hospital-o" aria-hidden="true"></i>
-				<h3>专业诊室</h3>
+				<h3>Special sergery</h3>
 			<div class="w3-services-grid1-left">
 					<h4>15 </h4>
 					<p>mpsum</p>
@@ -373,7 +340,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class="w3-services-grid4">
 							<i class="fa fa-heartbeat" aria-hidden="true"></i>
-				<h3>心脏门诊</h3>
+				<h3>Cardiac Clinic</h3>
 				<div class="w3-services-grid1-left">
 					<h4>25 </h4>
 					<p>ipsum</p>
@@ -388,7 +355,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid5">
 							<i class="fa fa-flask" aria-hidden="true"></i>
-				<h3>儿科门诊</h3>
+				<h3>Pediatric Clinic</h3>
 				<div class="w3-services-grid1-left">
 					<h4>35</h4>
 					<p>ipsum</p>
@@ -403,7 +370,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid6">
 							<i class="fa fa-ambulance" aria-hidden="true"></i>
-				<h3>紧急救援</h3>
+				<h3>Emergency Help</h3>
 				<div class="w3-services-grid1-left">
 					<h4>40 </h4>
 					<p>ipsum</p>
@@ -426,7 +393,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="testimonials" id="testimonials">
 		<div class="container">
 		<div class="w3-heading-all">
-			<h3>致谢信</h3>
+			<h3>Testimonials</h3>
 		</div>
 			<div class="w3ls_testimonials_grids">
 				 <section class="center slider">
