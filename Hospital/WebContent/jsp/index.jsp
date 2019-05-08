@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 <head>
@@ -37,13 +38,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $(function(){
                 $("#country1").change(function(){
                     $("#country2").empty();
-                    console.log($("#country1").val());
-                    if($("#country1").val()=="1")
+                    var doctors=${sessionScope.doctors};
+                    doctors.forEach(function(doctor) {
+                        if(doctor.departmentId==$("#country1").val()){
+                        	$("#country2").append("<option>"+doctor.name+"</option>");   
+                        }
+                     })
+                    /* if($("#country1").val()=="1")
                     {
                         var txt1=" <option >沈阳市</option>"; 
                         var txt2=" <option >大连市</option>";  
                         var txt3=" <option >北京市</option>";
-
+						
                         $("#country2").append(txt1,txt2,txt3);   
                     }
                     else if($("#country1").val()=="2")
@@ -61,8 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         var txt3=" <option >M78星云</option>";
 
                         $("#country2").append(txt1,txt2,txt3);   
-                    }else
-                    {
+                    }else */
+                    if($("#country1").val()=="0"){
                         $("#country2").append("<option>请选择医生</option>");   
                     }
                 });
@@ -210,10 +216,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="phone_email1"> 
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							<select id="country1" class="frm-field sect" required>
-									<option id="" >请选择科室</option>
-									<option value="1">外科</option>
-									<option value="2">内科</option>         
-									<option value="3">皮肤科</option>
+									<option id="" value="0" >请选择科室</option>
+									<c:forEach items="${departments}" var="department" varStatus="loop">
+									<option value="${department.id}">${department.name}</option>
+									</c:forEach>
 								</select> 
 						</div>
 						<div class="clearfix"> </div>

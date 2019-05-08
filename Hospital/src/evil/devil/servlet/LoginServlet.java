@@ -1,13 +1,23 @@
 package evil.devil.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+
+import evil.devil.dao.DepartmentMapper;
+import evil.devil.dao.DoctorMapper;
+import evil.devil.dao.impl.DepartmentMapperImpl;
+import evil.devil.dao.impl.DoctorMapperImpl;
 import evil.devil.entity.Admin;
+import evil.devil.entity.Department;
+import evil.devil.entity.Doctor;
 import evil.devil.entity.User;
 import evil.devil.servcie.impl.AdminServiceImpl;
 import evil.devil.servcie.impl.UserServiceImpl;
@@ -37,13 +47,19 @@ public class LoginServlet extends HttpServlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		String type=request.getParameter("type");
-		System.out.println(username+"\t"+password);
 		//普通用户登录
 		if(type.equals("user")) {
 			UserService usrservice=new UserServiceImpl();
 			User user=usrservice.Login(Long.parseLong(username), password);
 			if(user!=null) {
 				request.getSession().setAttribute("user", user );
+				DepartmentMapper departmentMapper=new DepartmentMapperImpl();
+				List<Department> departments=departmentMapper.selectAll();
+				request.getSession().setAttribute("departments", departments );
+				DoctorMapper doctorMapper=new DoctorMapperImpl();
+				List<Doctor> doctors=doctorMapper.selectAll();
+				String doctorsJson=JSON.toJSON(doctors).toString();
+				request.getSession().setAttribute("doctors", doctorsJson);
 				response.getWriter().append("success");
 			}
 			else {
