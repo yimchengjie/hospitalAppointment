@@ -498,10 +498,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h4>Information </h4>
 					<ul>
 						 <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html" >About</a></li>
-        <li><a href="services.html"> Services</a></li>
-		<li><a href="gallery.html">Portfolio</a></li>
-		<li><a href="contact.html">Contact</a></li>
+        <li><a href="about.jsp" >About</a></li>
+        <li><a href="services.jspl"> Services</a></li>
+		<li><a href="gallery.jsp">Portfolio</a></li>
+		<li><a href="contact.jsp">Contact</a></li>
 						
 					</ul>
 				</div>
