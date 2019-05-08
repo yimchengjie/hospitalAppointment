@@ -27,7 +27,13 @@ public interface UserMapper {
 
     public List<User> getSelectByGender(String selectmsg);
 
+<<<<<<< HEAD
     public List<User> getSelectByIdcard(String selectmsg);
 
     public List<User> getSelectByPhone(String selectmsg);
+=======
+	List<User> getSelectByPhone(String selectmsg);
+
+	List<User> getSelectByIdcard(String selectmsg);
+>>>>>>> branch 'master' of https://gitee.com/evildevil/hospital.git
 }

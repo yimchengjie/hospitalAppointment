@@ -15,6 +15,15 @@
 	font-family: "微软雅黑";
 	font-size: 12px;
 }
+#main{
+		background: url(../images/ban6.jpg) no-repeat;
+		min-height:800px;
+		max-height: 800px;
+		width: 100%;
+		overflow: hidden;
+		background-size: 100%;
+}
+
 </style>
 <script type="text/javascript">
 			//绑定事件
@@ -185,124 +194,126 @@
 				}); 
 			})
 			})
-		</script>
-
-
+				
+	</script>
 <title>注册</title>
 </head>
 <body>
-
-	<div class="container-fluid  col-sm-4">
-		<nav class="navbar navbar-nav ">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#"></a>
+	<div class=" container-fluid" id="main">
+		<div class="container-fluid  col-sm-12" style="height: 60px;"></div>
+		<div class="container-fluid  col-sm-4 col-md-offset-2 page-header" style="color: white;">
+			<div class="container-fluid  col-sm-12" style="height: 120px;"></div>
+			<h1>浙江水利水电医院<small style="color:#DDDDDD;">在线预约挂号</small></h1>
+		</div>
+		<div class="container-fluid  col-sm-5 col-md-offset-1" style="color: white;">
+			<!--<nav class="navbar navbar-nav ">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#"></a>
+					</div>
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="#" class="glyphicon glyphicon-user"
+								style="color: gainsboro;"></a></li>
+	
+							<li class="active"><a
+								style="color: black; font-family: '微软雅黑';" href="#"><strong>Register</strong></a>
+							</li>
+							<li><a href="login.jsp">Login </a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Management<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="Management.jsp">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="dropdown-header">nav header</li>
+									<li><a href="#">Separated link</a></li>
+									<li><a href="#">One more separated link</a></li>
+								</ul></li>
+						</ul>
+					</div>
 				</div>
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="#" class="glyphicon glyphicon-user"
-							style="color: gainsboro;"></a></li>
-
-						<li class="active"><a
-							style="color: black; font-family: '微软雅黑';" href="#"><strong>Register</strong></a>
-						</li>
-						<li><a href="login.jsp">Login </a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Management<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="Management.jsp">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="dropdown-header">nav header</li>
-								<li><a href="#">Separated link</a></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-					</ul>
+			</nav>-->
+	
+			<div class="form-horizontal col-sm-12" >
+				<div style="height: 60px; margin-top: 50px;" class="col-sm-12">
+					<h2 style="margin-left: 150px;">注册</h2>
 				</div>
-			</div>
-		</nav>
-
-		<div class="form-horizontal" >
-
-			<div style="height: 100px; margin-top: 50px;" class="col-sm-12">
-				<h2 class="col-sm-2"></h2>
-				<h2 class="col-sm-10">Register</h2>
-			</div>
-
-			<div class="form-group" style="height: 30px; ">
-				<label for="inputPhone" class="col-sm-2 control-label">手机号</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="text"
-						class="form-control" id="tel" name="phone"
-						placeholder="手机号"> <span id="telflag" style="color:red;">*</span>
+				<div class="form-group col-sm-12" style="height: 30px; ">
+					<label for="inputPhone" class="col-sm-2 control-label">手机号:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="text"
+							class="form-control" id="tel" name="phone"
+							placeholder="手机号"> <span id="telflag" style="color:red;">*</span>
+					</div>
 				</div>
-			</div>
-			
-			<div class="form-group" style="height: 30px; ">
-				<label for="inputName" class="col-sm-2 control-label">姓名</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="text"
-						class="form-control" id="username" name="username"
-						placeholder="姓名"> <span id="usernameflag" style="color:red">*</span>
+				
+				<div class="form-group col-sm-12" style="height: 30px; ">
+					<label for="inputName" class="col-sm-2 control-label">姓名:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="text"
+							class="form-control" id="username" name="username"
+							placeholder="姓名"> <span id="usernameflag" style="color:red">*</span>
+					</div>
 				</div>
-			</div>
-
-			<div class="form-group" style="height: 30px;">
-				<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="password"
-						class="form-control" id="password" name="userpwd"
-						placeholder="密码 "> <span id="passwordflag" style="color:red">*</span>
+	
+				<div class="form-group col-sm-12" style="height: 30px;">
+					<label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="password"
+							class="form-control" id="password" name="userpwd"
+							placeholder="密码 "> <span id="passwordflag" style="color:red">*</span>
+					</div>
 				</div>
-			</div>
-			<div class="form-group" style="height: 30px;">
-				<label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
-				<div class="col-sm-10">
-					<input style="width: 56%; display: inline;" type="password"
-						class="form-control" id="password2" name="userpwd2"
-						placeholder="确认密码 "> <span id="passwordflag2" style="color:red">*</span>
+				<div class="form-group col-sm-12" style="height: 30px;">
+					<label for="inputPassword3" class="col-sm-2 control-label">确认密码:</label>
+					<div class="col-sm-10">
+						<input style="width: 56%; display: inline;" type="password"
+							class="form-control" id="password2" name="userpwd2"
+							placeholder="确认密码 "> <span id="passwordflag2" style="color:red">*</span>
+					</div>
 				</div>
-			</div>
-			
-
-			<div class="form-group ">
-				<label class="col-sm-2 control-label ">身份证</label>
-				<div class="col-sm-10 " style="height: 30px;">
-					<input style="width: 56%; display: inline;" type="text"
-						class="form-control" id="idcard" name="username"
-						placeholder="身份证"> <span id="idcardflag" style="color:red">*</span>
+				
+	
+				<div class="form-group col-sm-12" style="height: 30px;">
+					<label class="col-sm-2 control-label ">身份证:</label>
+					<div class="col-sm-10 " style="height: 30px;">
+						<input style="width: 56%; display: inline;" type="text"
+							class="form-control" id="idcard" name="username"
+							placeholder="身份证"> <span id="idcardflag" style="color:red">*</span>
+					</div>
 				</div>
-			</div>
-
-			<div class="form-group ">
-				<label class="col-sm-2 control-label ">性别</label>
-				<div class="col-sm-10">
-					<label class="radio-inline"> <input type="radio"
-						name="gender"  value="男" checked="checked">
-						男
-					</label> <label style="width: 238px;" class="radio-inline"> <input
-						type="radio" name="gender" id="gender" value="女">
-						女
-					</label>
+	
+				<div class="form-group col-sm-12" style="height: 30px;">
+					<label class="col-sm-2 control-label ">性别:</label>
+					<div class="col-sm-10" style="text-align: left;">
+						<label class="radio-inline" > <input type="radio"
+							name="gender"  value="男" checked="checked">
+							男
+						</label> 
+						<label style="width: px;" class="radio-inline" > <input
+							type="radio" name="gender" id="gender" value="女">
+							女
+						</label>
+					</div>
+	
 				</div>
-
-			</div>
-			<div class="form-group">
-				<br />
-				<div class="col-sm-offset-3">
-					<button id="register" class="btn btn-primary" disabled="disabled">注册</button>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="login.jsp" style="color: white;">
-					<button class="btn btn-primary">
-						登陆
-					</button></a>
+				<div class="form-group col-sm-12" style="height: 30px;">
+					<br />
+					<div class="col-sm-offset-3">
+						<button id="register" class="btn btn-primary" disabled="disabled">注册</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="login.jsp" style="color: white;">
+						<button class="btn btn-primary">
+							登陆
+						</button></a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	
 </body>
 </html>

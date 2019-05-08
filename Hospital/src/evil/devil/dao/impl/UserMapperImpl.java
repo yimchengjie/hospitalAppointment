@@ -99,10 +99,7 @@ static SqlSession session;
 		List<User> users = session.selectList("evil.devil.dao.UserMapper.getSelectByGender",selectmsg);
 		return users;
 	}
-	
-
-	
-	@Override
+@Override
 	public List<User> getSelectByIdcard(String selectmsg) {
 		List<User> users = session.selectList("evil.devil.dao.UserMapper.getSelectByIdcard",selectmsg);
 		return users;
@@ -113,9 +110,6 @@ static SqlSession session;
 		List<User> users = session.selectList("evil.devil.dao.UserMapper.getSelectByPhone",selectmsg1);
 		return users;
 	}
-
-
-	
 	public static void main(String[] args) {
 		UserMapperImpl u=new UserMapperImpl();
 		List<User> list=u.getSelectByPhone("13");
