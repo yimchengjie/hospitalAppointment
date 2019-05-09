@@ -73,4 +73,6 @@
       doctor_num = #{doctorNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+   
 </mapper>

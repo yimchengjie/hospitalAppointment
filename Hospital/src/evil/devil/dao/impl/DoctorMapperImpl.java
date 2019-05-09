@@ -68,9 +68,18 @@ static SqlSession session;
 		List<Doctor> list= session.selectList("evil.devil.dao.DoctorMapper.selectAll");
 		return list;
 	}
+	
+
+	
+	@Override
+	public List<Doctor> getByDeaprt(Integer id) {
+		List<Doctor> list= session.selectList("evil.devil.dao.DoctorMapper.getByDeaprt",id);
+		return list;
+	}
+	
 	public static void main(String[] args) {
 		DoctorMapperImpl d=new DoctorMapperImpl();
-		List<Doctor> l=d.selectAll();
+		List<Doctor> l=d.getByDeaprt(1);
 		for (Doctor doctor : l) {
 			System.out.println(doctor.getName());
 		}

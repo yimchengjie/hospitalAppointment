@@ -141,4 +141,11 @@
       price = #{price,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getByDeaprt" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from doctor
+    where department_id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

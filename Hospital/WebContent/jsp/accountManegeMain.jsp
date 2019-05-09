@@ -7,12 +7,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
+
+		<link href="../fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+		<link href="../css/sb-admin-2.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!--
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-			<script type="text/javascript">
+		-->
+		<script type="text/javascript">
+			//绑定事件
 			$(function() {
-			$(".delete").click(
+					$(".delete").click(
 				function() {
 						var id = $(this).parent().parent().parent().children().eq(0).html();
 						$(this).parent().parent().parent().remove();
@@ -49,122 +57,219 @@
 							success: function(data) {
 								alert(data);
 								window.location = "accountManegeMain.jsp";
+								
 							}
 						});
 						
 				})
-			
+				
 			})
 		</script>
 
-<title>账单管理</title>
-</head>
-<body>
+	</head>
 
-		<div class="container-fluid  col-md-12" style="height: 150px;">
-				<div class="navbar  navbar-default ">
-				<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1 ">
-					<ul class="nav navbar-nav ">
+	<body id="page-top">
 
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="">管理员资料</a>
-								</li>
-								<li>
-									<a href="#">退出登录</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="">医生管理</a>
-						</li>
-						<li>
-							<a  href="UserSelect">用户管理</a>
-						</li>
-						<li class="active">
-							<a  href=" "><strong>账单管理</strong></a>
-						</li>
-					</ul>
+		<!-- Page Wrapper -->
+		<div id="wrapper">
+
+			<!-- Sidebar -->
+			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+				<!-- Sidebar - Brand -->
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+					<div class="sidebar-brand-icon rotate-n-15">
+						<i class="fas fa-laugh-wink"></i>
+					</div>
+					<div class="sidebar-brand-text mx-3">医院后台管理<sup>h</sup></div>
+				</a>
+
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">
+						<i class="fas fa-fw fa-tachometer-alt"></i>
+						<span>管理员</span></a>
+				</li>
+
+				<!-- Divider -->
+				<hr class="sidebar-divider">
+
+				<!-- Heading -->
+				<div class="sidebar-heading">
+					User&Account
 				</div>
-			</div>
-		</div>
 
-		<div class="container-fluid  col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"  >患者管理</div>
-				<table class="table">
-					<tr  >
-						<td width="80">序号</td>
-						<td width="100">患者id 姓名</td>
-						<td width="80">医生id 姓名</td>
-						<td width="80">预约日期</td>
-						<td width="200">订单日期</td>
-						<td width="120">价格</td>
-						<td width="120">支付方式</td>
-						<td>
-							操作
-						</td>
+				<!-- Nav Item - Pages Collapse Menu -->
+				<li class="nav-item ">
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+						<i class="fas fa-fw fa-cog"></i>
+						<span>用户管理</span>
+					</a>
+				</li>
 
-					</tr>
+				<li class="nav-item active">
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+						<i class="fas fa-fw fa-wrench"></i>
+						<span>账单管理</span>
+					</a>
+				</li>
 
-					<c:forEach var="item" items="${accounts}">
-						<tr >
-							<td>${item.id}</td>
-							<td>${item.userId}</td>
-							<td>${item.doctorId}</td>
-							<td>${item.dateTime}</td>
-							<td>${item.accountTime}</td>
-							<td>${item.price}</td>
-							<td>${item.payType}</td>
-							<td>
-								<div class="btn-group" role="group">
-									<button type="button" id="delete" class="btn btn-default delete">删除</button>
-								</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-			<ul class="pager">
-				<li><a href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页</a></li>
-				<li><a href="#">${pageIndex==null?1:pageIndex}</a></li>
-				<li><a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页</a></li>
+				<hr class="sidebar-divider">
+
+				<div class="sidebar-heading">
+					Doctor
+				</div>
+
+				<!-- Nav Item - Pages Collapse Menu -->
+				<li class="nav-item">
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+						<i class="fas fa-fw fa-folder"></i>
+						<span>科室管理</span>
+					</a>
+				</li>
+
+				<!-- Nav Item - Charts -->
+				<li class="nav-item">
+					<a class="nav-link" href="charts.html">
+						<i class="fas fa-fw fa-chart-area"></i>
+						<span>医生管理</span></a>
+				</li>
+
+				<!-- Nav Item - Tables -->
+				<li class="nav-item">
+					<a class="nav-link" href="tables.html">
+						<i class="fas fa-fw fa-table"></i>
+						<span>其他</span></a>
+				</li>
+
+				<!-- Divider -->
+				<hr class="sidebar-divider d-none d-md-block">
+
+				<!-- Sidebar Toggler (Sidebar) -->
+				<div class="text-center d-none d-md-inline">
+					<button class="rounded-circle border-0" id="sidebarToggle"></button>
+				</div>
+
 			</ul>
-		<!--  	<a href="PageServlet?pageIndex=${pageIndex==1?1:1}&for=account">首页 </a>
-			<a href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页 </a>
-			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页 </a>
-			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:totalPage}&for=account">末页 </a>-->
-		</div>
+			<!-- End of Sidebar -->
 
-		<div class="container-fluid  col-md-5">
-			<input type="date" value="2015-09-24" style="visibility: hidden;"/>
-		
-			<select class="form-control" id="way" style="width: 150px;">
-				<option value="all">查找所有</option>
-				<option value="userid">根据患者id查找</option>
-				<option value="doctorid">根据医生id查找</option>
-				<option value="accounttime">根据订单时间查找</option>
-				<option value="datetime">根据预约时间查找</option>
-			</select>
-			
-		
-			
-			<br/>
+			<!-- Content Wrapper -->
+			<div id="content-wrapper" class="d-flex flex-column">
+				<div id="content">
+					<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-			<input type="text" class="form-control" id="selectmsg" style="width: 150px;">
-			<br/>
-			<button type="button" id="select" class="btn btn-primary">  <span class="glyphicon glyphicon-search" ></span>查找 </button>
-		</div>
+						<!-- Sidebar Toggle (Topbar) -->
+						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
 
-	
+						<!--  搜索栏 -->
+						<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+							<div class="input-group">
+								<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+								<div class="input-group-append">
+									<button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+								</div>
+							</div>
+						</form>
+					</nav>
 
-				
+					<div class="container-fluid">
+
+						<!-- Page Heading -->
+						<h1 class="h3 mb-2 text-gray-800">账单管理</h1>
+						<p class="mb-4"></p>
+
+						<!-- DataTales Example -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">你好，管理员${way==null?all:way}</h6>
+							</div>
+							<br/>
+
+							<form class="form-inline">
+								<div class="container-fluid " align="right">
+									<select class="form-control" id="way" style="width: 150px;">
+										<option value="all">查找所有</option>
+										<option value="userid">根据患者id查找</option>
+										<option value="doctorid">根据医生id查找</option>
+										<option value="accounttime">根据订单时间查找</option>
+										<option value="datetime">根据预约时间查找</option>
+									</select> <input type="text" class="form-control" id="selectmsg" style="width: 150px;">
+
+									<button type="button" id="select" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>查找</button>
+								</div>
+							</form>
+
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table   table-hover" id="dataTable" width="100%" cellspacing="0">
+											<tr>
+												<th>序号</th>
+												<th >患者id 姓名</th>
+												<th >医生id 姓名</th>
+												<th >预约日期</th>
+												<th >订单日期</th>
+												<th >价格</th>
+												<th >支付方式</th>
+												<th align="center">
+													操作
+												</th>
+
+											</tr>
+
+											<c:forEach var="item" items="${accounts}">
+												<tr>
+													<td>${item.id}</td>
+													<td>${item.userId}</td>
+													<td>${item.doctorId}</td>
+													<td>${item.dateTime}</td>
+													<td>${item.accountTime}</td>
+													<td>${item.price}</td>
+													<td>${item.payType}</td>
+													<td>
+														<div class="btn-group" role="group">
+															<button type="button" id="delete" class="btn btn-primary delete">删除</button>
+														</div>
+													</td>
+												</tr>
+											</c:forEach>
+										</table>
 
 
-		
+										<ul class="pagination justify-content-center">
+											<li>
+												<a class="page-link" href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页</a>
+											</li>
+											<li>
+												<a class="page-link" href="#">${pageIndex==null?1:pageIndex}</a>
+											</li>
+											<li>
+												<a class="page-link" href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页</a>
+											</li>
+										</ul>
 
+								</div>
+							</div>
+						</div>
+
+						<!--脚注 -->
+						<footer class="sticky-footer bg-white">
+							<div class="copyright text-center my-auto">
+								<span>Copyright &copy; Hospital Website 2019</span>
+							</div>
+						</footer>
+						<!-- 脚注 -->
+
+					</div>
+
+				</div>
+				<a class="scroll-to-top rounded" href="#page-top">
+					<i class="fas fa-angle-up"></i>
+				</a>
+
+			 <script src="../js/sb-admin-2.min.js"></script>
 	</body>
 
 </html>
