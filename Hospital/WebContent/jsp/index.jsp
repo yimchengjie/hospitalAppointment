@@ -70,6 +70,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				success: function(data) {
         					if(data=="success"){
         						alert("预约成功");
+        						location.reload();
+        					}
+        					else if(data="error"){
+        						alert("预约失败");
         					}
         				},
         				error: function() {
@@ -277,7 +281,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
 								<select id="time" class="frm-field sect" required name="qqq">
 									<option id="t0" value="0">选择就诊时间</option>
-									<option class="time"  id="t11" value="8">8：00-9：00</option> 
+									<option class="time"  id="t8" value="8">8：00-9：00</option> 
 									<option class="time" id="t9" value="9">9：00-10：00</option>        
 									<option class="time" id="t10" value="10">10：00-11:00</option>         
 									<option class="time" id="t11" value="11">11：00-12:00</option>          

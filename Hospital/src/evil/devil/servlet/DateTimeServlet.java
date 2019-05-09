@@ -48,7 +48,6 @@ public class DateTimeServlet extends HttpServlet {
 		AccountMapper accountMapper=new AccountMapperImpl();
 		List<Account> accounts=accountMapper.selectByDoctor(id);
 		List<String> list=new ArrayList<String>();
-		System.out.println(date);
 		
 		for (Account account : accounts) {
 			if(date.equals(account.getDateTime().split(" ")[0])) {

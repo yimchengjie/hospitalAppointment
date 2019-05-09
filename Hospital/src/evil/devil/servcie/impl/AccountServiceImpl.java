@@ -1,11 +1,13 @@
 package evil.devil.servcie.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import evil.devil.dao.AccountMapper;
 import evil.devil.dao.impl.AccountMapperImpl;
 import evil.devil.entity.Account;
 import evil.devil.service.AccountService;
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class AccountServiceImpl implements AccountService{
 
@@ -20,7 +22,10 @@ public class AccountServiceImpl implements AccountService{
 			if(account2.getDateTime().equals(account.getDateTime()))
 				return -1;
 		}
-		return 0;
+		account.setAccountTime(new Date());
+		account.setPayType(0);
+		account.setPrice(0);
+		return accountMapper.insert(account);
 	}
 
 }

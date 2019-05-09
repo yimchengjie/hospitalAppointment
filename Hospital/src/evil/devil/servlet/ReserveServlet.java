@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import evil.devil.entity.Account;
+import evil.devil.entity.User;
+import evil.devil.servcie.impl.AccountServiceImpl;
+import evil.devil.service.AccountService;
+
 /**
  * Servlet implementation class ReserveServlet
  */
@@ -39,8 +44,18 @@ public class ReserveServlet extends HttpServlet {
 		Long tel=Long.parseLong(request.getParameter("tel"));
 		Integer doctor_id=Integer.parseInt(request.getParameter("doctor_id"));
 		String date_time=request.getParameter("datetime");
-		System.out.println(name+" "+tel +" "+ doctor_id +" "+date_time);
-		response.getWriter().append("success");
+		//System.out.println(name+" "+tel +" "+ doctor_id +" "+date_time);
+		Account account=new Account();
+		account.setDateTime(date_time);
+		account.setDoctorId(doctor_id);
+		User user=(User) request.getSession().getAttribute("user");
+		account.setUserId(user.getId());
+		AccountService accountService=new AccountServiceImpl();
+		int flag=accountService.Reserve(account);
+		if(flag==1)
+			response.getWriter().append("success");
+		else
+			response.getWriter().append("error");	
 	}
 
 }
