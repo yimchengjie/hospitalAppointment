@@ -47,7 +47,7 @@
 							data:'way='+way+'&selectmsg='+selectmsg, 
 							dataType: "text",
 							success: function(data) {
-								alert("查询成功");
+								alert(data);
 								window.location = "accountManegeMain.jsp";
 							}
 						});
@@ -57,15 +57,12 @@
 			})
 		</script>
 
-<title>账户管理</title>
+<title>账单管理</title>
 </head>
 <body>
 
 		<div class="container-fluid  col-md-12" style="height: 150px;">
-			<div class="container-fluid ">
-				<div class="navbar-header ">
-					<a class="navbar-brand " href="# "></a>
-				</div>
+				<div class="navbar  navbar-default ">
 				<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1 ">
 					<ul class="nav navbar-nav ">
 
@@ -81,13 +78,13 @@
 							</ul>
 						</li>
 						<li>
-							<a href=" ">医生管理</a>
+							<a href="">医生管理</a>
 						</li>
 						<li>
-							<a  href="# ">用户管理</a>
+							<a  href="UserSelect">用户管理</a>
 						</li>
-						<li>
-							<a style="color: black; font-family: '微软雅黑'; " href=" "><strong>账单管理</strong></a>
+						<li class="active">
+							<a  href=" "><strong>账单管理</strong></a>
 						</li>
 					</ul>
 				</div>
@@ -127,14 +124,18 @@
 								</div>
 							</td>
 						</tr>
-						<br>
 					</c:forEach>
 				</table>
 			</div>
-			<a href="PageServlet?pageIndex=${pageIndex==1?1:1}&for=account">首页 </a>
+			<ul class="pager">
+				<li><a href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页</a></li>
+				<li><a href="#">${pageIndex==null?1:pageIndex}</a></li>
+				<li><a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页</a></li>
+			</ul>
+		<!--  	<a href="PageServlet?pageIndex=${pageIndex==1?1:1}&for=account">首页 </a>
 			<a href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页 </a>
 			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页 </a>
-			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:totalPage}&for=account">末页 </a>
+			<a href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:totalPage}&for=account">末页 </a>-->
 		</div>
 
 		<div class="container-fluid  col-md-5">
@@ -160,7 +161,7 @@
 	
 
 				
-=
+
 
 		
 

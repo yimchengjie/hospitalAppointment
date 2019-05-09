@@ -70,17 +70,25 @@ public class AccountSelect extends HttpServlet {
 		}
 		
 		count=allAccounts.size();
-		totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
-		accounts=new AccountMapperImpl().getPage(pagesize,currentPage,totalPage,allAccounts);
-		System.err.println("totalPage"+totalPage);
-		
-			//List<Student> list= 传入一个当前页面和size
-			request.getSession().setAttribute("allAccounts", allAccounts);
-			request.getSession().setAttribute("accounts", accounts);
-			request.getSession().setAttribute("pagesize", pagesize);
-			request.getSession().setAttribute("pageIndex", currentPage);
-			request.getSession().setAttribute("totalPage", totalPage);
+		if (count!=0) {
+			totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
+			accounts=new AccountMapperImpl().getPage(pagesize,currentPage,totalPage,allAccounts);
+				//List<Student> list= 传入一个当前页面和size
+				request.getSession().setAttribute("allAccounts", allAccounts);
+				request.getSession().setAttribute("accounts", accounts);
+				request.getSession().setAttribute("pagesize", pagesize);
+				request.getSession().setAttribute("pageIndex", currentPage);
+				request.getSession().setAttribute("totalPage", totalPage);
+				response.getWriter().append("查询成功");
+				
+		}else {
+				response.getWriter().append("查询结果为空");
+		}
+		if (request.getParameter("way")==null) {
 			request.getRequestDispatcher("accountManegeMain.jsp").forward(request, response);
+		}
+		
+	
 	}
 
 }

@@ -36,19 +36,92 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
             $(function(){
+            	$(".time").hide();
                 $("#country1").change(function(){
                     $("#country2").empty();
+                    $("#time option:first").prop("selected", 'selected');
+                    $("#country2").append("<option value='0'>请选择医生</option>"); 
                     var doctors=${sessionScope.doctors};
                     doctors.forEach(function(doctor) {
                         if(doctor.departmentId==$("#country1").val()){
-                        	$("#country2").append("<option>"+doctor.name+"</option>");   
+                        	$("#country2").append("<option value='"+doctor.id+"'>"+doctor.type+" "+doctor.name+"</option>");   
                         }
                      })
-                    if($("#country1").val()=="0"){
-                        $("#country2").append("<option>请选择医生</option>");   
-                    }
+                     if($("#country2").val()=="0")
+                     	$(".time").hide();
                 });
+                
+                $("#reseve").click(function(){
+                	var json={};
+        			json.name=$("#name").val();
+        			json.tel=$("#tel").val();
+        			json.doctor_id=$("#country2").val();
+        			json.datetime=$("#datepicker").val()+" "+$("#time").val()+":00";
+        			/* alert(json.username);
+        			alert(json.tel);
+        			alert(json.doctor_id);
+        			alert(json.datetime); */
+        			 $.ajax({
+        				type: "post",
+        				url: "reserve",
+        				data: json,
+        				dataType: "text", 
+        				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        				success: function(data) {
+        					if(data=="success"){
+        						alert("预约成功");
+        						location.reload();
+        					}
+        					else if(data="error"){
+        						alert("预约失败");
+        					}
+        				},
+        				error: function() {
+        					alert("无法连接服务器");
+        				}
+        			}); 
+                })
+                
+                $("#country2").change(function(){
+					$("#time option:first").prop("selected", 'selected'); 
+                    if($("#country2").val()=="0")
+                    	$(".time").hide();
+                	datetime();
+                })
+                 $("#datepicker").change(function(){
+                	datetime();
+                })
             });
+            
+            function datetime(){
+           	 if($("#datepicker").val()!="" && $("#country2").val()!="0"  ){
+           		 $("option").show();
+           		var json={};
+           		 json.id=$("#country2").val();
+           		 json.date=$("#datepicker").val();
+           		 $.ajax({
+        				type: "post",
+        				url: "datetime",
+        				data: json,
+        				dataType: "text", 
+        				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        				success: function(data) {
+        					/* $.each(data,function(index,item){
+        						var s1=json[index];
+        							alert(s1);
+        						}); */
+        						var json=eval(data);
+        						$.each(json,function(index,item){
+        							var s1=json[index];
+        							$("#t"+s1).hide();
+        							});
+        				},
+        				error: function() {
+        					alert("无法连接服务器");
+        				}
+        			}); 
+           	}                		
+           }
         </script>
 
 </head>
@@ -180,14 +253,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</a>
     </div> 
 	<div class="agileits_reservation">
-					<form action="#" method="post">
 						<div class="cuisine"> 
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							<input type="text" name="Location" placeholder="请输入姓名" required="">
+							<input type="text" id="name" name="Location" placeholder="请输入姓名" required="" value="${user.name}" disabled="disabled">
 						</div>
 						<div class="phone_email"> 
 							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-							<input type="text" name="Phone" placeholder="请输入手机号码" required=""> 
+							<input type="text" id="tel" name="Phone" placeholder="请输入手机号码" required=""  value="${user.tel}" disabled="disabled"> 
 						</div>
 						<div class="phone_email1"> 
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
@@ -202,17 +274,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="agileits_reservation_grid">
 							<div  class="span1_of_1 book_date"> 
 								<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-								<input class="date" id="datepicker" name="Text" placeholder="选择 日期"  type="text" required="">
+								<input class="date" id="datepicker"  name="Text" placeholder="选择 日期"  type="text" required="">
+								
 							</div>
 							<div class="span1_of_1 section_room"> 
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-								<input type="text" name="Time" class="timepicker" value="选择时间">	 
+								<select id="time" class="frm-field sect" required name="qqq">
+									<option id="t0" value="0">选择就诊时间</option>
+									<option class="time"  id="t8" value="8">8：00-9：00</option> 
+									<option class="time" id="t9" value="9">9：00-10：00</option>        
+									<option class="time" id="t10" value="10">10：00-11:00</option>         
+									<option class="time" id="t11" value="11">11：00-12:00</option>          
+									<option class="time" id="t14" value="14">14：00-15:00</option>
+									<option class="time" id="t15" value="15">15：00-16：00</option>         
+									<option class="time" id="t16" value="16">16：00-17:00</option>
+								</select> 
 							</div>
 							<div class="span1_of_1 section_room">
 								<!-- start_section_room --> 
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-								<select id="country2" class="frm-field sect" required name="qqq">
-									<option id="">请选择医生</option>
+								<select  id="country2" class="frm-field sect" required name="qqq">
+									<option id="" value="0">请选择医生</option>
 								</select> 
 							</div>  
 							<div class="clearfix"></div>
@@ -220,9 +302,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 						</div>
 						<div class="date_btn"> 
-							<input type="submit" value="预   约" /> 
+							<button id="reseve">预约</button> 
 						</div> 
-					</form>
+					</div>
 				</div>
  </div>
 	<!-- //slider -->
