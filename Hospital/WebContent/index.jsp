@@ -278,11 +278,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- 更换图片在style.css的716行 -->
 				
 					<div class=" w3-about-left-grid-inner-head">
+					<!-- <img src="images/ab33.jpg" alt="img" /> -->
 						<!-- <i class="fa fa-microphone" aria-hidden="true"></i> -->
 						<!-- <h3>Lets Talk about Hospitality</h3> -->
 					</div>
 					<div class=" w3-about-left-grid-inner2-head">
-						<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida, ante egestas egestas vulputate, elit risus maximus mauris, non gravida arcu justo eget est. Cras eu mauris nisl. Maecenas ut scelerisque metus.</h3>
+						<h3>　百廿初心不变，百廿征程再启。伴着党的十九大的温暖春风，随着健康中国建设的有力号角，浙江水利水电医院不忘初心，牢记使命，勇于担当。新时代奋进的征程中，浙江水利水电医院将在浙江省委、省政府和省卫计委的坚强领导下，高举伟大旗帜，踏上伟大征程，实现伟大梦想，努力创建“与国际接轨的国家级名院”，续写浙江水利水电医院更加辉煌灿烂的明天。</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -320,8 +321,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<img src="images/a13.jpg" alt="img" />
 							
 						</div>
-						<div class="clearfix"></div>
-				</div>
+							<div class="clearfix"></div>
+						<div class="col-md-8 w3-about-right-text1">
+							<h5>Monst ibram 143</h5>
+							<h4>Specialist4</h4>
+							<h3>Ut sed augue porttitor, vehicula eros in, vehicula elit. Aliquam ut ex aliquam risus vestibulum hendrerit.</h3>
+						</div>
+						<div class="col-md-4 w3-about-right-img1">
+						
+							<img src="images/a13.jpg" alt="img" />
+							
+						</div>
 				<div class="clearfix"></div>
 		</div>
 		</div>

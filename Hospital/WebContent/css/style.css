@@ -714,7 +714,7 @@ nav.navbar.navbar-default {
 	margin-bottom:40px;
 }
 .w3-about-left-grid-inner-head {
-    background: url(../images/ab33.jpg) no-repeat 0px 0px;
+	background: url(../images/ab33.jpg) no-repeat 0px 0px; 
     background-size: cover;
    min-height: 400px;
 }
@@ -1279,7 +1279,7 @@ div#services {
 	padding:2em 0;
 }
 
-     /* Ò½ÉúµÄÕÕÆ¬ */
+     /* Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ */
 
 .w3-agile-team-img1{
 	background:url(../images/t6.jpg) no-repeat 0px 0px;
