@@ -63,20 +63,23 @@ public class UserSelect extends HttpServlet {
 		}
 		
 		count=allUsers.size();
-		totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
-		users=new UserMapperImpl().getPage(pagesize,currentPage,totalPage,allUsers);
-		System.err.println("totalPage"+totalPage);
-		
-			//List<Student> list= 传入一个当前页面和size
-			request.getSession().setAttribute("allUsers", allUsers);
-			request.getSession().setAttribute("users", users);
-			request.getSession().setAttribute("pagesize", pagesize);
-			request.getSession().setAttribute("pageIndex", currentPage);
-			request.getSession().setAttribute("totalPage", totalPage);
+		if (count!=0) {
+			totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
+			users=new UserMapperImpl().getPage(pagesize,currentPage,totalPage,allUsers);
+			System.err.println("totalPage"+totalPage);
+				//List<Student> list= 传入一个当前页面和size
+				request.getSession().setAttribute("allUsers", allUsers);
+				request.getSession().setAttribute("users", users);
+				request.getSession().setAttribute("pagesize", pagesize);
+				request.getSession().setAttribute("pageIndex", currentPage);
+				request.getSession().setAttribute("totalPage", totalPage);
+				response.getWriter().append("查询成功");
+		}else {
+			response.getWriter().append("查询结果为空");
+		}
+		if (request.getParameter("way")==null) {
 			request.getRequestDispatcher("UserManegeMain.jsp").forward(request, response);
-			
-			
-			
+		}
 			
 	}
 
