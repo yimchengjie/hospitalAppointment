@@ -12,10 +12,14 @@
 		font-family: "微软雅黑";
 		font-size: 12px;
 	}
-	#main{
+	body{
 		background: url("../images/ban6.jpg") no-repeat;
-		min-height:800px;
-		max-height: 800px;
+		background-size: 100%;
+		
+	}
+	#main{
+		min-height:750px;
+		max-height: 810px;
 		width: 100%;
 		overflow: hidden;
 		background-size: 100%;
@@ -70,6 +74,11 @@
 						}
 					}
 				)
+			$(document).keydown(function(event){
+			    if(event.keyCode==13){
+			       $("#login").click();
+			    }
+			 });
 				
 				
 			$("#login").click(function(){

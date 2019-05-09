@@ -16,13 +16,19 @@
 	font-size: 12px;
 }
 #main{
-		background: url(../images/ban6.jpg) no-repeat;
-		min-height:800px;
-		max-height: 800px;
+
+body{
+		background: url("../images/ban6.jpg") no-repeat;
+		background-size: 100%;
+		
+	}
+	#main{
+		min-height:750px;
+		max-height: 810px;
 		width: 100%;
 		overflow: hidden;
 		background-size: 100%;
-}
+	}
 
 </style>
 <script type="text/javascript">
