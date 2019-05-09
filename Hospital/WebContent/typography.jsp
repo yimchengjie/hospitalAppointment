@@ -14,8 +14,8 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<!-- <link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> -->
 <!--//fonts-->
 
 </head>
@@ -36,25 +36,29 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1><a href="index.html">MediBulk</a></h1>
+						<h1><a href="index.jsp">MediBulk</a></h1>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="services.html">Our Services</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
+							<li><a href="index.jsp">主页</a></li>
+							<li><a href="about.jsp">关于我们</a></li>
+							<li><a href="services.jsp">服务</a></li>
+							<li><a href="gallery.jsp">展览</a></li>
+							
+							<!-- <li><a href="#">个人主页</a></li> -->
+							
 							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">个人资料 <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="icons.html">Icons</a></li>
-										<li class="active"><a href="typography.html">Typography</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#myModal">个人信息</a></li>
+										<li><a href="#" data-toggle="modal" data-target="#Historical">病历账单</a></li>
 									</ul>
-							  </li>
-							<li><a href="contact.html">Contact</a></li>
+							  </li> 
+							  
+							<li><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -669,11 +673,11 @@
 				<div class="sign-gd">
 					<h4>Information </h4>
 					<ul>
-						 <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html" >About</a></li>
-        <li><a href="services.html"> Services</a></li>
-		<li><a href="gallery.html">Portfolio</a></li>
-		<li><a href="contact.html">Contact</a></li>
+						 <li><a href="index.jsp" class="active">主页</a></li>
+        <li><a href="about.jsp" >关于我们</a></li>
+        <li><a href="services.jsp">服务</a></li>
+		<li><a href="gallery.jsp">照片</a></li>
+		<li><a href="contact.jsp">联系</a></li>
 						
 					</ul>
 				</div>
@@ -708,7 +712,7 @@
 							</div>
 							<div class="w3-address-right">
 								<h6>Location</h6>
-								<p>Broome St, NY 10002,California, USA. 
+								<p>Shuili St, NY 58888,HangZhou, China.
 								
 								</p>
 							</div>
@@ -721,12 +725,85 @@
 		
 		<div class="clearfix"></div>
 			
-		<p class="copy-right">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p class="copy-right">Copyright &copy; 2019.ZheJiangShuilishuidian Hospital.</a></p>
 	</div>
 </div>
 </div>
 <!-- //footer -->
+<!-- 模態框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">个人资料</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="username"><span class="glyphicon glyphicon-user"></span>用户姓名</label>
+									<input type="text" class="form-control" id="username" placeholder="用户姓名">
+								</div>
+								<div class="form-group">
+									<label for="userphone"><span class="glyphicon glyphicon-earphone"></span>手机号码</label>
+									<input type="text" class="form-control" id="userphone" placeholder="电话">
+								</div>
+								<div class="form-group">
+									<label for="sex">性别</label>
+									<input type="text" class="form-control" id="userphone" placeholder="性别">
+								</div>
+								<div class="form-group">
+									<label for="usercard">身份证号码</label>
+									<input type="text" class="form-control" id="usercard" placeholder="身份证号码" />
+								</div>
 
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">修改</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">历史病历</h4>
+						</div>
+						<div class="modal-body">
+							<div class="panel panel-primary">
+								<div class="panel-heading"><span class="glyphicon glyphicon-time"></span>日期1</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期2</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+							
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title"><span class="glyphicon glyphicon-time"></span>日期3</h3>
+								</div>
+								<div class="panel-body">
+									Panel content
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<!-- //Tour-Locations-JavaScript -->
 			<script src="js/SmoothScroll.min.js"></script>
