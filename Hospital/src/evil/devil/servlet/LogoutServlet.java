@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/logout")
+@WebServlet("/jsp/logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,8 +35,9 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//退出登录删除user在session存的值
 		request.getSession().removeAttribute("user");
-		response.sendRedirect("jsp/login.jsp");
+		response.sendRedirect("login.jsp");
 	}
 
 }

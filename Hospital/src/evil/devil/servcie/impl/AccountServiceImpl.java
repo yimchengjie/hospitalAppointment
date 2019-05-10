@@ -7,7 +7,6 @@ import evil.devil.dao.AccountMapper;
 import evil.devil.dao.impl.AccountMapperImpl;
 import evil.devil.entity.Account;
 import evil.devil.service.AccountService;
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class AccountServiceImpl implements AccountService{
 

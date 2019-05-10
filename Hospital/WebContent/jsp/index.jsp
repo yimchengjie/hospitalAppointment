@@ -1,13 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 <head>
-	<base href="<%=basePath%>">
 	
 	<title>Home</title>
 	
@@ -24,19 +19,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
 	
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" />
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 	<!-- for banner css -->
 	 
 	<!-- //for banner css -->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />  <!-- time-picker-CSS -->
+	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />  <!-- time-picker-CSS -->
 	<!-- <link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> -->
 	<!--//fonts-->
-	 <script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
- <script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	 <script src="../js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
+        	//再次预约时，在选取部门后用来选取再次预约的医生
            function changedoctor(doctor){
         	   $("#country2").children().each(function(i,n){
         		     var obj = $(n);
@@ -44,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		    	obj.attr("selected",true);
         		    }); 
            }
+           
             //通过后台调取医生当天的预约显示未被预约的时间段
             function datetime(){
            	 if($("#datepicker").val()!="" && $("#country2").val()!="0"  ){
@@ -58,10 +55,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				dataType: "text", 
         				contentType: "application/x-www-form-urlencoded; charset=utf-8",
         				success: function(data) {
-        					/* $.each(data,function(index,item){
-        						var s1=json[index];
-        							alert(s1);
-        						}); */
         						var json=eval(data);
         						$.each(json,function(index,item){
         							var s1=json[index];
@@ -80,50 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
           //绑定事件
         	$(function() {
-        		
-    		     //再次预约
-        		$("[name=reserveAgin]").click(function(){
-        			var json={};
-             		json.department=$(this).parent().children().eq(0).html();
-        			json.doctor=$(this).parent().children().eq(1).html();
-        			 $.ajax({
-         				type: "post",
-         				url: "reserveAgin",
-         				data: json,
-         				dataType: "text", 
-         				contentType: "application/x-www-form-urlencoded; charset=utf-8",
-         				success: function(data) {
-         					var json=eval(data);
-         					/* $.each(json,function(index,item){
-         						var s1=json[index].id;
-         						var s2=json[index].name;
-         						con=""+s1+" "+s2; 
-         						$("#rightmessage").html($("#rightmessage").html()+con);
-         						}); */
-         					 $("#country1").children().each(function(i,n){
-                   		     var obj = $(n);
-                   		     if($.trim(obj.html()) == $.trim(json[0]))
-                   		    	obj.attr("selected",true);
-                   		     
-                   		    }); 
-         					$("#country2").children().each(function(i,n){
-                      		     var obj = $(n);
-
-                      		     if($.trim(obj.html()) == $.trim(json[0]))
-                      		    	obj.attr("selected",true);
-                      		    }); 
-         					 $("#country1").change();
-         						changedoctor(json[1]);
-                      		     
-         				},
-         				error: function() {
-         					alert("无法连接服务器");
-         				}
-         			}); 
-             	})
-             	
-             	
-             	$(".time").hide();
+        		//所有预约时间段访问时先隐藏
+        		$(".time").hide();
+        		//绑定选择部门后医生的修改
                 $("#country1").change(function(){
                     $("#country2").empty();
                     $("#time option:first").prop("selected", 'selected');
@@ -137,6 +89,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      if($("#country2").val()=="0")
                      	$(".time").hide();
                 });
+                
+             	   var doctor="${param.doctor}";
+             	   var department="${param.department}";
+             	   if(department!=""){
+             		    $("#country1").children().each(function(i,n){
+             		     var obj = $(n);
+             		     if($.trim(obj.html()) == $.trim(department))
+             		    	obj.attr("selected",true);
+             		     
+             		    }); 
+   					
+   					 $("#country1").change();
+   					 
+   						changedoctor(doctor); 
+             	   }
+    		     //再次预约
+        		$("[name=reserveAgin]").click(function(){
+        			var json={};
+             		json.department=$(this).parent().children().eq(0).html();
+        			json.doctor=$(this).parent().children().eq(2).html();
+        			 $.ajax({
+         				type: "post",
+         				url: "reserveAgin",
+         				data: json,
+         				dataType: "text", 
+         				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+         				success: function(data) {
+         					var json=eval(data);
+         					window.location = "index.jsp?department="+json[0]+"&doctor="+json[1];
+         					   
+         				},
+         				error: function() {
+         					alert("无法连接服务器");
+         				}
+         			}); 
+             	})
+             	
+             	
+             	
                 
                 $("#reserve").click(function(){
                 	var json={};
@@ -168,13 +159,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				}
         			}); 
                 })
-                
+                //医生选定后在日期选定的条件下显示预约时间段
                 $("#country2").change(function(){
 					$("#time option:first").prop("selected", 'selected'); 
                     if($("#country2").val()=="0")
                     	$(".time").hide();
                 	datetime();
                 })
+                //日期选定后在医生选定的条件下显示预约时间段
                  $("#datepicker").change(function(){
                 	datetime();
                 })
@@ -315,14 +307,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				}
         			}
         		})
-
+				//关闭修改模态框
         		$("#closeEdit").click(function() {
         			$("#pwd").parent().parent().attr("class", "form-group");
         			$("#name").parent().parent().attr("class", "form-group");
         			$("#tel").parent().parent().attr("class", "form-group");
         			$("#idcard").parent().parent().attr("class", "form-group");
         		})
-
+				//修改模态框的修改按钮事件
         		$("#confirmEdit")
         				.click(
         						function() { //直接传递到后台，返回是刷新的
@@ -352,7 +344,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         											} else if (data == "errortel") {
         												alert("修改失败,该手机号存在");
         											}
-        											window.location = "jsp/index.jsp";
+        											window.location = "index.jsp";
         										},
         										error : function() {
         											alert("无法连接服务器");
@@ -559,7 +551,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- /About -->
 
-
  	<div class="w3-about about-gap" id="about">
 		<div class="container">
 			<div class="w3-heading-all">
@@ -589,7 +580,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
 						
-								<img src="images/a11.jpg" alt="img" />
+								<img src="../images/a11.jpg" alt="img" />
 								
 						</div>
 						<div class="clearfix"></div>
@@ -600,7 +591,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
 						
-								<img src="images/a121.jpg" alt="img" />
+								<img src="../images/a121.jpg" alt="img" />
 								
 						</div>
 						<div class="clearfix"></div>
@@ -611,7 +602,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
 						
-							<img src="images/a13.jpg" alt="img" />
+							<img src="../images/a13.jpg" alt="img" />
 							
 						</div>
 							<div class="clearfix"></div>
@@ -622,7 +613,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="col-md-4 w3-about-right-img1">
 						
-							<img src="images/a13.jpg" alt="img" />
+							<img src="../images/a13.jpg" alt="img" />
 							
 						</div>
 				<div class="clearfix"></div>
@@ -742,58 +733,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
 
-
-<!-- //services -->
-<!--  
-testimonials
-	<div class="testimonials" id="testimonials">
-		<div class="container">
-		<div class="w3-heading-all">
-			<h3>致谢信</h3>
-		</div>
-			<div class="w3ls_testimonials_grids">
-				 <section class="center slider">
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Rosy Crisp</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/tm1.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Laura Paul</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/tm2.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-						<div class="agileits_testimonial_grid">
-							<div class="w3l_testimonial_grid">
-								<p>In eu auctor felis, id eleifend dolor. Integer bibendum dictum erat, 
-									non laoreet dolor.</p>
-								<h4>Michael Doe</h4>
-								<h5>Student</h5>
-								<div class="w3l_testimonial_grid_pos">
-									<img src="images/tm3.jpg" alt=" " class="img-responsive" />
-								</div>
-							</div>
-						</div>
-				</section>
-			</div>
-		</div>
-	</div> 
-	-->
-	
-	
-<!-- //testimonials -->
 <!-- footer -->
 <div class="footer">
 	<div class="container">
@@ -947,71 +886,6 @@ testimonials
 					</div>
 				</div>
 			</div>
-<%-- <div class="modal fade" id="editModel" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title" id="exampleModalLabel">修改操作</h4>
-				</div>
-
-				<div class="modal-body" style="height: 400px;">
-					<form>
-						<div class="form-group" style="height: 40px;">
-							<label for="recipient-name" class="control-label col-md-2">姓名:</label>
-							<div class="col-md-10" style="width: 200px;">
-								<input type="text" value="${user.name}" class="form-control" id="name" value="">
-							</div>
-						</div>
-
-						<div class="form-group" style="height: 40px;">
-							<label for="message-text" class="control-label col-md-2">密码:</label>
-							<div class="col-md-10" style="width: 200px;">
-								<input type="text" value="${user.password}" class="form-control" id="pwd" value="">
-							</div>
-						</div>
-
-						<div class="form-group" style="height: 40px;">
-							<label for="message-text" class="control-label col-sm-2">性别:</label>
-							<div class="col-sm-10">
-								<label class="radio-inline"> <input type="radio"
-									name="gender" id="inlineRadio1" value="男" checked="checked">
-									男
-								</label> <label class="radio-inline"> <input type="radio"
-									name="gender" id="inlineRadio2" value="女"> 女
-								</label>
-							</div>
-						</div>
-
-						<div class="form-group " style="height: 40px;">
-							<label for="message-text" class="control-label col-md-2">身份证号:</label>
-							<div class="col-md-10" style="width: 300px;">
-								<input type="text" value="${user.idcard}" class="form-control" id="idcard">
-							</div>
-						</div>
-
-						<div class="form-group" style="height: 40px;">
-							<label for="message-text" class="control-label col-md-2">联系电话:</label>
-								<input type="text"  value="${user.tel}" class="form-control" id="tel">
-						</div>
-
-
-						<input type="text" class="form-control" id="id"
-							style="visibility: hidden;">
-					</form>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" id="closeEdit"
-						data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary" id="confirmEdit"
-						disabled="disabled">确认修改</button>
-				</div>
-			</div>
-		</div>
-	</div> --%>
-	
-	
 	
 			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -1027,6 +901,7 @@ testimonials
 									<div class="panel-heading"><span class="glyphicon glyphicon-time">${account.dateTime}</span></div>
 									<div class="panel-body">
 									<span class="glyphicon glyphicon-home">${accountDepartments[loop.count-1].name}</span>
+									<span class="glyphicon glyphicon-education">${accountDoctors[loop.count-1].type}</span>
 										<span class="glyphicon glyphicon-user">${accountDoctors[loop.count-1].name}</span>
 									 <button name="reserveAgin" class="btn btn-primary" data-dismiss="modal">再次预约</button>
 									 </div>
@@ -1048,13 +923,13 @@ testimonials
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">請付款</h4>
 						</div>
-						<div class="modal-body"><img src="images/pay.jpg"></div>
+						<div class="modal-body"><img src="../images/pay.jpg"></div>
 			</div>
 <!-- //footer -->
 <!-- js -->
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 			<!-- carousal -->
-	<script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/slick.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(document).on('ready', function() {
 		  $(".center").slick({
@@ -1088,7 +963,7 @@ testimonials
 <!-- //carousal -->
 
 
-			<script src="js/SmoothScroll.min.js"></script>
+			<!-- <script src="../js/SmoothScroll.min.js"></script> -->
 		<!-- smooth scrolling-bottom-to-top -->
 				<script type="text/javascript">
 					$(document).ready(function() {
@@ -1114,14 +989,13 @@ testimonials
 	});
 </script>
 <!-- Time select -->
-				<script type="text/javascript" src="js/wickedpicker.js"></script>
+				<script type="text/javascript" src="../js/wickedpicker.js"></script>
 				<script type="text/javascript">
 					$('.timepicker').wickedpicker({twentyFour: false});
 				</script>
 				<!-- //Time select -->
 				<!-- Calendar -->
-				<link rel="stylesheet" href="css/jquery-ui.css" />
-				<script src="js/jquery-ui.js"></script>
+				<script src="../js/jquery-ui.js"></script>
 				  <script>
 						  $(function() {
 							$( "#datepicker" ).datepicker();
@@ -1129,9 +1003,9 @@ testimonials
 				  </script>
 				<!-- //Calendar -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+<script type="text/javascript" src="../js/move-top.js"></script>
+<script type="text/javascript" src="../js/easing.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
 
 </body>
 </html>

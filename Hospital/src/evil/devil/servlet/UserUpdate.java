@@ -14,7 +14,7 @@ import evil.devil.service.UserService;
 /**
  * Servlet implementation class UserUpdate
  */
-@WebServlet("/update")
+@WebServlet("/jsp/update")
 public class UserUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

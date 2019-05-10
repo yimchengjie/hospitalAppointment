@@ -1,7 +1,7 @@
 <%@page import="evil.devil.entity.Doctor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="evil.devil.dao.impl.*"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="evil.devil.dao.impl.*"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
@@ -16,26 +16,8 @@
 	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#select>[type=button]").click(function() {
-			alert("hello");
-			var way = $(this).attr("name");
-			alert(way);
-			$.ajax({
-				type : "post",
-				url : "DepartSelect",
-				async : true, //异步
-				data : 'way=' + way,
-				dataType : "text",
-				success : function(data) {
-					alert(data);
-					window.location = "departManegeMain.jsp";
-				}
-
-			});
-		})
 		
-		
-		
+		var photochange=false;
 		//判断姓名是否符合格式
 		var flagname = false;
 		//判断密码是否符合格式
@@ -43,8 +25,96 @@
 		//判断身份证是否符合格式
 		var flagprice = false;
 		//判断手机号是否符合格式
-		var flagtel = false;
+		var realurl=null;
+		
+		function getObjectURL(file) {  
+		     var url = null;  
+		     if (window.createObjcectURL != undefined) {  
+		         url = window.createOjcectURL(file);  
+		     } else if (window.URL != undefined) {  
+		         url = window.URL.createObjectURL(file);  
+		     } else if (window.webkitURL != undefined) {  
+		         url = window.webkitURL.createObjectURL(file);  
+		     }  
+		     return url;  
+		 }
+		
+		
+		$("img").click(function() {
+			$("#photo").click();
+		})
+		
+		
+		
+		$("#photo").change(function() {
+			 var file = this.files[0];
+			 realurl = getObjectURL(file);
+				alert(realurl);
+				$("img").attr("src",realurl);
+		})
+		
+	
+		
 
+		
+	/*	$("a[id$='doctor']").click(function() {
+			var editoradd=$(this).attr("id");
+			 var json={};
+				json.doctorname=$("#name").val();
+				json.tel=$("#tel").val();
+				json.colleage=$("#colleage").val();
+				json.gender=$("#gender").find(':selected').text();
+				json.depart=$("#depart").find(':selected').val();
+				json.type=$("#type").val();
+				json.price=$("#price").val();
+				json.realurl=realurl;
+				json.editoradd=editoradd;
+			$.ajax({
+				type : "post",
+				url : "DoctorEditAdd",
+				async : true, //异步
+				data : json,
+				dataType : "text",
+				success : function(data) {
+					alert(data);
+				}
+			});
+		})*/
+		
+		
+		$("a[id$='doctor']").click(function() {
+			alert($(this).attr("id"));
+			var editoradd=$(this).attr("id");
+			var formData = new FormData();
+			formData.append('id', $('.container').attr("name"));
+			formData.append('photo', $('#photo')[0].files[0]);
+			formData.append('name', $('#name').val());
+			formData.append('gender', $("#gender").find(':selected').text());
+			formData.append('depart', $("#depart").find(':selected').val());
+			formData.append('colleage',$("#colleage").val());
+			formData.append('tel', $("#tel").val());
+			formData.append('type', $("#type").val());
+			formData.append('price', $("#price").val());
+			formData.append('editoradd',editoradd);
+			$.ajax({
+				type : "post",
+				url : "DoctorEditAdd",
+				async : true, //异步
+				data: formData,
+			    processData: false,
+			    contentType: false,
+				dataType : "text",
+				success : function(data) {
+					alert(data);
+				}
+			});
+		})
+		
+		
+		
+		
+		
+	
 		
 		//验证姓名格式
 		$('#name').blur(function() {
@@ -137,21 +207,24 @@
 		})
 		
 		
-		$('#depart')on("change",function() {
+	/*	$('#depart').on("change",function() {			
+			if($(this).find(':selected').val()=="0"){
+				$(this).removeClass("is-valid");
+				$(this).addClass("is-invalid");
+			}
+			if($(this).find(':selected').val()!="0"){
+				$(this).removeClass("is-invalid");
+				$(this).addClass("is-valid");
+			}
 			
-			alert($(this).find(':selected').val());
-			
-		})
+		})*/
 		
 		
-	
 		
-		
-			
 			$(document).ready(function(){
 				var departid=$('body').attr("id");
 				alert(departid);
-				$("#depart>option:eq("+departid+")").attr("selected");
+				$("#depart>option:eq("+departid+")").attr("selected","");
 			})
 		
 	})
@@ -162,107 +235,119 @@
 <meta charset="UTF-8">
 <title>医生修改</title>
 
-		<style type="text/css">
-			.my {
-				font-size: .8rem;
-				border-radius: 10rem;
-			}
-		</style>
+<style type="text/css">
+.my {
+	font-size: .8rem;
+	border-radius: 10rem;
+}
+</style>
 
-	</head>
-<%Doctor doctor=new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id"))) ;%>
-	<body class="bg-gradient-primary" id="<%=doctor.getDepartmentId()%>">
+</head>
+<%
+	Doctor doctor = new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id")));
+%>
+<body class="bg-gradient-primary" id="<%=doctor.getDepartmentId()%>">
 
-		<div class="container">
+	<div class="container" name="<%=doctor.getId()%>">
 
 
-			<div class="card o-hidden border-0 shadow-lg my-5">
-				<div class="card-body p-0">
-					<!-- Nested Row within Card Body -->
-					<div class="row">
-						<div class="col-lg-5 d-none d-lg-block "><img src="../images/d<%=doctor.getId()%>.JPG" height="620px" /></div>
-						<div class="col-lg-7">
-							<div class="p-5">
-								<div class="text-center">
-									<h1 class="h4 text-gray-900 mb-4">添加/修改医生信息</h1>
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-5 d-none d-lg-block ">
+						<img src="../doctor/<%=doctor.getPhoto()%>" height="620px" alt="点击上传图片" onerror="javascript:this.src='../doctor/Error.jpg';"/> 
+						<input id="photo" type="file" style="display:none;">
+					</div>
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+								<h1 class="h4 text-gray-900 mb-4">添加医生/修改医生ID为<%=doctor.getId()%></h1>
+							</div>
+							<form class="user">
+								<div class="form-group row">
+									<div class="col-sm-7 mb-3 mb-sm-0">
+										<input type="text" class="form-control form-control-user "
+											id="name" placeholder="请输入医生姓名" value='<%=doctor.getName()%>'>
+
+										<br /> <input type="text"
+											class="form-control form-control-user" id="type"
+											placeholder="请输入医生类型" value='<%=doctor.getType()%>'>
+									</div>
+									<div class="col-sm-4 ml-auto">
+
+
+										<select class="form-control my " id="depart">
+											<option disabled value="0">请选择所属科室</option>
+											<option value="1">内科</option>
+											<option value="2">外科</option>
+											<option value="3">神经科</option>
+										</select> <select class="form-control my" id="gender">
+											<option selected disabled value="0">请选择性别</option>
+											<%
+												if (doctor.getGender().equals("男")) {
+											%>
+											<option selected="selected" value="男">男</option>
+											<option value="女">女</option>
+											<%
+												} else if (doctor.getGender().equals("女")) {
+											%>
+											<option value="男">男</option>
+											<option value="女" selected="selected">女</option>
+											<%
+												}
+											%>
+										</select>
+									</div>
 								</div>
-								<form class="user">
-									<div class="form-group row">
-										<div class="col-sm-7 mb-3 mb-sm-0">
-											<input type="text" class="form-control form-control-user " id="name" placeholder="请输入医生姓名"  value='<%=doctor.getName()%>'>
-										
-											<br />
-											<input type="text" class="form-control form-control-user" id="type" placeholder="请输入医生类型"  value='<%=doctor.getType()%>'>
-										</div> 
-										<div class="col-sm-4 ml-auto">
-											
-								
-											<select class="form-control my " id="depart">
-												<option disabled selected value="0">请选择所属科室</option>
-												<option value="1">内科</option>
-												<option  value="2">外科</option>
-												<option  value="3">神经科</option>
-											</select>
-								
-							
-											<select  class="form-control my" id="gender">
-											<!--	<option selected="selected" class="try">请选择性别</option>  -->
-											<%if (doctor.getGender().equals("男")){%>
-												<option selected="selected">男</option>
-												<option>女</option>
-												<%}else if (doctor.getGender().equals("女")){%>
-												<option >男</option>
-												<option selected="selected">女</option>
-												<%}%>
-											</select>
-										</div>
+
+
+
+
+
+
+								<div class="form-group">
+
+									<input type="text" class="form-control form-control-user"
+										id="tel" placeholder="请输入电话" value='<%=doctor.getTel()%>'>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" class="form-control form-control-user"
+											id="colleage" placeholder="请输入毕业院校"
+											value='<%=doctor.getColleage()%>'>
 									</div>
-									
-									
-									
-									
-										
-
-									<div class="form-group">
-
-										<input type="text" class="form-control form-control-user" id="tel" placeholder="请输入电话"  value='<%=doctor.getTel()%>'>
+									<div class="col-sm-6">
+										<input type="text" class="form-control form-control-user"
+											id="price" value='<%=doctor.getPrice()%>'
+											placeholder="请输入门诊价格">
 									</div>
-
-									<div class="form-group row">
-										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="text" class="form-control form-control-user" id="colleage" placeholder="请输入毕业院校" value='<%=doctor.getColleage()%>'>
-										</div>
-										<div class="col-sm-6">
-											<input type="text" class="form-control form-control-user" id="price"  value='<%=doctor.getPrice()%>' placeholder="请输入门诊价格">
-										</div>
-									</div>
-									<hr>
-
-									<a href="login.html" class="btn btn-primary btn-user btn-block">
-										添加医生
-									</a>
-									<a href="login.html" class="btn btn-warning btn-user btn-block">
-										修改医生
-									</a>
-								</form>
+								</div>
 								<hr>
-								<div class="text-center">
-									<a class="small" href="forgot-password.html">查看所有医生</a>
-								</div>
-								<div class="text-center">
-									<a class="small" href="login.html">查看所有科室</a>
-								</div>
+
+								<a id="adddoctor" class="btn btn-primary btn-user btn-block">
+									添加医生 </a> <a id="updatedoctor"
+									class="btn btn-warning btn-user btn-block"> 修改医生 </a>
+							</form>
+							<hr>
+							<div class="text-center">
+								<a class="small" href="forgot-password.html">查看所有医生</a>
+							</div>
+							<div class="text-center">
+								<a class="small" href="login.html">查看所有科室</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 
-		<!-- Bootstrap core JavaScript-->
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script src="../js/sb-admin-2.min.js"></script>
+	</div>
 
-	</body>
+	<!-- Bootstrap core JavaScript-->
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../js/sb-admin-2.min.js"></script>
+
+</body>
 </html>
