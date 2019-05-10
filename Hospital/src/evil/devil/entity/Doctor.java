@@ -90,4 +90,57 @@ public class Doctor {
     public void setPrice(Integer price) {
         this.price = price;
     }
+
+	public Doctor(String name, String gender, Integer departmentId, String colleage, Long tel, String type,
+			String photo, Integer price) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.departmentId = departmentId;
+		this.colleage = colleage;
+		this.tel = tel;
+		this.type = type;
+		this.photo = photo;
+		this.price = price;
+	}
+
+	public Doctor() {
+		super();
+	}
+
+	public Doctor(String name, String gender, Integer departmentId, String colleage, Long tel, String type,
+			Integer price) {
+		super();
+		this.name = name;
+		this.gender = gender;
+		this.departmentId = departmentId;
+		this.colleage = colleage;
+		this.tel = tel;
+		this.type = type;
+		this.price = price;
+	}
+
+	public Doctor(Integer id, String name, String gender, Integer departmentId, String colleage, Long tel, String type,
+			Integer price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.departmentId = departmentId;
+		this.colleage = colleage;
+		this.tel = tel;
+		this.type = type;
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Doctor [id=" + id + ", name=" + name + ", gender=" + gender + ", departmentId=" + departmentId
+				+ ", colleage=" + colleage + ", tel=" + tel + ", type=" + type + ", photo=" + photo + ", price=" + price
+				+ "]";
+	}
+
+
+    
+    
 }
