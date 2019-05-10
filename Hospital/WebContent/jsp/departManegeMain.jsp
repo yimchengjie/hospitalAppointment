@@ -84,15 +84,12 @@
 			<div class="sidebar-heading">User&Account</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item "><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
+			<li class="nav-item "><a class="nav-link collapsed" href="UserSelect"
+				> <i
 					class="fas fa-fw fa-cog"></i> <span>用户管理</span>
 			</a></li>
 
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities"> <i
+			<li class="nav-item"><a class="nav-link collapsed" href="AccountSelect"> <i
 					class="fas fa-fw fa-wrench"></i> <span>账单管理</span>
 			</a></li>
 
@@ -102,13 +99,13 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item  active"><a class="nav-link collapsed"
-				href="#" data-toggle="collapse" data-target="#collapsePages"
+				href="DepartSelect" data-toggle="collapse" data-target="#collapsePages"
 				aria-expanded="true" aria-controls="collapsePages"> <i
 					class="fas fa-fw fa-folder"></i> <span>科室管理</span>
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
+			<li class="nav-item"><a class="nav-link" href="#">
 					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 

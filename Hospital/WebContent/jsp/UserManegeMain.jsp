@@ -301,14 +301,12 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item active"><a class="nav-link collapsed"
-				href="#" data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
+				href="#" > <i
 					class="fas fa-fw fa-cog"></i> <span>用户管理</span>
 			</a></li>
 
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseUtilities"
-				aria-expanded="true" aria-controls="collapseUtilities"> <i
+			<li class="nav-item"><a class="nav-link collapsed" href="AccountSelect"
+				> <i
 					class="fas fa-fw fa-wrench"></i> <span>账单管理</span>
 			</a></li>
 
@@ -317,14 +315,13 @@
 			<div class="sidebar-heading">Doctor</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapsePages"
-				aria-expanded="true" aria-controls="collapsePages"> <i
+			<li class="nav-item"><a class="nav-link collapsed" href="DepartSelect"
+				> <i
 					class="fas fa-fw fa-folder"></i> <span>科室管理</span>
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
+			<li class="nav-item"><a class="nav-link" href="#">
 					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 
@@ -383,7 +380,7 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">你好${way==null?all:way}</h6>
+							<h6 class="m-0 font-weight-bold text-primary">你好，管理员</h6>
 						</div>
 						<br />
 						<form class="form-inline">

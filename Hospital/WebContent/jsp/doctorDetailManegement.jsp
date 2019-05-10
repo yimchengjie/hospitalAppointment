@@ -49,7 +49,6 @@
 		$("#photo").change(function() {
 			 var file = this.files[0];
 			 realurl = getObjectURL(file);
-				alert(realurl);
 				$("img").attr("src",realurl);
 		})
 		
@@ -82,8 +81,7 @@
 		})*/
 		
 		
-		$("a[id$='doctor']").click(function() {
-			alert($(this).attr("id"));
+		$("[id$='doctor']").click(function() {
 			var editoradd=$(this).attr("id");
 			var formData = new FormData();
 			formData.append('id', $('.container').attr("name"));
@@ -223,8 +221,16 @@
 		
 			$(document).ready(function(){
 				var departid=$('body').attr("id");
-				alert(departid);
-				$("#depart>option:eq("+departid+")").attr("selected","");
+				if($('.container').attr("name")=="0"){
+					$('#tel').attr("value","");
+					$('#price').attr("value","");
+					$("h1").text("添加医生");
+					$("#updatedoctor").attr("disabled","disabled");
+					
+				}else{
+					$("#depart>option:eq("+departid+")").attr("selected","");
+				}
+				
 			})
 		
 	})
@@ -244,7 +250,8 @@
 
 </head>
 <%
-Doctor doctor =new Doctor();
+
+Doctor doctor =new Doctor(0, "", "", 0, "", Long.parseLong("0"), "", 0);
 if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 	doctor = new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id")));}
 %>
@@ -264,7 +271,7 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">添加医生/修改医生ID为<%=doctor.getId()%></h1>
+								<h1 class="h4 text-gray-900 mb-4">修改医生ID<%=request.getParameter("id")%></h1>
 							</div>
 							<form class="user">
 								<div class="form-group row">
@@ -280,7 +287,7 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 
 
 										<select class="form-control my " id="depart">
-											<option disabled value="0">请选择所属科室</option>
+											<option selected disabled value="0">请选择所属科室</option>
 											<option value="1">内科</option>
 											<option value="2">外科</option>
 											<option value="3">神经科</option>
@@ -329,15 +336,15 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 								<hr>
 
 								<a id="adddoctor" class="btn btn-primary btn-user btn-block">
-									添加医生 </a> <a id="updatedoctor"
-									class="btn btn-warning btn-user btn-block"> 修改医生 </a>
+									添加医生 </a> 
+									<button  id="updatedoctor" class="btn btn-warning btn-user btn-block">修改医生 </button>
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.html">查看所有医生</a>
+								<a class="small" href="">查看所有医生</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="login.html">查看所有科室</a>
+								<a class="small" href="DepartSelect">查看所有科室</a>
 							</div>
 						</div>
 					</div>
