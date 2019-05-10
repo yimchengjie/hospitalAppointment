@@ -64,7 +64,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="index.jsp">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -73,9 +73,17 @@
 				</div>
 			</a>
 
-			<li class="nav-item"><a class="nav-link" href="index.html">
-					<i class="fas fa-fw fa-tachometer-alt"></i> <span>管理员</span>
-			</a></li>
+				<li class="nav-item"><a class="nav-link" href=""
+				data-toggle="collapse" data-target="#ccc"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>管理员</span>
+			</a>
+				<div id="ccc" class="collapse" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">操作</h6>
+						<a class="collapse-item" href="">修改密码</a> <a class="collapse-item"
+							href="">退出登陆</a>
+					</div>
+				</div></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">

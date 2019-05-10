@@ -280,7 +280,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="index.jsp">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -289,9 +289,20 @@
 				</div>
 			</a>
 
-			<li class="nav-item"><a class="nav-link" href="index.html">
+			<li class="nav-item"><a class="nav-link" href=""  data-toggle="collapse" data-target="#ccc">
 					<i class="fas fa-fw fa-tachometer-alt"></i> <span>管理员</span>
-			</a></li>
+			</a>
+			
+			
+				<div id="ccc" class="collapse" 
+						data-parent="#accordionSidebar">
+						<div class="bg-white py-2 collapse-inner rounded">
+							<h6 class="collapse-header">操作</h6>
+							<a class="collapse-item" href="">修改密码</a> 
+							<a class="collapse-item" href="">退出登陆</a>
+						</div>
+					</div>
+			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -301,13 +312,16 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item active"><a class="nav-link collapsed"
-				href="#" > <i
+				href="#" data-toggle="collapse" data-target=""
+				aria-expanded="true" aria-controls="collapsePages"> <i
 					class="fas fa-fw fa-cog"></i> <span>用户管理</span>
-			</a></li>
+			</a>
+			
+			</li>
 
-			<li class="nav-item"><a class="nav-link collapsed" href="AccountSelect"
-				> <i
-					class="fas fa-fw fa-wrench"></i> <span>账单管理</span>
+			<li class="nav-item"><a class="nav-link collapsed"
+				href="AccountSelect"> <i class="fas fa-fw fa-wrench"></i>
+					<span>账单管理</span>
 			</a></li>
 
 			<hr class="sidebar-divider">
@@ -315,14 +329,13 @@
 			<div class="sidebar-heading">Doctor</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="DepartSelect"
-				> <i
-					class="fas fa-fw fa-folder"></i> <span>科室管理</span>
+			<li class="nav-item"><a class="nav-link collapsed"
+				href="DepartSelect"> <i class="fas fa-fw fa-folder"></i> <span>科室管理</span>
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="#">
-					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
+			<li class="nav-item"><a class="nav-link" href="#"> <i
+					class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 
 			<!-- Nav Item - Tables -->
@@ -374,8 +387,8 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">患者管理</h1>
 					<p class="mb-4"></p>
-					<a target="_blank">增加，删除，修改患者信息</a>.
-				
+					<a target="_blank"></a>
+
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -402,7 +415,8 @@
 
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
+								<table class="table table-hover " id="dataTable" width="100%"
+									cellspacing="0">
 									<tr>
 										<th>序号</th>
 										<th>患者姓名</th>
@@ -542,9 +556,9 @@
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 	</div>
- <script src="../js/sb-admin-2.min.js"></script>
+	<script src="../js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

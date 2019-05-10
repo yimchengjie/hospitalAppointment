@@ -77,18 +77,24 @@
 			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 				<!-- Sidebar - Brand -->
-				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
 					<div class="sidebar-brand-icon rotate-n-15">
 						<i class="fas fa-laugh-wink"></i>
 					</div>
 					<div class="sidebar-brand-text mx-3">医院后台管理<sup>h</sup></div>
 				</a>
 
-				<li class="nav-item">
-					<a class="nav-link" href="index.html">
-						<i class="fas fa-fw fa-tachometer-alt"></i>
-						<span>管理员</span></a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href=""
+				data-toggle="collapse" data-target="#ccc"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>管理员</span>
+			</a>
+				<div id="ccc" class="collapse" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">操作</h6>
+						<a class="collapse-item" href="">修改密码</a> <a class="collapse-item"
+							href="">退出登陆</a>
+					</div>
+				</div></li>
 
 				<!-- Divider -->
 				<hr class="sidebar-divider">
@@ -107,7 +113,8 @@
 				</li>
 
 				<li class="nav-item active">
-					<a class="nav-link collapsed" href="#">
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+				aria-expanded="true" aria-controls="collapsePages"> 
 						<i class="fas fa-fw fa-wrench"></i>
 						<span>账单管理</span>
 					</a>
@@ -178,7 +185,7 @@
 					<div class="container-fluid">
 
 						<!-- Page Heading -->
-						<h1 class="h3 mb-2 text-gray-800">账单管理</h1>
+						<h1 class="h3 mb-2 text-gray-800" >账单管理</h1>
 						<p class="mb-4"></p>
 
 						<!-- DataTales Example -->
