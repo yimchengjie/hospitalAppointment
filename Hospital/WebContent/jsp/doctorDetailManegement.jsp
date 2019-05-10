@@ -243,7 +243,6 @@
 </style>
 
 </head>
-<%=request.getParameter("id")%>
 <%
 Doctor doctor =new Doctor();
 if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
