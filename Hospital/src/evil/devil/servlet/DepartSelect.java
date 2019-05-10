@@ -79,7 +79,7 @@ public class DepartSelect extends HttpServlet {
 				List<Doctor> doctors1 = new DoctorMapperImpl().getByDeaprt(department.getId());
 				List<Doctor> doctors=new ArrayList<Doctor>();
 				for (Doctor doctor : doctors1) {
-					if (doctor.getType().equals("普通医生")) {
+					if (doctor.getType().equals("医师")) {
 						doctors.add(doctor);
 					}
 				}

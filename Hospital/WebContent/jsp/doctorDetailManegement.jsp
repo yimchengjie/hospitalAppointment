@@ -243,8 +243,11 @@
 </style>
 
 </head>
+<%=request.getParameter("id")%>
 <%
-	Doctor doctor = new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id")));
+Doctor doctor =new Doctor();
+if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
+	doctor = new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id")));}
 %>
 <body class="bg-gradient-primary" id="<%=doctor.getDepartmentId()%>">
 
@@ -285,12 +288,12 @@
 										</select> <select class="form-control my" id="gender">
 											<option selected disabled value="0">请选择性别</option>
 											<%
-												if (doctor.getGender().equals("男")) {
+												if ("男".equals(doctor.getGender())) {
 											%>
 											<option selected="selected" value="男">男</option>
 											<option value="女">女</option>
 											<%
-												} else if (doctor.getGender().equals("女")) {
+												} else if ("女".equals(doctor.getGender())) {
 											%>
 											<option value="男">男</option>
 											<option value="女" selected="selected">女</option>
