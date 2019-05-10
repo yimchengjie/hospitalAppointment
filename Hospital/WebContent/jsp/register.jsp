@@ -20,6 +20,7 @@
 body{
 		background: url("../images/ban6.jpg") no-repeat;
 		background-size: 100%;
+		width:1700px;
 		
 	}
 	#main{
