@@ -45,12 +45,6 @@ public class UserUpdate extends HttpServlet {
 		String gender=request.getParameter("gender");
 		String idcard=request.getParameter("idcard");
 		Long tel=Long.parseLong(request.getParameter("tel"));
-		System.out.println(id);
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(gender);
-		System.out.println(idcard);
-		System.out.println(tel);
 		User user=new User();
 		user.setGender(gender);
 		user.setName(username);

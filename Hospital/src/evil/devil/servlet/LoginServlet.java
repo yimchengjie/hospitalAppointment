@@ -81,6 +81,9 @@ public class LoginServlet extends HttpServlet {
 				List<Doctor> doctors=doctorMapper.selectAll();
 				String doctorsJson=JSON.toJSON(doctors).toString();
 				//将医生存入session
+				//json形式
+				request.getSession().setAttribute("doctorList", doctors);
+				//list对象形式
 				request.getSession().setAttribute("doctors", doctorsJson);
 				response.getWriter().append("success");
 			}

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>About</title>
+<title>doctorDepartment</title>
 <!--/metadata -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
@@ -22,6 +22,21 @@
 <script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	$(function(){
+		$("#maTab").find("a").click(function(){
+			$("#doctor_List").children("div").hide();
+			var department=$(this).html();
+			if(department=="所有医生"){
+				$("#doctor_List").find("div").show();
+			}
+			else {
+				$("#doctor_List").children("div").each(function(i,item){  
+			           var p=$(item);
+			            if(p.find("span").eq(1).html()==department)
+			        	   p.show(); 
+			    });  
+			}
+			
+		})
 		//模态框修改按钮
         		$("#confirmEdit")
         				.click(
@@ -62,9 +77,10 @@
         						})
 	})
 	
-	</script>
+	</script>          
+          
 </head>
-	
+
 <body>
 
 <div class="banner-header banner2">
@@ -89,10 +105,11 @@
 					<nav>
 						<ul class="nav navbar-nav">
 							<li><a href="index.jsp">主页</a></li>
-							<li class="active"><a href="about.jsp">关于我们</a></li>
+							<li><a href="about.jsp">关于我们</a></li>
 							<li><a href="services.jsp">服务</a></li>
 							<li><a href="gallery.jsp">展览</a></li>
 							<li><a href="doctorDepartment.jsp">医生</a></li>
+						
 							<!-- <li><a href="#">个人资料</a></li> -->
 							
 							<li class="dropdown">
@@ -103,7 +120,8 @@
 										<li><a href="logout">退出登录</a></li>
 									</ul>
 							  </li> 
-							  <li><a href="contact.jsp">联系</a></li>
+							  
+							<li class="active"><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -114,121 +132,62 @@
 	</div>
 </div>
 <!-- // banner -->
-<!-- about -->
-<div class="about">
+<!-- Mail Us inner -->
+
+<div class="contact-page-w3ls inner-padding" id="two">
 	<div class="container">
-	<div class="w3-heading-all">
-				<h3>关于我们</h3>
+	
+<div class="contact-info-w2ls"  >
+	<div>
+			<div  >
+				<ul style="width:50%;" id="maTab" class="nav nav-tabs">
+					<li class="active"><a href="#home"    data-toggle="tab">所有医生</a></li>
+					<c:forEach items="${departments}" var="department" varStatus="loop">
+								
+								<li ><a href="#home"    data-toggle="tab">${department.name}</a></li>
+					</c:forEach>
+					<!-- <li class="active"><a href="#home"  data-toggle="tab">内科</a></li>
+					<li ><a href="#home"  data-toggle="tab">外科</a ></li>-->
+				</ul>
 			</div>
-		<div class="ab-agile">
-			<div class="col-md-6 aboutleft">
-				<h3>Welcome to Hospital</h3>
-				<p class="para1">Donec bibendum velit quis diam venenatis, vulputate aliquam sapien blandit. 
-				Etiam dui massa, vehicula a convallis a, facilisis vitae neque.Pellentesque sit amet 
-				odio quis libero eleifend congue at ac justo. Suspendisse posuere congue accumsan Vulputate aliquam sapien. </p>
-				<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>
-				<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>
-				<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>
-				</div>
-			<div class="col-md-6 aboutright">
-				<img src="../images/p1.jpg" class="img-responsive" alt="" />
-			</div>
-			<div class="clearfix"></div>
-		</div>
+			
+	</div>
+	<div >
+	<div id="myTabContent" class="tab-content" id="home">
+						<div class="tab-pane fade in active">
+							<div class="row" id="doctor_List">
+								<c:forEach items="${doctorList}" var="doctor" varStatus="loop">
+								<div class="col-sm-6 col-md-3">
+									<div class="thumbnail">
+										<img src="../doctor/${doctor.photo} " style="height:350px;" alt="...">
+										<div class="caption">
+											<h3> ${doctor.name} </h3>
+											<p>毕业大学：${doctor.colleage}</p>
+											<p>挂号类型：${doctor.type}</p>
+											<c:forEach items="${departments}" var="department" varStatus="loop">
+														<c:if test="${doctor.departmentId==department.id}" >
+															  <span>科室：</span> <span>${department.name}</span>
+															  <p>
+																<a href="index.jsp?department=${department.name}&doctor=${doctor.name}" class="btn btn-primary" role="button">预约</a>
+															  </p>
+														</c:if>
+														
+											</c:forEach>
+											
+										</div>
+									</div>
+								</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+	</div>
+	</div>
+	<!---728x90--->
 	</div>
 </div>
-<!-- //about -->
-<!-- wthree-mid -->
-	<div class="wthree-mid">
-		<div class="container">
-			<h3>Nisl amet dolor sit ipsum veroeros sed blandit</h3>
-			<p>Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-		</div>
-	</div>
-<!-- //wthree-mid -->
-<!--/team-->
-	<div class="team" id="team">
-			<div class="w3-heading-all">
-				<h3>Our Doctors</h3>
-			</div>
-			<div class="w3-agile-team-grids">
-				<div class="w3-agile-team-grid1">
-					<div class="col-md-4 w3-agile-team-img1">
-					<div class="w3-agile-team-img-head">
-					
-					<!-- 更换照片在style.css里第1284行 -->
-					
-						<h3><a  href="index.jsp">Joe Root(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
+	<!-- //Mail Us inner -->
 
-					</div>
-					</div>
-					<div class="col-md-4 w3-agile-team-img1 w3-agile-team-img-1">
-						<div class="w3-agile-team-img-head">
-						<h3><a  href="index.jsp">perry jest(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
-					</div>
-					
-					</div>
-					<div class="col-md-4 w3-agile-team-img1 w3-agile-team-img-2">
-						<div class="w3-agile-team-img-head">
-						<h3><a  href="index.jsp">Shakeera ls(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
-					</div>
-					
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="w3-agile-team-grid2">
-					<div class="col-md-4 w3-agile-team-img1 w3-agile-team-img-3">
-						<div class="w3-agile-team-img-head">
-						<h3><a  href="index.jsp">sharapova(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
-					</div>
-					
-					</div>
-					<div class="col-md-4 w3-agile-team-img1 w3-agile-team-img-4">
-					<div class="w3-agile-team-img-head">
-						<h3><a  href="index.jsp">serina willams(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
-					</div>
-					</div>
-					<div class="col-md-4 w3-agile-team-img1 w3-agile-team-img-5">
-						<div class="w3-agile-team-img-head">
-						<h3><a  href="index.jsp">Usain bolt(点击预约)</a></h3>
-						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
-						</div>
-					</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-	</div>
-	<!--//team-->
 <!-- footer -->
 <div class="footer">
 	<div class="container">
@@ -238,8 +197,7 @@
 			<p>Lorem ipsum quia dolor
 			sit amet, consectetur, adipisci velit, sed quia non 
 			numquam eius modi tempora.</p>
-			
-			<!-- <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
+			<ul class="social-nav model-3d-0 footer-social w3_agile_social two">
 															<li><a href="#" class="facebook">
 																  <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div></a></li>
@@ -252,9 +210,8 @@
 															<li><a href="#" class="pinterest">
 																  <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
 																  <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div></a></li>
-														</ul> -->
+														</ul>
 		</div>
-		
 		<div class="col-md-4 footer-right">
 			<div class="sign-grds">
 				<div class="sign-gd">
@@ -312,12 +269,11 @@
 		
 		<div class="clearfix"></div>
 			
-		<p class="copy-right">Copyright &copy; 2019.ZheJiangShuilishuidian Hospital.</a></p>
+		<p class="copy-right"><a href="#">Copyright &copy; 2019.ZheJiangShuilishuidian Hospital.</a></p>
 	</div>
 </div>
 </div>
 <!-- //footer -->
-
 <!-- 模态框1 -->
 <div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -419,10 +375,9 @@
 				</div>
 			</div>
 <!-- 模态框2 -->
-
 <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 	<!-- //Tour-Locations-JavaScript -->
-			<!-- <script src="../js/SmoothScroll.min.js"></script> -->
+			<!-- <script src="js/SmoothScroll.min.js"></script> -->
 		<!-- smooth scrolling-bottom-to-top -->
 				<script type="text/javascript">
 					$(document).ready(function() {
