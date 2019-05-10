@@ -50,6 +50,7 @@
 							<li><a href="about.jsp">关于我们</a></li>
 							<li><a href="services.jsp">服务</a></li>
 							<li class="active"><a href="gallery.jsp">展览</a></li>
+							<li><a href="doctorDepartment.jsp">医生</a></li>
 							
 							<!-- <li><a href="#">个人主页</a></li> -->
 							

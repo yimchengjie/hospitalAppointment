@@ -47,6 +47,7 @@
 							<li class="active"><a href="about.jsp">关于我们</a></li>
 							<li><a href="services.jsp">服务</a></li>
 							<li><a href="gallery.jsp">展览</a></li>
+							<li><a href="doctorDepartment.jsp">医生</a></li>
 							
 							<!-- <li><a href="#">个人资料</a></li> -->
 							
@@ -100,9 +101,13 @@
 			<p>Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
 		</div>
 	</div>
+	
+	
+	
 <!-- //wthree-mid -->
 <!--/team-->
-	<div class="team" id="team">
+
+	<!-- <div class="team" id="team">
 			<div class="w3-heading-all">
 				<h3>Our Doctors</h3>
 			</div>
@@ -111,13 +116,13 @@
 					<div class="col-md-4 w3-agile-team-img1">
 					<div class="w3-agile-team-img-head">
 					
-					<!-- 更换照片在style.css里第1284行 -->
+					更换照片在style.css里第1284行
 					
 						<h3><a  href="index.jsp">Joe Root(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 
 					</div>
@@ -126,9 +131,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3><a  href="index.jsp">perry jest(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 					</div>
 					
@@ -137,9 +142,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3><a  href="index.jsp">Shakeera ls(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 					</div>
 					
@@ -151,9 +156,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3><a  href="index.jsp">sharapova(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 					</div>
 					
@@ -162,9 +167,9 @@
 					<div class="w3-agile-team-img-head">
 						<h3><a  href="index.jsp">serina willams(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 					</div>
 					</div>
@@ -172,9 +177,9 @@
 						<div class="w3-agile-team-img-head">
 						<h3><a  href="index.jsp">Usain bolt(点击预约)</a></h3>
 						<div class="team-social">
-						<!-- <a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest-p"></i></a> -->
+						<a href="#"><i class="fa fa-pinterest-p"></i></a>
 						</div>
 					</div>
 					</div>
@@ -182,7 +187,8 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-	</div>
+	</div> -->
+	
 	<!--//team-->
 <!-- footer -->
 <div class="footer">

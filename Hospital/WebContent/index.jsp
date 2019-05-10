@@ -96,6 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="about.jsp">关于我们</a></li>
 							<li><a href="services.jsp">服务</a></li>
 							<li><a href="gallery.jsp">展览</a></li>
+							<li><a href="doctorDepartment.jsp">医生</a></li>
 							
 							<!-- <li><a href="#">个人资料</a></li> -->
 							
@@ -506,7 +507,7 @@ testimonials
 	<div class="container">
 	<div class="footer_agile_inner_info_w3l">
 		<div class="col-md-4 footer-left">
-			<h2><a href="index.html">MediBulk </a></h2>
+			<h2><a href="index.jsp">MediBulk </a></h2>
 			<p>Lorem ipsum quia dolor
 			sit amet, consectetur, adipisci velit, sed quia non 
 			numquam eius modi tempora.</p>
