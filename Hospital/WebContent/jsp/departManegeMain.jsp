@@ -175,14 +175,16 @@
 						</div>
 
 						<div class="row container-fluid">
-
+				
 
 							<%
 								HashMap<Department, List<Doctor>> ddMap = (HashMap<Department, List<Doctor>>) request.getSession()
 										.getAttribute("ddMap");
 							%>
+							
 							<%
-							if(!ddMap.isEmpty()){
+							
+							if(ddMap!=null){
 								for (Map.Entry<Department, List<Doctor>> entry : ddMap.entrySet()) {
 							%>
 							<div class="col-lg-3 mb-4">
@@ -202,7 +204,7 @@
 												<%
 													for (int i = 0; i < count; i++) {
 												%>
-												<td class="todoctor"><a href="doctorDetail.jsp?id=<%=DepartDoctors.get(i).getId()%>"><%=DepartDoctors.get(i).getName()%></a></td>
+												<td class="todoctor"><a href="doctorDetailManegement.jsp?id=<%=DepartDoctors.get(i).getId()%>"><%=DepartDoctors.get(i).getName()%></a></td>
 												<%
 													if (i == 2) {
 												%>
