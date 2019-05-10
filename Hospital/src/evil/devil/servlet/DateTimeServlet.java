@@ -19,7 +19,7 @@ import evil.devil.entity.Account;
 /**
  * Servlet implementation class DateTimeServlet
  */
-@WebServlet("/datetime")
+@WebServlet("/jsp/datetime")
 public class DateTimeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
@@ -43,6 +43,7 @@ public class DateTimeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//获取预约的医生id和预约时间
 		Integer id=Integer.parseInt(request.getParameter("id"));
 		String date=request.getParameter("date");
 		AccountMapper accountMapper=new AccountMapperImpl();
@@ -50,7 +51,9 @@ public class DateTimeServlet extends HttpServlet {
 		List<String> list=new ArrayList<String>();
 		
 		for (Account account : accounts) {
+			//判断日期
 			if(date.equals(account.getDateTime().split(" ")[0])) {
+			//判断当天该时间段是否已被预约
 			if(account.getDateTime().split(" ")[1].substring(0,1).equals("1"))
 					list.add(account.getDateTime().split(" ")[1].substring(0,2));
 			else

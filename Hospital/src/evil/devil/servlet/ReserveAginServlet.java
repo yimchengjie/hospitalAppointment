@@ -15,7 +15,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * Servlet implementation class ResrveAginServlet
  */
-@WebServlet("/reserveAgin")
+@WebServlet("/jsp/reserveAgin")
 public class ReserveAginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,11 +40,11 @@ public class ReserveAginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//获取再次预约的科室和医生
 		String department=request.getParameter("department");
 		String doctor=request.getParameter("doctor");
-		System.out.println(department);
-		System.out.println(doctor);
 		List<String> list=new ArrayList<String>();
+		//将信息存入list转换成json格式传回ajax
 		list.add(department);
 		list.add(doctor);
 		response.setHeader("content-type","text/html;charset=UTF-8");

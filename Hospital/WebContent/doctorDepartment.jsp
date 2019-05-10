@@ -92,7 +92,7 @@
 	<div id="myTabContent" class="tab-content" id="home">
 						<div class="tab-pane fade in active">
 							<div class="row">
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="images/ceshi.png" alt="...">
 										<div class="caption">
@@ -107,7 +107,7 @@
 									</div>
 								</div>
 
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img class="doctorphoto" src="images/ceshi.png" alt="...">
 										<div class="caption">
@@ -121,7 +121,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="images/ceshi.png" alt="...">
 										<div class="caption">
@@ -135,7 +135,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="images/ceshi.png" alt="...">
 										<div class="caption">
@@ -149,7 +149,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="images/ceshi.png" alt="...">
 										<div class="caption">
@@ -163,7 +163,35 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-6 col-md-3">
+									<div class="thumbnail">
+										<img src="images/ceshi.png" alt="...">
+										<div class="caption">
+											<h3>医生</h3>
+											<p>毕业大学：</p>
+											<p>挂号类型：</p>
+											<p>
+												<a href="index.jsp" class="btn btn-primary" role="button">预约</a>
+
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3">
+									<div class="thumbnail">
+										<img src="images/ceshi.png" alt="...">
+										<div class="caption">
+											<h3>医生</h3>
+											<p>毕业大学：</p>
+											<p>挂号类型：</p>
+											<p>
+												<a href="index.jsp" class="btn btn-primary" role="button">预约</a>
+
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="images/ceshi.png" alt="...">
 										<div class="caption">

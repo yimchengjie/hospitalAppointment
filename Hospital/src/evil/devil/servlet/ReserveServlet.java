@@ -26,7 +26,7 @@ import evil.devil.service.AccountService;
 /**
  * Servlet implementation class ReserveServlet
  */
-@WebServlet("/reserve")
+@WebServlet("/jsp/reserve")
 public class ReserveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
