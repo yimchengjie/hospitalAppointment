@@ -405,7 +405,7 @@
 
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
 									<tr>
 										<th>序号</th>
 										<th>患者姓名</th>
@@ -547,7 +547,7 @@
 			</div>
 			</div>
 	</div>
-
+ <script src="../js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

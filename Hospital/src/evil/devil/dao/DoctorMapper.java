@@ -19,4 +19,6 @@ public interface DoctorMapper {
     int updateByPrimaryKey(Doctor record);
     
     List<Doctor> selectAll();
+
+	 public List<Doctor> getByDeaprt(Integer id);
 }

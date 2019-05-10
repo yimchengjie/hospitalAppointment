@@ -12,10 +12,14 @@
 		font-family: "微软雅黑";
 		font-size: 12px;
 	}
-	#main{
+	body{
 		background: url("../images/ban6.jpg") no-repeat;
-		min-height:800px;
-		max-height: 800px;
+		background-size: 100%;
+		width:2000px;
+	}
+	#main{
+		min-height:750px;
+		max-height: 810px;
 		width: 100%;
 		overflow: hidden;
 		background-size: 100%;
@@ -70,6 +74,12 @@
 						}
 					}
 				)
+			//绑定回车为登录事件
+			$(document).keydown(function(event){
+			    if(event.keyCode==13){
+			       $("#login").click();
+			    }
+			 });
 				
 				
 			$("#login").click(function(){
@@ -161,8 +171,10 @@
 				<div class="form-group" style="height: 30px;">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-10">
-						<button  id="login" style="width: 56%;"
-							class="btn btn-success  btn-block" disabled="disabled">登陆</button>
+						<button  id="login" style="width: 25%;"
+							class="btn btn-success" disabled="disabled">登陆</button>
+							<button  id="login" style="width: 25%; margin-left:5%"
+							class="btn btn-success" onclick="window.location = 'register.jsp'">注册</button>
 					</div>
 				</div>
 

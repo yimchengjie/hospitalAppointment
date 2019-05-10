@@ -10,19 +10,25 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<style type="text/css">
+<style type="text/css">6
 .alert {
 	font-family: "微软雅黑";
 	font-size: 12px;
 }
-#main{
-		background: url(../images/ban6.jpg) no-repeat;
-		min-height:800px;
-		max-height: 800px;
+
+
+body{
+		background: url("../images/ban6.jpg") no-repeat;
+		background-size: 100%;
+		
+	}
+	#main{
+		min-height:750px;
+		max-height: 810px;
 		width: 100%;
 		overflow: hidden;
 		background-size: 100%;
-}
+	}
 
 </style>
 <script type="text/javascript">
@@ -302,11 +308,11 @@
 				</div>
 				<div class="form-group col-sm-12" style="height: 30px;">
 					<br />
-					<div class="col-sm-offset-3">
-						<button id="register" class="btn btn-primary" disabled="disabled">注册</button>
+					<div class="col-sm-offset-2">
+						<button id="register" style="width: 25%;" class="btn btn-primary" disabled="disabled">注册</button>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="login.jsp" style="color: white;">
-						<button class="btn btn-primary">
+						<button class="btn btn-primary" style="width: 25%;">
 							登陆
 						</button></a>
 					</div>
