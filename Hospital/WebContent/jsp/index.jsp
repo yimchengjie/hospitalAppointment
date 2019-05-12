@@ -73,6 +73,38 @@
             
           //绑定事件
         	$(function() {
+        		$("#topay").click(function(){
+        			if($("#country1").val()=="0"){
+						alert("请选择预约的科室")
+        			}
+        			else if($("#country2").val()=="0"){
+						alert("请选择预约的医生")
+        			}
+        			else if($("#datepicker").val()==""){
+						alert("请选择预约日期")
+        			}
+        			else if($("#time").val()=="0"){
+						alert("请选择就诊时间")
+        			}
+        			else{
+        				$("#payprice").val($("#doctor_price").val()+"元");
+        				$("#payname").val($("#name").val());
+            			$("#paytel").val($("#tel").val());
+            			$("#paydepartment").val($("#country1").children("option").eq($("#country1").val()).text());
+            			$("#payidcard").val( "${sessionScope.user.idcard}" );
+            			var doctorid=$("#country2").val();
+            			$("#paydoctorid").val(doctorid);
+            			$("#country2").children("option").each(function(i,item){ 
+        			        if($(item).val()==doctorid){
+        			        	$("#paydoctor").val($(item).text());
+        			        }
+        			    });  
+            			
+            			$("#paydate").val($("#datepicker").val()+" "+$("#time").val()+":00");
+            			$('#payModel').modal('show');
+        			}
+        			
+        		})
         		//所有预约时间段访问时先隐藏
         		$(".time").hide();
         		//绑定选择部门后医生的修改
@@ -83,6 +115,8 @@
                     var doctors=${sessionScope.doctors};
                     doctors.forEach(function(doctor) {
                         if(doctor.departmentId==$("#country1").val()){
+                        	$("#doctor_type").val(doctor.type);
+                        	$("#doctor_price").val(doctor.price);
                         	$("#country2").append("<option value='"+doctor.id+"'>"+doctor.name+"</option>");   
                         }
                      })
@@ -93,7 +127,6 @@
              	   var doctor="${param.doctor}";
              	   var department="${param.department}";
              	   if(department!=""){
-             		   
              		    $("#country1").children().each(function(i,n){
              		     var obj = $(n);
              		     if($.trim(obj.html()) == $.trim(department))
@@ -132,10 +165,12 @@
                 
                 $("#reserve").click(function(){
                 	var json={};
-        			json.name=$("#name").val();
-        			json.tel=$("#tel").val();
-        			json.doctor_id=$("#country2").val();
-        			json.datetime=$("#datepicker").val()+" "+$("#time").val()+":00";
+        			json.name=$("#payname").val();
+        			json.tel=$("#paytel").val();
+        			json.doctor_id=$("#paydoctorid").val();
+        			json.datetime=$("#paydate").val();
+        			json.price=$("#payprice").val();
+        			json.paytype=$("[name=paytype]:checked").val();
         			/* alert(json.username);
         			alert(json.tel);
         			alert(json.doctor_id);
@@ -519,8 +554,8 @@
 							</div>
 							<div class="span1_of_1 section_room"> 
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-								<select id="time" class="frm-field sect" required name="qqq">
-									<option id="t0" value="0">选择就诊时间</option>
+								<select id="time" class="frm-field sect" required >
+									<option id="t0" value="0" selected="selected">选择就诊时间</option>
 									<option class="time"  id="t8" value="8">8：00-9：00</option> 
 									<option class="time" id="t9" value="9">9：00-10：00</option>        
 									<option class="time" id="t10" value="10">10：00-11:00</option>         
@@ -533,6 +568,8 @@
 							<div class="span1_of_1 section_room">
 								<!-- start_section_room --> 
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<input style="display:none" id="doctor_type" />
+								<input style="display:none" id="doctor_price" />
 								<select  id="country2" class="frm-field sect" required name="qqq">
 									<option id="" value="0">请选择医生</option>
 								</select> 
@@ -541,8 +578,8 @@
 							
 							
 						</div>
-						<div class="date_btn" style="margin:20 150;"> 
-							<input type="button" id="reserve" class="btn btn-info btn-lg" value="预  约" style="width:200px;"/> 
+						<div class="date_btn" > 
+							<input type="button" id="topay"  class="btn btn-info btn-lg" value="预  约" style="width:100%;"/>
 						</div> 
 					</form>
 				</div>
@@ -818,7 +855,7 @@
 	</div>
 </div>
 </div>
-模态框
+<!--模态框  -->
 <div class="modal fade" id="editModel" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -917,7 +954,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal fade" id="resever" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<!-- <div class="modal fade" id="resever" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -925,7 +962,92 @@
 							<h4 class="modal-title" id="myModalLabel">請付款</h4>
 						</div>
 						<div class="modal-body"><img src="../images/pay.jpg"></div>
+					</div>
+				</div>
+			</div> -->
+<div class="modal fade" id="payModel" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="exampleModalLabel">支付</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+
+							<form>
+								<div class="form-group" style="height: 40px;">
+									<label class="control-label">姓名:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 150px;" type="text"
+											class="form-control" id="payname"  readonly="readonly">
+									</div>
+									<label class="control-label">联系电话:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 150px;" type="text"
+											class="form-control" id="paytel" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group " style="height: 40px;">
+									<label for="message-text" class="control-label ">身份证号:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 300px;" type="text"
+											class="form-control" id="payidcard" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group" style="height: 40px;">
+									<label class="control-label">预约科室:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 150px;" type="text"
+											class="form-control" id="paydepartment"  readonly="readonly">
+									</div>
+									<label class="control-label">预约医生:</label>
+									<div style="display: inline;">
+										<input style="display:none" id="paydoctorid" />
+										<input style="display: inline; width: 150px;" type="text"
+											class="form-control" id="paydoctor" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group " style="height: 40px;">
+									<label for="message-text" class="control-label ">就诊时间:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 300px;" type="text"
+											class="form-control" id="paydate" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group " style="height: 40px;">
+									<label for="message-text" class="control-label ">预约费用:</label>
+									<div style="display: inline;">
+										<input style="display: inline; width: 100px;" type="text"
+											class="form-control" id="payprice" readonly="readonly">
+									</div>
+									<label for="message-text" class="control-label ">支付方式:</label>
+									<div style="display: inline;">
+										<label class="radio-inline"> <input type="radio"
+											name="paytype" id="inlineRadio1" value="1" checked="checked"  >
+											支付宝
+										</label> 
+										<label class="radio-inline"> <input type="radio"
+											name="paytype" id="inlineRadio2" value="2"   > 微信
+										</label>
+										 <label class="radio-inline"> <input type="radio"
+											name="paytype" id="inlineRadio2" value="3"   > 银联
+										</label>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" id="closepay"
+								data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary" id="reserve">
+							确认支付
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
+			
 <!-- //footer -->
 <!-- js -->
 <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>

@@ -21,7 +21,34 @@
 <script src="../js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	$(function(){
+	 $(function(){
+		 /*//获取医生
+		$.ajax({
+		type : "post",
+		url : "getdortors",
+		contentType : "application/x-www-form-urlencoded; charset=utf-8",
+		success : function(data) {
+			var json=eval(data);
+			var div=$("#doctor_List");
+			$.each(json,function(index,item){
+				div.append("<div class='col-sm-6 col-md-3'>"+
+						"<div class='thumbnail'>"+
+				"<img src='../doctor/"+json[index].photo+" ' style='height:350px;' alt='...'>"+
+				"<div class='caption'>"+
+					"<h3> "+json[index].name+" </h3>"+
+					"<p>毕业大学："+json[index].colleage+"</p>"+
+					"<p>挂号类型："+json[index].type+"</p>"+
+				"</div>"+
+			"</div>"+
+		"</div>");
+				});
+			
+		},
+		error : function() {
+			alert("无法连接服务器");
+		}
+	}); */
+		
 		$("#maTab").find("a").click(function(){
 			$("#doctor_List").children("div").hide();
 			var department=$(this).html();
@@ -108,7 +135,7 @@
 							<li><a href="about.jsp">关于我们</a></li>
 							<li><a href="services.jsp">服务</a></li>
 							<li><a href="gallery.jsp">展览</a></li>
-							<li><a href="doctorDepartment.jsp">医生</a></li>
+							<li class="active"><a href="doctorDepartment.jsp">医生</a></li>
 						
 							<!-- <li><a href="#">个人资料</a></li> -->
 							
@@ -121,7 +148,7 @@
 									</ul>
 							  </li> 
 							  
-							<li class="active"><a href="contact.jsp">联系</a></li>
+							<li ><a href="contact.jsp">联系</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -156,7 +183,7 @@
 	<div id="myTabContent" class="tab-content" id="home">
 						<div class="tab-pane fade in active">
 							<div class="row" id="doctor_List">
-								<c:forEach items="${doctorList}" var="doctor" varStatus="loop">
+								 <c:forEach items="${doctorList}" var="doctor" varStatus="loop">
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail">
 										<img src="../doctor/${doctor.photo} " style="height:350px;" alt="...">
@@ -171,13 +198,12 @@
 																<a href="index.jsp?department=${department.name}&doctor=${doctor.name}" class="btn btn-primary" role="button">预约</a>
 															  </p>
 														</c:if>
-														
 											</c:forEach>
 											
 										</div>
 									</div>
 								</div>
-								</c:forEach>
+								</c:forEach> 
 							</div>
 						</div>
 					</div>

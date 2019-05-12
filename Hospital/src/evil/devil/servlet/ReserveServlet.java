@@ -55,8 +55,13 @@ public class ReserveServlet extends HttpServlet {
 		Long tel=Long.parseLong(request.getParameter("tel"));
 		Integer doctor_id=Integer.parseInt(request.getParameter("doctor_id"));
 		String date_time=request.getParameter("datetime");
+		String pricestring =request.getParameter("price");
+		Integer price=Integer.parseInt(pricestring.split("元")[0]);
+		Integer paytype=Integer.parseInt(request.getParameter("paytype"));
 		//System.out.println(name+" "+tel +" "+ doctor_id +" "+date_time);
 		Account account=new Account();
+		account.setPayType(paytype);
+		account.setPrice(price);
 		account.setDateTime(date_time);
 		account.setDoctorId(doctor_id);
 		User user=(User) request.getSession().getAttribute("user");

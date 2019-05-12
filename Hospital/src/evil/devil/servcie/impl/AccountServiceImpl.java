@@ -18,12 +18,8 @@ public class AccountServiceImpl implements AccountService{
 		for (Account account2 : accounts) {
 			if(account2.getDateTime().equals(account.getDateTime()))
 				return -1;
-			if(account2.getDateTime().equals(account.getDateTime()))
-				return -1;
 		}
 		account.setAccountTime(new Date());
-		account.setPayType(0);
-		account.setPrice(0);
 		return accountMapper.insert(account);
 	}
 
