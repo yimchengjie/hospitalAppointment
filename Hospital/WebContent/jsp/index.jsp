@@ -93,6 +93,7 @@
              	   var doctor="${param.doctor}";
              	   var department="${param.department}";
              	   if(department!=""){
+             		   
              		    $("#country1").children().each(function(i,n){
              		     var obj = $(n);
              		     if($.trim(obj.html()) == $.trim(department))

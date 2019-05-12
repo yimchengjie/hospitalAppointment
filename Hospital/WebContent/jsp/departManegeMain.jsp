@@ -113,7 +113,7 @@
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="#">
+			<li class="nav-item"><a class="nav-link" href="DoctorSelect">
 					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 
@@ -209,7 +209,7 @@
 												<%
 													for (int i = 0; i < count; i++) {
 												%>
-												<td class="todoctor"><a href="doctorDetailManegement.jsp?id=<%=DepartDoctors.get(i).getId()%>"><%=DepartDoctors.get(i).getName()%></a></td>
+												<td class="todoctor"><a href="doctorDetailManegement.jsp?id=<%=DepartDoctors.get(i).getId()%>"  target="_blank"><%=DepartDoctors.get(i).getName()%></a></td>
 												<%
 													if (i == 2) {
 												%>

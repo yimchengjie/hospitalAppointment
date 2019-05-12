@@ -334,7 +334,7 @@
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="#"> <i
+			<li class="nav-item"><a class="nav-link" href="DoctorSelect"> <i
 					class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 

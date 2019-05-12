@@ -30,4 +30,12 @@ public class Department {
     public void setDoctorNum(Integer doctorNum) {
         this.doctorNum = doctorNum;
     }
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", doctorNum=" + doctorNum + "]";
+	}
+    
+    
+    
 }
