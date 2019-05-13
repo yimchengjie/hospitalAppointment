@@ -1,37 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
 
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<style type="text/css">6
-.alert {
-	font-family: "微软雅黑";
-	font-size: 12px;
-}
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="../img/.png">
+		<!--这里可以链接一张照片-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>
+			注册
+		</title>
+		<!--     Fonts and icons     -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<!-- CSS Files -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet" />
+		<link href="../css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>	
+		<style type="text/css">
+		input:-webkit-autofill {
 
-
-body{
-		background: url("../images/ban6.jpg") no-repeat;
-		background-size: 100%;
-		width:1700px;
-		
-	}
-	#main{
-		min-height:750px;
-		max-height: 810px;
-		width: 100%;
-		overflow: hidden;
-		background-size: 100%;
-	}
-
-</style>
+   			 transition:background-color 5000s ease-in-out 0s;
+   			text-fill-color:#fff;
+   			-webkit-text-fill-color:#fff;
+		} 
+			
+		</style>	
 <script type="text/javascript">
 			//绑定事件
 			$(function() {
@@ -55,12 +48,13 @@ body{
 						//格式错误
 						if(reg.test(username) == false) {
 							flagname = false;
-							$('#usernameflag').css("display", 'inline');
-							$('#register').attr("disabled", "disabled");
+							$('#username').parent().removeClass("has-success");
+							$('#username').parent().addClass("has-danger");
 						} 
 						//格式正确
 						else {
-							$('#usernameflag').css("display", 'none');
+							$('#username').parent().removeClass("has-danger");
+							$('#username').parent().addClass("has-success");
 							flagname = true;
 							if(flagname && flagpwd &&flagidcard && flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -77,12 +71,13 @@ body{
 						//格式错误
 						if(reg.test(tel) == false) {
 							flagtel = false;
-							$('#telflag').css("display", 'inline');
-							$('#register').attr("disabled", "disabled");
+							$('#tel').parent().removeClass("has-success");
+							$('#tel').parent().addClass("has-danger");
 						} 
 						//格式正确
 						else {
-							$('#telflag').css("display", 'none');
+							$('#tel').parent().removeClass("has-danger");
+							$('#tel').parent().addClass("has-success");
 							flagtel = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -98,13 +93,14 @@ body{
 						var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
 						//格式错误
 						if(reg.test(idcard) == false) {
-							$('#idcardflag').css("display", 'inline');
 							flagidcard = false;
-							$('#register').attr("disabled", "disabled");
+							$('#idcard').parent().removeClass("has-success");
+							$('#idcard').parent().addClass("has-danger");
 						}
 						//格式正确
 						else {
-							$('#idcardflag').css("display", 'none');
+							$('#idcard').parent().removeClass("has-danger");
+							$('#idcard').parent().addClass("has-success");
 							flagidcard = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2)  {
 								$('#register').removeAttr("disabled");
@@ -121,26 +117,33 @@ body{
 						var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]{4,10}$/;
 						//格式错误
 						if(reg.test(userpwd) == false) {
-							$('#passwordflag').css("display", 'inline');
+							$('#password').parent().removeClass("has-success");
+							$('#password').parent().addClass("has-danger");
+							if(userpwd2!=""){
+								$('#password2').parent().removeClass("has-success");
+								$('#password2').parent().addClass("has-danger");
+							}
 							flagpwd = false;
-							$('#register').attr("disabled", "disabled");
 						} 
 						//格式正确
 						else {
 							//密码和确认密码不同
 							if(userpwd2!="" && userpwd2!=userpwd){
-								$('#passwordflag2').css("display", "inline");
+								$('#password2').parent().removeClass("has-success");
+								$('#password2').parent().addClass("has-danger");
 								flagpwd2 = false;
 							}
 							//密码和确认密码相同
-							else {
-								$('#passwordflag2').css("display", "none");
+							else if(userpwd2==userpwd){
+								$('#password2').parent().removeClass("has-danger");
+								$('#password2').parent().addClass("has-success");
 								flagpwd2 = true;
 								if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 									$('#register').removeAttr("disabled");
 								}
 							}
-							$('#passwordflag').css("display", 'none');
+							$('#password').parent().removeClass("has-danger");
+							$('#password').parent().addClass("has-success");
 							flagpwd = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -154,14 +157,15 @@ body{
 						var userpwd = $('#password').val();
 						var userpwd2 = $('#password2').val();
 						//确认密码和密码不同
-						if(userpwd!=userpwd2) {
-							$('#passwordflag2').css("display", 'inline');
+						if(userpwd!=userpwd2||userpwd2=="") {
+							$('#password2').parent().removeClass("has-success");
+							$('#password2').parent().addClass("has-danger");
 							flagpwd2 = false;
-							$('#register').attr("disabled", "disabled");
 						} 
 						//确认密码和密码相同
-						else {
-							$('#passwordflag2').css("display", "none");
+						else if(userpwd==userpwd2){
+							$('#password2').parent().removeClass("has-danger");
+							$('#password2').parent().addClass("has-success");
 							flagpwd2 = true;
 							if(flagname && flagpwd &&flagidcard &&flagtel &&flagpwd2) {
 								$('#register').removeAttr("disabled");
@@ -176,9 +180,9 @@ body{
 				json.username=$("#username").val();
 				json.tel=$("#tel").val();
 				json.password=$("#password").val();
-				json.gender=$("[name=gender]:checked").val()
+				json.gender=$("[name=checkbox]:checked").val()=="on"?"男":"女",
 				json.idcard=$("#idcard").val();
-				$.ajax({
+				 $.ajax({
 					type: "post",
 					url: "register",
 					data: json,
@@ -198,129 +202,194 @@ body{
 					error: function() {
 						alert("无法连接服务器");
 					}
-				}); 
+				});  
 			})
 			})
 				
 	</script>
-<title>注册</title>
-</head>
-<body>
-	<div class=" container-fluid" id="main">
-		<div class="container-fluid  col-sm-12" style="height: 60px;"></div>
-		<div class="container-fluid  col-sm-4 col-md-offset-2 page-header" style="color: white;">
-			<div class="container-fluid  col-sm-12" style="height: 120px;"></div>
-			<h1>浙江水利水电医院<small style="color:#DDDDDD;">在线预约挂号</small></h1>
-		</div>
-		<div class="container-fluid  col-sm-5 col-md-offset-1" style="color: white;">
-			<!--<nav class="navbar navbar-nav ">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#"></a>
-					</div>
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="#" class="glyphicon glyphicon-user"
-								style="color: gainsboro;"></a></li>
-	
-							<li class="active"><a
-								style="color: black; font-family: '微软雅黑';" href="#"><strong>Register</strong></a>
-							</li>
-							<li><a href="login.jsp">Login </a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Management<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="Management.jsp">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="dropdown-header">nav header</li>
-									<li><a href="#">Separated link</a></li>
-									<li><a href="#">One more separated link</a></li>
-								</ul></li>
-						</ul>
+	</head>
+
+	<body class="login-page sidebar-collapse">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+			<div class="container">
+				<div class="dropdown button-dropdown">
+					<a href="#" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+						<span class="button-bar"></span>
+						<span class="button-bar"></span>
+						<span class="button-bar"></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-header">个人信息</a>
+						<a class="dropdown-item" href="#">个人信息</a>
+						<a class="dropdown-item" href="#">预约记录</a>
+						<a class="dropdown-item" href="#">账单中心</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">退出登陆</a>
+						<a class="dropdown-item" href="#">其他</a>
 					</div>
 				</div>
-			</nav>-->
-	
-			<div class="form-horizontal col-sm-12" >
-				<div style="height: 60px; margin-top: 50px;" class="col-sm-12">
-					<h2 style="margin-left: 150px;">注册</h2>
+				<div class="navbar-translate">
+					<a class="navbar-brand" href="#" rel="tooltip"  data-placement="bottom" target="_blank">
+						请注册
+						<!--从session中取值-->
+					</a>
+					<button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+			          <span class="navbar-toggler-bar top-bar"></span>
+			          <span class="navbar-toggler-bar middle-bar"></span>
+			          <span class="navbar-toggler-bar bottom-bar"></span>
+			        </button>
 				</div>
-				<div class="form-group col-sm-12" style="height: 30px; ">
-					<label for="inputPhone" class="col-sm-2 control-label">手机号:</label>
-					<div class="col-sm-10">
-						<input style="width: 56%; display: inline;" type="text"
-							class="form-control" id="tel" name="phone"
-							placeholder="手机号"> <span id="telflag" style="color:red;">*</span>
-					</div>
+				<div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../img/blurred-image-1.jpg">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="login.jsp">已有帐号？去登陆</a>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">注册</a>
+						</li> -->
+						<li class="nav-item">
+							<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+								<i class="fab fa-twitter"></i>
+								<p class="d-lg-none d-xl-none">Twitter</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.qq.com/CreativeTim" target="_blank">
+								<i class="fab fa-facebook-square"></i>
+								<p class="d-lg-none d-xl-none">Facebook</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+								<i class="fab fa-instagram"></i>
+								<p class="d-lg-none d-xl-none">Instagram</p>
+							</a>
+						</li>
+					</ul>
 				</div>
-				
-				<div class="form-group col-sm-12" style="height: 30px; ">
-					<label for="inputName" class="col-sm-2 control-label">姓名:</label>
-					<div class="col-sm-10">
-						<input style="width: 56%; display: inline;" type="text"
-							class="form-control" id="username" name="username"
-							placeholder="姓名"> <span id="usernameflag" style="color:red">*</span>
-					</div>
-				</div>
-	
-				<div class="form-group col-sm-12" style="height: 30px;">
-					<label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
-					<div class="col-sm-10">
-						<input style="width: 56%; display: inline;" type="password"
-							class="form-control" id="password" name="userpwd"
-							placeholder="密码 "> <span id="passwordflag" style="color:red">*</span>
-					</div>
-				</div>
-				<div class="form-group col-sm-12" style="height: 30px;">
-					<label for="inputPassword3" class="col-sm-2 control-label">确认密码:</label>
-					<div class="col-sm-10">
-						<input style="width: 56%; display: inline;" type="password"
-							class="form-control" id="password2" name="userpwd2"
-							placeholder="确认密码 "> <span id="passwordflag2" style="color:red">*</span>
-					</div>
-				</div>
-				
-	
-				<div class="form-group col-sm-12" style="height: 30px;">
-					<label class="col-sm-2 control-label ">身份证:</label>
-					<div class="col-sm-10 " style="height: 30px;">
-						<input style="width: 56%; display: inline;" type="text"
-							class="form-control" id="idcard" name="username"
-							placeholder="身份证"> <span id="idcardflag" style="color:red">*</span>
-					</div>
-				</div>
-	
-				<div class="form-group col-sm-12" style="height: 30px;">
-					<label class="col-sm-2 control-label ">性别:</label>
-					<div class="col-sm-10" style="text-align: left;">
-						<label class="radio-inline" > <input type="radio"
-							name="gender"  value="男" checked="checked">
-							男
-						</label> 
-						<label style="width: px;" class="radio-inline" > <input
-							type="radio" name="gender" id="gender" value="女">
-							女
-						</label>
-					</div>
-	
-				</div>
-				<div class="form-group col-sm-12" style="height: 30px;">
-					<br />
-					<div class="col-sm-offset-2">
-						<button id="register" style="width: 25%;" class="btn btn-primary" disabled="disabled">注册</button>
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="login.jsp" style="color: white;">
-						<button class="btn btn-primary" style="width: 25%;">
-							登陆
-						</button></a>
+			</div>
+		</nav>
+		<!-- End Navbar -->
+
+		<div class="page-header clear-filter" filter-color="black">
+			<div class="page-header-image" style="background-image:url(../img/banner-bg.jpg)"></div>
+			<div class="content">
+				<div class="container">
+					<div class="col-md-4 ml-auto mr-auto">
+						<div class="card card-login card-plain">
+							<!-- <form class="form" method="" action=""> -->
+								<div class="card-header text-center">
+									<div class="logo-container">
+										<img src="../img/now-logo.png" alt="">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="input-group no-border input-lg">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+						                      <i class="now-ui-icons users_single-02"></i>
+						                    </span>
+										</div>
+										<input type="text" id="tel" class="form-control" placeholder="请输入手机号">
+									</div>
+									<div class="input-group no-border input-lg ">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+						                      <i class="now-ui-icons users_single-02"></i>
+						                    </span>
+										</div>
+										<input  type="text" id="username" class="form-control" placeholder="请输入姓名">
+									</div>
+									<div class="input-group no-border input-lg">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+						                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
+						                    </span>
+										</div>
+										<input type="password" id="password"  placeholder="请输入密码" class="form-control form-control-danger" />
+									</div>
+									<div class="input-group no-border input-lg">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+						                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
+						                    </span>
+										</div>
+										<input type="password"  id="password2" placeholder="请确认密码" class="form-control form-control-success" />
+									</div>
+									<div class="input-group no-border input-lg">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+						                      <i class="now-ui-icons users_single-02"></i>
+						                    </span>
+										</div>
+										<input type="text"  id="idcard" class="form-control" placeholder="请输入身份证">
+									</div>
+									<div style="margin-left:10px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="男" data-off-label="女" /></div>
+
+									<!--<div style="margin-left: 150px;"><input type="radio" >管理员  <input type="radio" >用户	</div>-->
+
+								</div>
+								<div class="card-footer text-center">
+									<button disabled="disabled" id="register"class="btn btn-primary btn-round btn-lg btn-block">注册</button>
+
+										<!--<div style="margin-left: 230px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="管理员" data-off-label="用户" /></div>-->
+									<!--<div class="pull-left">
+										  <h6>
+						                    <a href="#pablo" class="link">Create Account</a>
+						                  </h6>
+										</div>
+										<div class="pull-right">
+										  <h6>
+						                    <a href="#pablo" class="link">Need Help?</a>
+						                  </h6>
+										</div>-->
+							</div>
+							<!-- </form> -->
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			<footer class="footer">
+				
+				<div class=" container ">
+				<nav>
+					<ul>
+						<li>
+							<a href="https://www.creative-tim.com">
+								Connect Us
+							</a>
+						</li>
+						<li>
+							<a href="http://presentation.creative-tim.com">
+								About Us
+							</a>
+						</li>
+						<li>
+							<a href="http://presentation.creative-tim.com">
+								Help
+							</a>
+						</li>
+					</ul>
+				</nav>
+				</div>
+			<!--<div class=" container ">
+					<div class="copyright" id="copyright">
+						&copy;2019 Designed by
+						<a href="#" target="_blank">Swq&Jrc&Ycj</a>. Coded by
+						<a href="#" target="_blank">Jjw&Xac</a>.
+					</div>
+				</div> -->
+			</footer>
+
 		</div>
-	</div>
-	
-</body>
+		<!--   Core JS Files   -->
+		<script src="../js/core/jquery.min.js" type="text/javascript"></script>
+		<script src="../js/core/popper.min.js" type="text/javascript"></script>
+		<script src="../js/core/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../js/plugins/bootstrap-switch.js"></script>
+		<script src="../js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
+	</body>
+
 </html>
