@@ -19,6 +19,7 @@ import evil.devil.entity.User;
 
 
 import com.alibaba.fastjson.JSON;
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 /**
  * Servlet implementation class DoctorSelect
@@ -82,12 +83,8 @@ public class DoctorSelect extends HttpServlet {
 				request.getSession().setAttribute("doctorList", Alldoctors);
 				response.getWriter().append("查询结果为空");
 			}else if (count!=0) {
-				for (Department department : Departments) {
-					System.out.println(department);
-				}
 				request.getSession().setAttribute("departments", Departments);
 				request.getSession().setAttribute("doctorList", doctors);
-				
 				response.getWriter().append("查询成功");
 			}
 		}
@@ -99,8 +96,11 @@ public class DoctorSelect extends HttpServlet {
 			}
 		
 		}
-		else {
-			request.getSession().setAttribute("departments", Departments);
+		
+		
+		else if("key".equals(request.getParameter("key"))){
+			String departments=JSON.toJSON(Departments).toString();
+			response.getWriter().append(departments);
 		}
 			
 		

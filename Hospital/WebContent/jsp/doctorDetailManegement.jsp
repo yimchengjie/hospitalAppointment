@@ -18,13 +18,13 @@
 <script type="text/javascript">
 	$(function() {
 		
-		var photochange=false;
+		var photochange=true;
 		//判断姓名是否符合格式
-		var flagname = false;
+		var flagname = true;
 		//判断密码是否符合格式
-		var flagcolleage = false;
+		var flagcolleage = true;
 		//判断身份证是否符合格式
-		var flagprice = false;
+		var flagprice = true;
 		//判断手机号是否符合格式
 		var realurl=null;
 		
@@ -238,17 +238,29 @@
 		
 		
 			$(document).ready(function(){
-				var departid=$('body').attr("id");
-				$("#depart>option:eq("+departid+")").attr("selected","");
 				$.ajax({
 					type : "post",
 					url : "DoctorSelect",
 					data: "key=key",
 					dataType : "text",
 					success : function(data) {
-						windows.onload("doctorDetailManegement.jsp");
+					alert(data);
+					var departments = eval(data);
+   		                console.info(departments);
+   		                
+   			    		for(var i=0;i<departments.length;i++){      
+   			    			$("#depart").append("<option value="+departments[i].name+">"+departments[i].name+"</option>");
+   	                    }
+					
+				
+					
+					
 					}
 				});
+				
+				
+				var departid=$('body').attr("id");
+				$("#depart>option:eq("+departid+")").attr("selected","");
 				
 				
 			})
@@ -308,9 +320,9 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 
 										<select class="form-control my " id="depart">
 											<option selected disabled value="0">请选择所属科室</option>
-											<c:forEach items="${departments}" var="department" varStatus="loop">
+											<!--<c:forEach items="${departments}" var="department" varStatus="loop">
 											<option value="${department.id}">${department.name}</option>
-											</c:forEach>
+											</c:forEach>-->
 										</select> <select class="form-control my" id="gender">
 											<option selected disabled value="0">请选择性别</option>
 											<%

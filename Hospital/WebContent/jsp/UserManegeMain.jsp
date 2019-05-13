@@ -67,13 +67,13 @@
 				})
 
 		//判断姓名是否符合格式
-		var flagname = false;
+		var flagname = true;
 		//判断密码是否符合格式
-		var flagpwd = false;
+		var flagpwd = true;
 		//判断身份证是否符合格式
-		var flagidcard = false;
+		var flagidcard = true;
 		//判断手机号是否符合格式
-		var flagtel = false;
+		var flagtel = true;
 
 		//验证姓名格式
 		$('#name').blur(function() {

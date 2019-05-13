@@ -23,6 +23,7 @@
 <script type="text/javascript">
 	//绑定事件
 	$(function() {
+
 		$("#select>[type=button]").click(function() {
 			alert("hello");
 			var way = $(this).attr("name");
