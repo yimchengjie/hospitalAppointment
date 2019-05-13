@@ -62,19 +62,16 @@
 				var json={};
 				json.username=$("#username").val(),
 				json.password=$("#password").val(),
-				json.type=$("[name=checkbox]:checked").val()=="on"?"admin":"user",
-				alert(json.username);
+				json.type=$("[name=checkbox]:checked").val()=="on"?"admin":"user";
 				var reg = /^1[34578]\d{9}$/;
-
-				alert(reg.test(username));
 				//输入为空不提交
-				/* if(json.username==""||json.password=="" )
-
+				 if(json.username==""||json.password=="" ||reg.test(json.username)==false){
+					 if(reg.test(json.username) == false){			
+							alert("登录失败,用户名或密码错误");
+							return;
+						}
 					return;
-					if(reg.test(username) == false){			
-						alert("登录失败,用户名或密码错误");
-						return;
-					} */
+				}	 
 				$.ajax({
 					type: "post",
 					url: "login",

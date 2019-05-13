@@ -195,7 +195,7 @@
 														<c:if test="${doctor.departmentId==department.id}" >
 															  <span>科室：</span> <span>${department.name}</span>
 															  <p>
-																<a href="index.jsp?department=${department.name}&doctor=${doctor.name}" class="btn btn-primary" role="button">预约</a>
+																<a href="index.jsp?department=${department.name}&doctor=${doctor.name}&price=${doctor.price}" class="btn btn-primary" role="button">预约</a>
 															  </p>
 														</c:if>
 											</c:forEach>
