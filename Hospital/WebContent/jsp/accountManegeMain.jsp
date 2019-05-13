@@ -246,16 +246,24 @@
 
 
 										<ul class="pagination justify-content-center">
-											<li>
-												<a class="page-link" href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}&for=account">上一页</a>
-											</li>
-											<li>
-												<a class="page-link" href="#">${pageIndex==null?1:pageIndex}</a>
-											</li>
-											<li>
-												<a class="page-link" href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}&for=account">下一页</a>
-											</li>
-										</ul>
+									<li><a class="page-link"
+										href="PageServlet?pageIndex=${pageIndex==1?1:pageIndex-1}">上一页</a>
+									</li>
+									
+									
+									<c:forEach var="item" varStatus="status" begin="1" end="${totalPage}">
+									<c:if test="${status.index==pageIndex}">
+										<li><a class="page-link" style="background-color: blue;color:white;" href="#">${status.index}</a></li>
+									</c:if>
+									
+									<c:if test="${status.index!=pageIndex}">
+										<li><a class="page-link" href="PageServlet?pageIndex=${status.index}">${status.index}</a></li>
+									</c:if>
+									</c:forEach>
+									<li><a class="page-link"
+										href="PageServlet?pageIndex=${pageIndex==totalPage?totalPage:pageIndex+1}">下一页</a>
+									</li>
+								</ul>
 
 								</div>
 							</div>
