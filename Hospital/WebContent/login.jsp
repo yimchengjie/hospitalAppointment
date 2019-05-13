@@ -1,8 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +17,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- CSS Files -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<link href="css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+		
+	<script type="text/javascript">
+			$(function() {
+				
+			//	bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-off
+				//选择登录方式
+				$("#login").click(function(){
+					alert($(".bootstrap-switch-handle-off").text());
+				("hello");
+				})
+		
+			
+		})
+	</script>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</head>
 
 	<body class="login-page sidebar-collapse">
@@ -119,8 +141,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								</div>
 								<div class="card-footer text-center ">
-									<a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">登录</a>
-										<div style="margin-left: 230px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="管理员" data-off-label="用户" /></div>
+									<a href="" class="btn btn-primary btn-round btn-lg btn-block" id="login">登录</a>
+										<div style="margin-left: 230px;">
+										
+										<input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="管理员" data-off-label="用户" /></div>
+									
 									<!--<div class="pull-left">
 										<h6>
 						                   <a href="#pablo" class="link">Create Account</a>

@@ -17,6 +17,9 @@ import evil.devil.entity.Department;
 import evil.devil.entity.Doctor;
 import evil.devil.entity.User;
 
+
+import com.alibaba.fastjson.JSON;
+
 /**
  * Servlet implementation class DoctorSelect
  */
@@ -49,6 +52,11 @@ public class DoctorSelect extends HttpServlet {
 		List<Department> Departments=null;
 		Alldoctors=new DoctorMapperImpl().selectAll();
 		Departments=new DepartmentMapperImpl().selectAll();
+		if ("charset".equals(request.getParameter("key"))) {
+			String message=JSON.toJSON(Departments).toString();
+			response.getWriter().append(message);
+		}
+		
 		
 		if (request.getParameter("key")==null) {
 		
