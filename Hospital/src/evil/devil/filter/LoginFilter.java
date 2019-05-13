@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/jsp/login.jsp")
+@WebFilter("/jsp/index.jsp")
 public class LoginFilter implements Filter {
 
     /**
@@ -37,18 +37,18 @@ public class LoginFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpServletRequest req=(HttpServletRequest) request;
-		if(req.getParameter("username")!=null) {
-			chain.doFilter(request, response);
-		}
-		else {
-			if(req.getSession().getAttribute("user")==null&&req.getSession().getAttribute("admin")==null) {
+//		if(req.getParameter("username")!=null) {
+//			chain.doFilter(request, response);
+//		}
+//		else {
+			if(req.getSession().getAttribute("user")==null) {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 			// pass the request along the filter chain
 			else {
 				chain.doFilter(request, response);
 			}
-		}
+		//}
 		
 	}
 

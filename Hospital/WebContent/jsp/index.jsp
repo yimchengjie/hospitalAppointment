@@ -33,7 +33,7 @@
 	 <script src="../js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
         	//再次预约时，在选取部门后用来选取再次预约的医生
-           function changedoctor(doctor){
+        	function changedoctor(doctor){
         	   $("#country2").children().each(function(i,n){
         		     var obj = $(n);
         		     if($.trim(obj.html()) == $.trim(doctor))
@@ -73,6 +73,12 @@
             
           //绑定事件
         	$(function() {
+        		$("#passwordsee").click(function(){
+        			if($("#pwd").attr("type")=="text")
+        					$("#pwd").attr("type","password");
+        			else if($("#pwd").attr("type")=="password")
+        					$("#pwd").attr("type","text");
+        		})
         		$("#topay").click(function(){
         			if($("#country1").val()=="0"){
 						alert("请选择预约的科室")
@@ -115,14 +121,15 @@
                     var doctors=${sessionScope.doctors};
                     doctors.forEach(function(doctor) {
                         if(doctor.departmentId==$("#country1").val()){
-                        	$("#doctor_type").val(doctor.type);
-                        	$("#doctor_price").val(doctor.price);
                         	$("#country2").append("<option value='"+doctor.id+"'>"+doctor.name+"</option>");   
+
+                        	//$("#doctor_type").val(doctor.type);
+                        	//$("#doctor_price").val(doctor.price);
                         }
                      })
                      if($("#country2").val()=="0")
                      	$(".time").hide();
-                });
+               	 });
                 
              	   var doctor="${param.doctor}";
              	   var department="${param.department}";
@@ -200,6 +207,13 @@
 					$("#time option:first").prop("selected", 'selected'); 
                     if($("#country2").val()=="0")
                     	$(".time").hide();
+                    var doctors=${sessionScope.doctors};
+                    doctors.forEach(function(doctor) {
+                        if(doctor.id==$("#country2").val()){
+                        	$("#doctor_type").val(doctor.type);
+                        	$("#doctor_price").val(doctor.price);
+                        }
+                     })
                 	datetime();
                 })
                 //日期选定后在医生选定的条件下显示预约时间段
@@ -361,32 +375,32 @@
         							json.gender = $("[name=gender]:checked").val();
         							json.idcard = $("#idcard").val();
         							json.tel = $("#Ptel").val();
-        							/*		var username = $(".modal-body input").eq(0).attr("value");
-        									var userpwd = $(".modal-body input").eq(1).attr("value");
-        									var idcard = $(".modal-body input").eq(4).attr("value");
-        									var phone = $(".modal-body input").eq(5).attr("value");
-        									var id = $(".modal-body input").eq(6).attr("value");//得到id*/
-        							$.ajax({
-        										type : "post",
-        										url : "update",
-        										data : json,
-        										dataType : "text",
-        										contentType : "application/x-www-form-urlencoded; charset=utf-8",
-        										success : function(data) {
-        											if (data == "success") {
-        												alert("修改成功");
-        											} else if (data == "erroridcard") {
-        												alert("修改失败,该身份证号存在");
-        											} else if (data == "errortel") {
-        												alert("修改失败,该手机号存在");
-        											}
-        											window.location = "index.jsp";
-        										},
-        										error : function() {
-        											alert("无法连接服务器");
-        										}
-        									});
-
+        							if(json.username=="${user.name}" && json.userpwd==${user.password} && json.gender=="${user.gender}" && json.idcard==${user.idcard} && json.tel==${user.tel})
+        							{
+        								window.location = "index.jsp";
+        							}
+        							else{
+        								$.ajax({
+    										type : "post",
+    										url : "update",
+    										data : json,
+    										dataType : "text",
+    										contentType : "application/x-www-form-urlencoded; charset=utf-8",
+    										success : function(data) {
+    											if (data == "success") {
+    												alert("修改成功");
+    											} else if (data == "erroridcard") {
+    												alert("修改失败,该身份证号存在");
+    											} else if (data == "errortel") {
+    												alert("修改失败,该手机号存在");
+    											}
+    											window.location = "index.jsp";
+    										},
+    										error : function() {
+    											alert("无法连接服务器");
+    										}
+    									});
+        							}
         						})
 
         	
@@ -567,9 +581,9 @@
 							</div>
 							<div class="span1_of_1 section_room">
 								<!-- start_section_room --> 
+								<input type="hidden" id="doctor_type" />
+								<input type="hidden" id="doctor_price" />
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-								<input style="display:none" id="doctor_type" />
-								<input style="display:none" id="doctor_price" />
 								<select  id="country2" class="frm-field sect" required name="qqq">
 									<option id="" value="0">请选择医生</option>
 								</select> 
@@ -877,8 +891,9 @@
 								<div class="form-group" style="height: 40px;">
 									<label class="control-label">密码:</label>
 									<div style="display: inline;">
-										<input style="display: inline; width: 150px;" type="text"
+										<input style="display: inline; width: 150px;" type="password"
 											class="form-control" id="pwd" value="${user.password}">
+											<span class="glyphicon glyphicon-eye-open" id="passwordsee"></span>
 									</div>
 								</div>
 		
@@ -1023,14 +1038,14 @@
 									<label for="message-text" class="control-label ">支付方式:</label>
 									<div style="display: inline;">
 										<label class="radio-inline"> <input type="radio"
-											name="paytype" id="inlineRadio1" value="1" checked="checked"  >
+											name="paytype"  value="1" checked="checked"  >
 											支付宝
 										</label> 
 										<label class="radio-inline"> <input type="radio"
-											name="paytype" id="inlineRadio2" value="2"   > 微信
+											name="paytype"  value="2"   > 微信
 										</label>
 										 <label class="radio-inline"> <input type="radio"
-											name="paytype" id="inlineRadio2" value="3"   > 银联
+											name="paytype"  value="3"   > 银联
 										</label>
 									</div>
 								</div>

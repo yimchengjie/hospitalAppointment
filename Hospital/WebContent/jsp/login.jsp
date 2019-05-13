@@ -84,6 +84,7 @@
 				
 			$("#login").click(function(){
 				//提交登录表单
+				//$(".loading").css("display","block");
 				var json={
 					username:$("#inputName").val(),
 					password:$("#inputPassword3").val(),
@@ -95,7 +96,6 @@
 				//输入为空不提交
 				if(json.username==""||json.password==""||flagname==false)
 					return;
-				alert("1");
 				$.ajax({
 					type: "post",
 					url: "login",
@@ -103,9 +103,8 @@
 					dataType: 'text', 
 					contentType: "application/x-www-form-urlencoded; charset=utf-8",
 					success: function(data) {
-						alert("2");
+						//$(".loading").css("display","none");
 						if(data=="success"){
-							alert("登录成功");
 							if(json.type=="user")
 							window.location = "index.jsp";
 							else if(json.type=="admin")
@@ -116,7 +115,6 @@
 						}
 					},
 					error: function() {
-						alert("3");
 						alert("无法连接服务器");
 					}
 				});
@@ -126,7 +124,8 @@
 <title>登陆</title>
 </head>
 <body>
-	<div class="container-fluid"  id="main">
+	<!-- <div class="loading" style="color:red;position:absolute;left:40%;top:30%;display:none;"  ><h1>正在登录，请稍等……</h1></div> -->
+	<div class="container-fluid"  id="main" >
 		<div class="container-fluid  col-sm-12" style="height: 60px;"></div>
 		<div class="container-fluid  col-sm-4 col-md-offset-2 page-header" style="color: white;">
 			<div class="container-fluid  col-sm-12" style="height: 120px;"></div>
