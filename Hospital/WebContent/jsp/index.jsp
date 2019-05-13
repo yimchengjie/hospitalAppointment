@@ -133,6 +133,7 @@
                 
              	   var doctor="${param.doctor}";
              	   var department="${param.department}";
+             	  var price="${param.price}";
              	   if(department!=""){
              		    $("#country1").children().each(function(i,n){
              		     var obj = $(n);
@@ -144,6 +145,8 @@
    					 $("#country1").change();
    					 
    						changedoctor(doctor); 
+   					$("#doctor_price").val(price);
+   					$("#doctor_type").val(price=="100"?"专家":"医师");
              	   }
     		     //再次预约
         		$("[name=reserveAgin]").click(function(){
@@ -158,7 +161,7 @@
          				contentType: "application/x-www-form-urlencoded; charset=utf-8",
          				success: function(data) {
          					var json=eval(data);
-         					window.location = "index.jsp?department="+json[0]+"&doctor="+json[1];
+         					window.location = "index.jsp?department="+json[0]+"&doctor="+json[1]+"&price="+json[2];
          					   
          				},
          				error: function() {

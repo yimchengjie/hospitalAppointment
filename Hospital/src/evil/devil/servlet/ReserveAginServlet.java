@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.Doc;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+
+import evil.devil.dao.DoctorMapper;
+import evil.devil.dao.impl.DoctorMapperImpl;
+import evil.devil.entity.Doctor;
 
 /**
  * Servlet implementation class ResrveAginServlet
@@ -47,6 +52,12 @@ public class ReserveAginServlet extends HttpServlet {
 		//将信息存入list转换成json格式传回ajax
 		list.add(department);
 		list.add(doctor);
+		DoctorMapper mapper=new DoctorMapperImpl();
+		List<Doctor> doctors=mapper.selectAll();
+		for (Doctor doctor2 : doctors) {
+			if(doctor2.getName().equals(doctor))
+				list.add(doctor2.getPrice().toString());
+		}
 		response.setHeader("content-type","text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String message=JSON.toJSON(list).toString();

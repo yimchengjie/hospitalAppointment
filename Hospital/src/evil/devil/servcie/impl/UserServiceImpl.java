@@ -48,12 +48,18 @@ public class UserServiceImpl implements UserService {
 	int ifUser(String idcard ,Long tel,Integer id) {
 		UserMapper userMapper=new UserMapperImpl();
 		List<User> users=userMapper.selectAll();
+		System.out.println(id);
+		System.out.println(tel);
+		System.out.println(idcard);
 		for (User user : users) {
-			if(user.getId()!=id) {
-			if(user.getIdcard().equals(idcard))
-				return -1;
-			if(user.getTel().equals(tel))
-				return -2;
+			if(user.getIdcard().equals(idcard)||user.getTel().equals(tel)) {
+				if(user.getId()!=id) {
+					if(user.getIdcard().equals(idcard))
+						return -1;
+					if(user.getTel().equals(tel))
+						return -2;
+				}
+					
 			}
 		}
 		return 0;

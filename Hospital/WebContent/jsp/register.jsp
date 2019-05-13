@@ -325,7 +325,7 @@
 										</div>
 										<input type="text"  id="idcard" class="form-control" placeholder="请输入身份证">
 									</div>
-									<div style="margin-left:10px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="男" data-off-label="女" /></div>
+									<div style="margin-left: 230px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="男" data-off-label="女" /></div>
 
 									<!--<div style="margin-left: 150px;"><input type="radio" >管理员  <input type="radio" >用户	</div>-->
 

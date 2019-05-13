@@ -1,5 +1,12 @@
 //绑定事件
         	$(function() {
+        		//密码可见
+        		$("#passwordsee").click(function(){
+        			if($("#pwd").attr("type")=="text")
+        					$("#pwd").attr("type","password");
+        			else if($("#pwd").attr("type")=="password")
+        					$("#pwd").attr("type","text");
+        		})
     		     //再次预约
         		$("[name=reserveAgin]").click(function(){
         			var json={};
@@ -13,7 +20,7 @@
          				contentType: "application/x-www-form-urlencoded; charset=utf-8",
          				success: function(data) {
          					var json=eval(data);
-         					window.location = "index.jsp?department="+json[0]+"&doctor="+json[1];
+         					window.location = "index.jsp?department="+json[0]+"&doctor="+json[1]+"&price="+json[2];
          					
          				},
          				error: function() {

@@ -58,8 +58,7 @@
 					$(".modal-body input").eq(1).attr("value", userpwd);
 					$(".modal-body input").eq(4).attr("value", idcard);
 					$(".modal-body input").eq(5).attr("value", phone);
-					$(".modal-body input").eq(6).attr("value", age);
-					$(".modal-body input").eq(7).attr("value", id);
+					$(".modal-body input").eq(6).attr("value", id);
 					if (gender == "女") {
 						$(".modal-body input").eq(3).attr("checked", true);
 					}
@@ -182,29 +181,16 @@
 				.click(
 						function() { //直接传递到后台，返回是刷新的
 							var json = {};
-							json.id = $(".modal-body input").eq(6)
-									.attr("value");
-							json.username = $(".modal-body input").eq(0).attr(
-									"value");
-							json.userpwd = $(".modal-body input").eq(1).attr(
-									"value");
-							json.gender = $(".modal-body [name=gender]:checked")
-									.val();
-							json.idcard = $(".modal-body input").eq(4).attr(
-									"value");
-							json.tel = $(".modal-body input").eq(5).attr(
-									"value");
-
-							/*		var username = $(".modal-body input").eq(0).attr("value");
-									var userpwd = $(".modal-body input").eq(1).attr("value");
-									var idcard = $(".modal-body input").eq(4).attr("value");
-									var phone = $(".modal-body input").eq(5).attr("value");
-									var id = $(".modal-body input").eq(6).attr("value");//得到id*/
-
+							json.id = $(".modal-body input").eq(6).attr("value");
+							json.username=$("#name").val();
+							json.userpwd=$("#pwd").val();	
+							json.tel=$("#tel").val();	
+							json.idcard=$("#idcard").val();	
+							json.gender=$(".modal-body [name=gender]:checked").val();
 							$
 									.ajax({
 										type : "post",
-										url : "register",
+										url : "update",
 										data : json,
 										dataType : "text",
 										contentType : "application/x-www-form-urlencoded; charset=utf-8",

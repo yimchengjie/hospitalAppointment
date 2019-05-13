@@ -323,8 +323,9 @@
 								<div class="form-group" style="height: 40px;">
 									<label class="control-label">密码:</label>
 									<div style="display: inline;">
-										<input style="display: inline; width: 150px;" type="text"
+										<input style="display: inline; width: 150px;" type="password"
 											class="form-control" id="pwd" value="${user.password}">
+											<span class="glyphicon glyphicon-eye-open" id="passwordsee"></span>
 									</div>
 								</div>
 		
