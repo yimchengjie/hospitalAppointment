@@ -50,6 +50,8 @@ public class DoctorSelect extends HttpServlet {
 		Alldoctors=new DoctorMapperImpl().selectAll();
 		Departments=new DepartmentMapperImpl().selectAll();
 		
+		if (request.getParameter("key")==null) {
+		
 		if (request.getParameter("departid")!=null) {
 			int departid=Integer.parseInt(request.getParameter("departid")) ;
 			if (departid!=0) {
@@ -87,6 +89,11 @@ public class DoctorSelect extends HttpServlet {
 			request.setAttribute("doctorList", Alldoctors);
 				request.getRequestDispatcher("doctorManegement.jsp").forward(request, response);
 			}
+		
+		}
+		else {
+			request.getSession().setAttribute("departments", Departments);
+		}
 			
 		
 	}

@@ -194,12 +194,11 @@
 								</ul>
 								</div>
 
-
-
 							<div class="col-md-10" >
 							<div class="row">
 							<c:forEach items="${doctorList}" var="doctor" varStatus="loop" >
-								<div class="card " style="width: 16rem;border: none;margin-left: 25px;margin-rght: 25px;">
+							<a href="doctorDetailManegement.jsp?id=${doctor.id}"  target="_blank" style="text-decoration:none;">
+								<div class="card " style="width: 16rem;border: none;margin-left: 35px;margin-rght: 15px;">
 									<div class="card-header" style="padding: 0;"><img src="../doctor/${doctor.photo}" style="width: 15.9rem; height: 320px;"/></div>
 							  <div class="card-body" style="margin-top: -20px;">
 							  		<div >
@@ -213,8 +212,19 @@
 											</c:forEach>
 											</div>
 							 	 </div>
-									</div>
+									</div></a>
 									</c:forEach>
+									
+									<a href="addDoctor.jsp"  target="_blank" style="text-decoration:none;">
+									<div class="card" style="width: 16rem;border: none;margin-left: 25px;margin-rght: 25px;">
+									<div class="card-header" style="padding: 0;"><img src="../doctor/Error.jpg" style="width: 15.9rem; height: 320px;"/></div>
+							  		<div class="card-body" style="margin-top: -20px;">
+							    		添加医生<br/><br/><br/>
+							 	 		</div>
+									</div>
+									</a>
+									
+									
 										</div>						
 								
 								

@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="evil.devil.dao.impl.*"%>
 <%@ page import="java.util.*"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,6 @@
 	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		var photochange=false;
 		//判断姓名是否符合格式
 		var flagname = false;
@@ -56,37 +56,16 @@
 	
 		
 
+		var flagname = false;
+		//判断密码是否符合格式
+		var flagcolleage = false;
+		//判断身份证是否符合格式
+		var flagprice = false;	
 		
-	/*	$("a[id$='doctor']").click(function() {
-			var editoradd=$(this).attr("id");
-			 var json={};
-				json.doctorname=$("#name").val();
-				json.tel=$("#tel").val();
-				json.colleage=$("#colleage").val();
-				json.gender=$("#gender").find(':selected').text();
-				json.depart=$("#depart").find(':selected').val();
-				json.type=$("#type").val();
-				json.price=$("#price").val();
-				json.realurl=realurl;
-				json.editoradd=editoradd;
-			$.ajax({
-				type : "post",
-				url : "DoctorEditAdd",
-				async : true, //异步
-				data : json,
-				dataType : "text",
-				success : function(data) {
-					alert(data);
-				}
-			});
-		})*/
-		
-		
-		$("[id='updatedoctor']").click(function() {
+		$("#adddoctor").click(function() {
 			if(flagname&&flagcolleage&&flagprice){
 			var editoradd=$(this).attr("id");
 			var formData = new FormData();
-			formData.append('id', $('.container').attr("name"));
 			formData.append('photo', $('#photo')[0].files[0]);
 			formData.append('name', $('#name').val());
 			formData.append('gender', $("#gender").find(':selected').text());
@@ -108,25 +87,10 @@
 					alert(data);
 				}
 			});}
-		else{alert("请正确填写必要信息");}
-		})
-		
-		
-		
-		
-			$("[id='deletedoctor']").click(function() {
-			var json = {};
-			json.id= $('.container').attr("name");
-			$.ajax({
-				type : "post",
-				url : "DoctorDelete",
-				async : true, //异步
-				data: json,
-				dataType : "text",
-				success : function(data) {
-					alert(data);
-				}
-			});
+			else{alert("请正确填写必要信息");}
+			
+			
+			
 		})
 		
 		
@@ -222,24 +186,11 @@
 				$(this).addClass("is-valid");
 		})
 		
-		
-	/*	$('#depart').on("change",function() {			
-			if($(this).find(':selected').val()=="0"){
-				$(this).removeClass("is-valid");
-				$(this).addClass("is-invalid");
-			}
-			if($(this).find(':selected').val()!="0"){
-				$(this).removeClass("is-invalid");
-				$(this).addClass("is-valid");
-			}
-			
-		})*/
+
 		
 		
 		
 			$(document).ready(function(){
-				var departid=$('body').attr("id");
-				$("#depart>option:eq("+departid+")").attr("selected","");
 				$.ajax({
 					type : "post",
 					url : "DoctorSelect",
@@ -250,7 +201,6 @@
 					}
 				});
 				
-				
 			})
 		
 	})
@@ -259,7 +209,7 @@
 
 
 <meta charset="UTF-8">
-<title>医生修改</title>
+<title>医生添加</title>
 
 <style type="text/css">
 .my {
@@ -269,15 +219,9 @@
 </style>
 
 </head>
-<%
+<body class="bg-gradient-primary" >
 
-Doctor doctor =new Doctor(0, "", "", 0, "", Long.parseLong("0"), "", 0);
-if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
-	doctor = new DoctorMapperImpl().selectByPrimaryKey(Integer.parseInt(request.getParameter("id")));}
-%>
-<body class="bg-gradient-primary" id="<%=doctor.getDepartmentId()%>">
-
-	<div class="container" name="<%=doctor.getId()%>">
+	<div class="container" >
 
 
 		<div class="card o-hidden border-0 shadow-lg my-5">
@@ -285,23 +229,23 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 				<!-- Nested Row within Card Body -->
 				<div class="row">
 					<div class="col-lg-5 d-none d-lg-block ">
-						<img src="../doctor/<%=doctor.getPhoto()%>" height="620px" alt="点击上传图片" onerror="javascript:this.src='../doctor/Error.jpg';"/> 
+						<img src="../doctor/Error.jpg" height="620px" alt="点击上传图片" /> 
 						<input id="photo" type="file" style="display:none;">
 					</div>
 					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">修改医生ID<%=request.getParameter("id")%></h1>
+								<h1 class="h4 text-gray-900 mb-4">添加医生</h1>
 							</div>
 							<form class="user">
 								<div class="form-group row">
 									<div class="col-sm-7 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user "
-											id="name" placeholder="请输入医生姓名" value='<%=doctor.getName()%>'>
+											id="name" placeholder="请输入医生姓名" >
 
 										<br /> <input type="text"
 											class="form-control form-control-user" id="type"
-											placeholder="请输入医生类型" value='<%=doctor.getType()%>'>
+											placeholder="请输入医生类型" >
 									</div>
 									<div class="col-sm-4 ml-auto">
 
@@ -313,19 +257,8 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 											</c:forEach>
 										</select> <select class="form-control my" id="gender">
 											<option selected disabled value="0">请选择性别</option>
-											<%
-												if ("男".equals(doctor.getGender())) {
-											%>
-											<option selected="selected" value="男">男</option>
+											<option  value="男">男</option>
 											<option value="女">女</option>
-											<%
-												} else if ("女".equals(doctor.getGender())) {
-											%>
-											<option value="男">男</option>
-											<option value="女" selected="selected">女</option>
-											<%
-												}
-											%>
 										</select>
 									</div>
 								</div>
@@ -338,24 +271,24 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 								<div class="form-group">
 
 									<input type="text" class="form-control form-control-user"
-										id="tel" placeholder="请输入电话" value='<%=doctor.getTel()%>'>
+										id="tel" placeholder="请输入电话">
 								</div>
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user"
 											id="colleage" placeholder="请输入毕业院校"
-											value='<%=doctor.getColleage()%>'>
+											>
 									</div>
 									<div class="col-sm-6">
 										<input type="text" class="form-control form-control-user"
-											id="price" value='<%=doctor.getPrice()%>'
+											id="price" 
 											placeholder="请输入门诊价格">
 									</div>
 								</div>
 								<hr>
-									<button  id="updatedoctor" class="btn btn-warning btn-user btn-block">修改医生 </button>
-									<a id="deletedoctor" class="btn btn-primary btn-user btn-block">删除医生 </a> 
+									<button  id="adddoctor" class="btn btn-warning btn-user btn-block">添加医生 </button>
+									<a href="DoctorSelect" class="btn btn-primary btn-user btn-block">返回查看所有医生 </a> 
 									
 							</form>
 							<hr>
@@ -363,7 +296,7 @@ if(!"".equals(request.getParameter("id"))&&request.getParameter("id")!=null){
 								<a class="small" href="DoctorSelect">查看所有医生</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="addDoctor.jsp">添加医生</a>
+								<a class="small" href="addDocor.jsp">添加医生</a>
 							</div>
 						</div>
 					</div>
