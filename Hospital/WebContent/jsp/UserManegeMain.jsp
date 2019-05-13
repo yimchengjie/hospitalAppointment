@@ -299,7 +299,7 @@
 						<div class="bg-white py-2 collapse-inner rounded">
 							<h6 class="collapse-header">操作</h6>
 							<a class="collapse-item" href="">修改密码</a> 
-							<a class="collapse-item" href="">退出登陆</a>
+							<a class="collapse-item" href="logout">退出登陆</a>
 						</div>
 					</div>
 			</li>
@@ -400,6 +400,7 @@
 							<div class="container-fluid " align="right">
 								<select class="form-control" id="way" style="width: 150px;">
 									<option value="all">查找所有</option>
+									<option value="id">根据id查找</option>
 									<option value="name">根据姓名查找</option>
 									<option value="gender">根据性别查找</option>
 									<option value="idcard">根据身份证号查找</option>

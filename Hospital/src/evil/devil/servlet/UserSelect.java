@@ -1,6 +1,7 @@
 package evil.devil.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -48,6 +49,10 @@ public class UserSelect extends HttpServlet {
 		String way=request.getParameter("way")==null?"all":request.getParameter("way");//如果传进来的way是空就是all
 		if (way.equals("all")) {
 			allUsers =new UserMapperImpl().selectAll();
+		}
+		else if (way.equals("id")) {
+			allUsers =new ArrayList<User>();
+			allUsers.add(new UserMapperImpl().selectByPrimaryKey(Integer.parseInt(selectmsg)));
 		}
 		else if (way.equals("name")) {//第二次来还是要传入way
 			allUsers =new UserMapperImpl().getSelectByName(selectmsg);
