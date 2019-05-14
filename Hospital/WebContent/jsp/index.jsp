@@ -129,7 +129,7 @@
                      })
                      if($("#country2").val()=="0")
                      	$(".time").hide();
-               	 });
+               	 })
                 
              	   var doctor="${param.doctor}";
              	   var department="${param.department}";
@@ -403,11 +403,9 @@
     											alert("无法连接服务器");
     										}
     									});
-        							})
-
-        	
+        							}
         						})
-        	}
+        	})
 </script>
 
 </head>
