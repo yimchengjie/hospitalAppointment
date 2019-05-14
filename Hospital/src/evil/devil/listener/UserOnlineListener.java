@@ -37,7 +37,6 @@ public class UserOnlineListener implements HttpSessionBindingListener {
 		User user=userMapper.selectByPrimaryKey(id);
 		user.setType(0);
 		userService.Update(user);
-
 	}
 	
 }

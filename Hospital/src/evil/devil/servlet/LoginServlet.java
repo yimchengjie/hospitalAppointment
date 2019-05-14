@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,11 +58,20 @@ public class LoginServlet extends HttpServlet {
 			UserService userService=new UserServiceImpl();
 			User user=userService.Login(Long.parseLong(username), password);
 			if(user!=null) {
-				request.getSession().setAttribute("user", user );
-				UserOnlineListener userOnlineListener=new UserOnlineListener();
-				userOnlineListener.setId(user.getId());
-				request.getSession().setAttribute("LonginType", userOnlineListener );
-				response.getWriter().append("success");
+				if(user.getType()==1) {
+					user.setType(0);
+					userService.Update(user);
+					response.getWriter().append("stateerror");
+				}
+				else {
+					//把user存入session
+					request.getSession().setAttribute("user", user );
+					//用户登录状态监听
+					UserOnlineListener userOnlineListener=new UserOnlineListener();
+					userOnlineListener.setId(user.getId());
+					request.getSession().setAttribute("LoginType", userOnlineListener );
+					response.getWriter().append("success");
+				}
 			}
 			else {
 				response.getWriter().append("error");

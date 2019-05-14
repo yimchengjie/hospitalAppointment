@@ -92,6 +92,11 @@
 						}
 						else if(data=="error"){
 							alert("登录失败,用户名或密码错误");	
+							window.location = "login.jsp";
+						}
+						else if(data=="stateerror"){
+							alert("登录失败,该用户已登录！已强制注销！");	
+							window.location = "login.jsp";
 						}
 					},
 					error: function() {

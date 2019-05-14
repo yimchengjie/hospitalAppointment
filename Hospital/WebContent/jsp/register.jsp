@@ -291,7 +291,7 @@
 						                      <i class="now-ui-icons users_single-02"></i>
 						                    </span>
 										</div>
-										<input type="text" id="tel" class="form-control" placeholder="请输入手机号">
+										<input type="text" id="tel" class="form-control" placeholder="请输入手机号(11位数字)">
 									</div>
 									<div class="input-group no-border input-lg ">
 										<div class="input-group-prepend">
@@ -299,7 +299,7 @@
 						                      <i class="now-ui-icons users_single-02"></i>
 						                    </span>
 										</div>
-										<input  type="text" id="username" class="form-control" placeholder="请输入姓名">
+										<input  type="text" id="username" class="form-control" placeholder="请输入姓名(2-4个字)">
 									</div>
 									<div class="input-group no-border input-lg">
 										<div class="input-group-prepend">
@@ -307,7 +307,7 @@
 						                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
 						                    </span>
 										</div>
-										<input type="password" id="password"  placeholder="请输入密码" class="form-control form-control-danger" />
+										<input type="password" id="password"  placeholder="请输入密码(4-10位数字或字母)" class="form-control form-control-danger" />
 									</div>
 									<div class="input-group no-border input-lg">
 										<div class="input-group-prepend">
@@ -315,7 +315,7 @@
 						                      <i class="now-ui-icons ui-1_lock-circle-open"></i>
 						                    </span>
 										</div>
-										<input type="password"  id="password2" placeholder="请确认密码" class="form-control form-control-success" />
+										<input type="password"  id="password2" placeholder="请确认密码(4-10位数字或字母)" class="form-control form-control-success" />
 									</div>
 									<div class="input-group no-border input-lg">
 										<div class="input-group-prepend">
@@ -323,7 +323,7 @@
 						                      <i class="now-ui-icons users_single-02"></i>
 						                    </span>
 										</div>
-										<input type="text"  id="idcard" class="form-control" placeholder="请输入身份证">
+										<input type="text"  id="idcard" class="form-control" placeholder="请输入身份证(11位或者9位)">
 									</div>
 									<div style="margin-left: 230px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="男" data-off-label="女" /></div>
 
