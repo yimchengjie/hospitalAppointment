@@ -11,26 +11,29 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class AdminFilter
  */
-
 @WebFilter(
-		urlPatterns = { "/jsp/index.jsp",
-				"/jsp/contact.jsp",
-				"/jsp/doctorDepartment.jsp", 
-				"/jsp/gallery.jsp" ,
+		urlPatterns = { "/jsp/accountManegeMain.jsp",
+				"/jsp/departManegeMain.jsp",
+				"/jsp/doctorDetailManegement.jsp", 
+				"/jsp/doctorManegement.jsp" ,
 				"/jsp/UserManegeMain.jsp",
-				"/jsp/services.jsp",
-				"/jsp/about.jsp", 
-				"/jsp/contact.jsp" 
+				"/jsp/addDoctor.jsp",
+				"/jsp/DepartSelect",
+				"/jsp/AccountSelect",
+				"/jsp/DoctorEditAdd",
+				"/jsp/DoctorSelect",
+				"/jsp/UserSelect",
+				"/jsp/UserShow"
 		}  
 		)
-public class LoginFilter implements Filter {
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public LoginFilter() {
+    public AdminFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,27 +48,17 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 		HttpServletRequest req=(HttpServletRequest) request;
-//		if(req.getParameter("username")!=null) {
-//			chain.doFilter(request, response);
-//		}
-//		else {
-			if(req.getSession().getAttribute("user")==null) {
+		System.out.println("hahahh");
+			if(req.getSession().getAttribute("admin")==null) {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
-			// pass the request along the filter chain
 			else {
 				chain.doFilter(request, response);
 			}
-		//}
-		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
+	
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}
