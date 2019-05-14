@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script
 	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	 <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script type="text/javascript" src="../js/echarts-all.js"></script>
 </head>
 <body>
 <body id="page-top">
@@ -36,7 +37,7 @@
 				</div>
 			</a>
 
-				<li class="nav-item"><a class="nav-link" href=""
+			<li class="nav-item"><a class="nav-link" href=""
 				data-toggle="collapse" data-target="#ccc"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>管理员</span>
 			</a>
@@ -55,13 +56,12 @@
 			<div class="sidebar-heading">User&Account</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item "><a class="nav-link collapsed" href="UserSelect"
-				> <i
-					class="fas fa-fw fa-cog"></i> <span>用户管理</span>
+			<li class="nav-item "><a class="nav-link collapsed"
+				href="UserSelect"> <i class="fas fa-fw fa-cog"></i> <span>用户管理</span>
 			</a></li>
 
-			<li class="nav-item"><a class="nav-link collapsed" href="AccountSelect"> <i
-					class="fas fa-fw fa-wrench"></i> <span>账单管理</span>
+			<li class="nav-item"><a class="nav-link collapsed"
+				href="AccountSelect"> <i class="fas fa-fw fa-wrench"></i> <span>账单管理</span>
 			</a></li>
 
 			<hr class="sidebar-divider">
@@ -70,9 +70,10 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item  active"><a class="nav-link collapsed"
-				href="DepartSelect" data-toggle="collapse" data-target="#collapsePages"
-				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>科室管理</span>
+				href="DepartSelect" data-toggle="collapse"
+				data-target="#collapsePages" aria-expanded="true"
+				aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i>
+					<span>科室管理</span>
 			</a></li>
 
 			<!-- Nav Item - Charts -->
@@ -128,11 +129,12 @@
 
 					<p class="mb-4"></p>
 					<!-- DataTales Example -->
-						    <div id="main" style="width:500px;height: 400px"></div>
-						
-						
+					<div id="main" style="width: 500px; height: 400px"></div>
+					<div id="main2" style="width: 500px; height: 400px"></div>
 
-					
+
+
+
 
 
 				</div>
@@ -145,10 +147,11 @@
 
 <script src="../js/sb-admin-2.min.js"></script>
 
- <script type="text/javascript">        
+<script type="text/javascript">     
         	 // 基于准备好的dom，初始化echarts图表
              var myChart = echarts.init(document.getElementById('main')); 
-          	
+             var myChart2 = echarts.init(document.getElementById('main2')); 
+
             var hello=[];
             $.ajax({
             	type:"post",
@@ -159,7 +162,7 @@
    			    	if(result){
    			    		var obj = eval(result);
    		                console.info(obj);
-   		                
+   		               // alert(obj);
    			    		for(var i=0;i<result.length;i++){      
    			    			depart=new Object();
    			    			depart.value=result[i].doctorNum;
@@ -168,9 +171,6 @@
    	                    }
    			    		var names=[];
    			    		hello.forEach(function(v){ names.push(v.name);});
-   			    		
-   			    		
-   			    		
    	                    myChart.setOption({   
    		                    title: {
    			                    text: '科室医生分布图',
@@ -205,6 +205,94 @@
 						        }
 						    ]
    	                    });
+   			    	}  			    	
+   			    }
+            });
+            
+            
+            
+            
+            
+            
+            $.ajax({
+            	type:"post",
+            	data: "",
+   			    url:"Ecahrts",
+   			    dataType:"json",
+   			    success:function(result){
+   			    	if(result){
+   			    		var names=[];
+   			    		var earning=[];
+   			    		var yMax = 500;
+   			    		var dataShadow = [];
+
+   			    		var obj = eval(result);
+   			    		$.each(obj, function (key, value) {
+   			    		 names.push(key);
+   			    		earning.push(value);
+   			    		});
+
+   			    		for (var i = 0; i < names.length; i++) {
+   			    		    dataShadow.push(yMax);
+   			    		}
+   			    		
+   			    		myChart2.setOption({   
+    	   		                    title: {
+    	   			                    text: '科室收入分部',
+    	   								x: 'center',
+    	   			                },  
+				   	   		    xAxis: {
+				   	   		        data: earning,
+				   	   		        axisLabel: {
+				   	   		            inside: true,
+				   	   		            textStyle: {
+				   	   		                color: '#fff'
+				   	   		            }
+				   	   		        },
+				   	   		        axisTick: {
+				   	   		            show: false
+				   	   		        },
+				   	   		        axisLine: {
+				   	   		            show: false
+				   	   		        },
+				   	   		        z: 10
+				   	   		    },
+				   	   		    yAxis: {
+				   	   		        axisLine: {
+				   	   		            show: false
+				   	   		        },
+				   	   		        axisTick: {
+				   	   		            show: false
+				   	   		        },
+				   	   		        axisLabel: {
+				   	   		            textStyle: {
+				   	   		                color: '#999'
+				   	   		            }
+				   	   		        }
+				   	   		    },
+				    	   		    series: [
+				    	   		        { // For shadow
+				    	   		            type: 'bar',
+				    	   		            itemStyle: {
+				    	   		                normal: {color: 'rgba(0,0,0,0.05)'},
+				    	   		            	emphasis: {color:'rgba(0,0,0,0.07)'},
+				    	   		            },
+				    	   		            barGap:'-100%',
+				    	   		            barCategoryGap:'40%',
+				    	   		            data: dataShadow,
+				    	   		            animation: false
+				    	   		        },
+				    	   		        {
+				    	   		            type: 'bar',
+				    	   		            itemStyle: {
+				    	   		                normal: {
+				    	   		                 color:'#2378f7', 
+				    	   		                },
+				    	   		            },
+				    	   		            data: earning
+				    	   		        }
+				    	   		    ]
+    	   	                    });
    			    	}  			    	
    			    }
             });

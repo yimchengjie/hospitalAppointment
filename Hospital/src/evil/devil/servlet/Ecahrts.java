@@ -1,7 +1,9 @@
 package evil.devil.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+
+import evil.devil.dao.impl.AccountMapperImpl;
 import evil.devil.dao.impl.DepartmentMapperImpl;
+import evil.devil.entity.Account;
 import evil.devil.entity.Department;
 import evil.devil.entity.Doctor;
 
@@ -31,13 +37,21 @@ public class Ecahrts extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		List<Department> Departments=new DepartmentMapperImpl().selectAll();//每个部门的收入
-		//部分的收入
-		//后台传两个list json到前台
-		
-		
-		
-		
-		
+		List<Account> Accounts=new AccountMapperImpl().selectAll();
+		Map<String,Integer> map=new HashMap<String,Integer>();
+	for (Department department : Departments) {
+		int id=department.getId();
+		int earning=0;
+		for (Account account : Accounts) {
+			if(account.getDoctorId()==id) {
+				earning+=account.getPrice();
+			}
+		}
+		map.put(department.getName(), earning);
+	}
+		String jsonmap=JSON.toJSONString(map);
+		System.out.println(jsonmap);
+		response.getWriter().append(jsonmap);
 	}
 
 }
