@@ -25,9 +25,7 @@
 	$(function() {
 
 		$("#select>[type=button]").click(function() {
-			alert("hello");
 			var way = $(this).attr("name");
-			alert(way);
 			$.ajax({
 				type : "post",
 				url : "DepartSelect",
@@ -43,7 +41,19 @@
 		})
 		
 		
-		
+		$("#add").click(function() {
+			var newname = $("#newname").val();
+			$.ajax({
+				type : "post",
+				url : "DepartAdd",
+				data : 'name=' + newname,
+				dataType : "text",
+				success : function(data) {
+					alert(data);
+				}
+
+			});
+		})
 		
 		
 		
@@ -118,9 +128,9 @@
 					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 
-			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i> <span>其他</span>
+	
+			<li class="nav-item"><a class="nav-link" href="ecahrts.jsp">
+					<i class="fas fa-fw fa-table"></i> <span>统计</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -184,8 +194,7 @@
 				
 
 							<%
-								HashMap<Department, List<Doctor>> ddMap = (HashMap<Department, List<Doctor>>) request.getSession()
-										.getAttribute("ddMap");
+								HashMap<Department, List<Doctor>> ddMap = (HashMap<Department, List<Doctor>>) request.getSession().getAttribute("ddMap");
 							%>
 							
 							<%
@@ -194,7 +203,7 @@
 								for (Map.Entry<Department, List<Doctor>> entry : ddMap.entrySet()) {
 							%>
 							<div class="col-lg-3 mb-4">
-								<div class="card shadow mb-4">
+								<div class="card shadow mb-4" style="height: 200px;width:280px;">
 									<div class="card-header py-3">
 										<h6 class="m-0 font-weight-bold text-primary"><%=entry.getKey().getName()%></h6>
 									</div>
@@ -215,14 +224,9 @@
 													if (i == 2) {
 												%>
 											</tr>
-											<tr>
 												<%
-													}
+													}}
 												%>
-												<%
-													}
-												%>
-											</tr>
 										</table>
 									</div>
 								</div>
@@ -230,7 +234,15 @@
 							<%
 								}}
 							%>
-
+							<div class="card shadow mb-4" style="height: 200px;width:280px;">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">添加科室</h6>
+									</div><br/>
+									<div class="card-body">
+									<input type="text" class="form-control bg-light border-2 small"  placeholder="请输入科室名"  style="margin-top:-18px;" id="newname"><br/>
+										<div align="right"><button type="button" class="btn btn-primary" id="add">确认添加</button></div>
+									</div>
+								</div>
 						</div>
 
 						<!--脚注 -->

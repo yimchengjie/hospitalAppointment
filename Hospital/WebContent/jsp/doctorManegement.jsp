@@ -115,12 +115,9 @@
 					</a>
 				</li>
 
-				<!-- Nav Item - Tables -->
-				<li class="nav-item">
-					<a class="nav-link" href="tables.html">
-						<i class="fas fa-fw fa-table"></i> <span>其他</span>
-					</a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href="ecahrts.jsp">
+					<i class="fas fa-fw fa-table"></i> <span>统计</span>
+			</a></li>
 
 				<!-- Divider -->
 				<hr class="sidebar-divider d-none d-md-block">

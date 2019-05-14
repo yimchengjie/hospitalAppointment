@@ -69,27 +69,23 @@
 			<div class="sidebar-heading">Doctor</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item  active"><a class="nav-link collapsed"
-				href="DepartSelect" data-toggle="collapse"
-				data-target="#collapsePages" aria-expanded="true"
-				aria-controls="collapsePages"> <i class="fas fa-fw fa-folder"></i>
+			<li class="nav-item  "><a class="nav-link collapsed"
+				href="DepartSelect" > <i class="fas fa-fw fa-folder"></i>
 					<span>科室管理</span>
 			</a></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="DoctorSelect">
+			<li class="nav-item "><a class="nav-link" href="DoctorSelect" >
 					<i class="fas fa-fw fa-chart-area"></i> <span>医生管理</span>
 			</a></li>
 
-			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="tables.html">
-					<i class="fas fa-fw fa-table"></i> <span>其他</span>
+
+			<li class="nav-item active"><a class="nav-link" href="tables.html" data-toggle="collapse"
+				data-target="#collapsePages" aria-expanded="true"
+				aria-controls="collapsePages">
+					<i class="fas fa-fw fa-table"></i> <span>统计</span>
 			</a></li>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider d-none d-md-block">
-
-			<!-- Sidebar Toggler (Sidebar) -->
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
@@ -129,9 +125,10 @@
 
 					<p class="mb-4"></p>
 					<!-- DataTales Example -->
-					<div id="main" style="width: 500px; height: 400px"></div>
-					<div id="main2" style="width: 500px; height: 400px"></div>
-
+					<div class="row">
+					<div id="main" style="width: 600px; height: 400px"></div>
+					<div id="main2" style="width: 600px; height: 400px"></div>
+</div>
 
 
 
@@ -242,13 +239,8 @@
     	   								x: 'center',
     	   			                },  
 				   	   		    xAxis: {
-				   	   		        data: earning,
-				   	   		        axisLabel: {
-				   	   		            inside: true,
-				   	   		            textStyle: {
-				   	   		                color: '#fff'
-				   	   		            }
-				   	   		        },
+				   	   		        data: names,
+				   	   		       
 				   	   		        axisTick: {
 				   	   		            show: false
 				   	   		        },
