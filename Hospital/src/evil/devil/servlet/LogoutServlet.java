@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import evil.devil.entity.User;
+import evil.devil.servcie.impl.UserServiceImpl;
+import evil.devil.service.UserService;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -36,7 +40,12 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//退出登录删除user在session存的值
+		User user=(User) request.getSession().getAttribute("user");
+		user.setType(0);
+		UserService userService=new UserServiceImpl();
+		userService.Update(user);
 		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("LonginType");
 		response.sendRedirect("login.jsp");
 	}
 

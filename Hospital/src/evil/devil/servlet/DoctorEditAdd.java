@@ -50,8 +50,6 @@ public class DoctorEditAdd extends HttpServlet {
 		ServletFileUpload fileUpdate = new ServletFileUpload(fileItemFactory);
 		/* String path=this.getServletContext().getRealPath("/test"); */
 		String path = "C:\\Users\\xieaichen\\git\\repository\\Hospital\\WebContent\\doctor";
-		System.out.println(this.getServletContext().getContextPath());
-		System.out.println(this.getServletContext().getRealPath("/test"));
 		String name = "", type = "", gender = "", colleage = "", editoradd = "";
 		String pathName = "";
 
@@ -68,10 +66,8 @@ public class DoctorEditAdd extends HttpServlet {
 					fileItem.getFieldName();// 字符串---转化成一个同名变量
 					if ("name".equals(fileItem.getFieldName())) {
 						name = fileItem.getString("utf-8");
-						System.out.println(name);
 					} else if ("id".equals(fileItem.getFieldName())) {
 						id = Integer.parseInt(fileItem.getString("utf-8"));
-						System.out.println(id);
 					} else if ("type".equals(fileItem.getFieldName())) {
 						type = fileItem.getString("utf-8");
 					} else if ("gender".equals(fileItem.getFieldName())) {
@@ -84,10 +80,8 @@ public class DoctorEditAdd extends HttpServlet {
 						editoradd = fileItem.getString("utf-8");
 					} else if ("price".equals(fileItem.getFieldName())) {
 						price = Integer.parseInt(fileItem.getString("utf-8"));
-						System.out.println(price);
 					} else if ("tel".equals(fileItem.getFieldName())) {
 						tel = Long.parseLong(fileItem.getString("utf-8"));
-						System.out.println(tel);
 					}
 
 				} else {
@@ -96,9 +90,7 @@ public class DoctorEditAdd extends HttpServlet {
 						continue;
 					}
 					pathName = fileName.substring(fileName.lastIndexOf("\\") + 1);
-					System.out.println(fileItem.getName());
 					String pic1 = path + "\\" + pathName;
-					System.out.println(pic1);// 存入的路径
 					fileItem.write(new File(path, pathName));
 					
 				}
@@ -113,7 +105,6 @@ public class DoctorEditAdd extends HttpServlet {
 		if (editoradd.equals("adddoctor")) {
 			Doctor doctor = new Doctor(name, gender, depart, colleage, tel, type, price);
 			doctor.setPhoto(pathName);
-			System.out.println(doctor);
 			flag = new DoctorMapperImpl().insert(doctor);
 			if (flag == 1) {
 				data = "操作成功";
@@ -121,7 +112,6 @@ public class DoctorEditAdd extends HttpServlet {
 		} else if (editoradd.equals("updatedoctor")) {
 			Doctor doctor = new Doctor(id, name, gender, depart, colleage, tel, type, price);
 			doctor.setPhoto(pathName);
-			System.out.println(doctor);
 			flag = new DoctorMapperImpl().updateByPrimaryKey(doctor);
 			if (flag == 1) {
 				data = "操作成功";

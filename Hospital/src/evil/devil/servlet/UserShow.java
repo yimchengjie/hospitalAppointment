@@ -38,7 +38,6 @@ public class UserShow extends HttpServlet {
 		String pageIndex=request.getParameter("pageIndex");//null
 		int currentPage=pageIndex==null?1:Integer.parseInt(pageIndex);
 		int count =new UserMapperImpl().getAllCount();//总数
-		System.out.println(count);
 		int totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
 			//List<Student> list= 传入一个当前页面和size
 			List<User> usersall=new UserMapperImpl().selectAll();

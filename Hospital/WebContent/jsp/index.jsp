@@ -403,15 +403,15 @@
     											alert("无法连接服务器");
     										}
     									});
-        							}
-        						})
+        							})
 
         	
-        	})
-        </script>
+        						})
+        	}
+</script>
 
 </head>
-<body>
+<body >
 <div class="banner-top">
 	<div class="banner-header">
 		<!--header-->

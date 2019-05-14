@@ -23,6 +23,7 @@ import evil.devil.entity.Admin;
 import evil.devil.entity.Department;
 import evil.devil.entity.Doctor;
 import evil.devil.entity.User;
+import evil.devil.listener.UserOnlineListener;
 import evil.devil.servcie.impl.AdminServiceImpl;
 import evil.devil.servcie.impl.UserServiceImpl;
 import evil.devil.service.AdminService;
@@ -37,7 +38,6 @@ public class LoginServlet extends HttpServlet {
        
     public LoginServlet() {
         super();
-    	System.out.println("LoginServlet构造方法");
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,7 +46,6 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//设置页面编码格式
-		System.out.println("post方法");
 		response.setHeader("content-type","text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -55,38 +54,13 @@ public class LoginServlet extends HttpServlet {
 		String type=request.getParameter("type");
 		//普通用户登录
 		if(type.equals("user")) {
-			UserService usrservice=new UserServiceImpl();
-			User user=usrservice.Login(Long.parseLong(username), password);
+			UserService userService=new UserServiceImpl();
+			User user=userService.Login(Long.parseLong(username), password);
 			if(user!=null) {
 				request.getSession().setAttribute("user", user );
-				DepartmentMapper departmentMapper=new DepartmentMapperImpl();
-				List<Department> departments=departmentMapper.selectAll();
-				//将病例存入session
-				AccountMapper accountMapper=new AccountMapperImpl();
-				List<Account> accounts=accountMapper.selectByUser(user.getId());
-				request.getSession().setAttribute("accounts", accounts);
-				List<Doctor> accountDoctors=new ArrayList<Doctor>();
-				List<Department> accountDepartments=new ArrayList<Department>();
-				for (Account account : accounts) {
-					DoctorMapper doctorMapper=new DoctorMapperImpl();
-					Doctor doctor=doctorMapper.selectByPrimaryKey(account.getDoctorId());
-					accountDoctors.add(doctor);
-					accountDepartments.add(departmentMapper.selectByPrimaryKey(doctor.getDepartmentId()));
-				}
-				//将病例的医生列表存入session
-				request.getSession().setAttribute("accountDoctors", accountDoctors);
-				//将病例的部门列表存入session
-				request.getSession().setAttribute("accountDepartments", accountDepartments);
-				//将科室存入session
-				request.getSession().setAttribute("departments", departments );
-				DoctorMapper doctorMapper=new DoctorMapperImpl();
-				List<Doctor> doctors=doctorMapper.selectAll();
-				String doctorsJson=JSON.toJSON(doctors).toString();
-				//将医生存入session
-				//json形式
-				request.getSession().setAttribute("doctorList", doctors);
-				//list对象形式
-				request.getSession().setAttribute("doctors", doctorsJson);
+				UserOnlineListener userOnlineListener=new UserOnlineListener();
+				userOnlineListener.setId(user.getId());
+				request.getSession().setAttribute("LonginType", userOnlineListener );
 				response.getWriter().append("success");
 			}
 			else {

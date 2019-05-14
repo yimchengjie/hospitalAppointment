@@ -80,7 +80,6 @@ public class GetMessageServlet extends HttpServlet {
 		request.getSession().setAttribute("doctorList", doctors);
 		//list对象形式
 		request.getSession().setAttribute("doctors", doctorsJson);
-		System.out.println("1");
 		response.sendRedirect("index.jsp");
 	}
 

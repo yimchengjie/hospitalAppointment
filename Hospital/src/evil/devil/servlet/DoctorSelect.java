@@ -89,7 +89,6 @@ public class DoctorSelect extends HttpServlet {
 			}
 		}
 		if (request.getParameter("departid")==null) {
-			System.out.println("-------------");
 			request.setAttribute("departments", Departments);
 			request.setAttribute("doctorList", Alldoctors);
 				request.getRequestDispatcher("doctorManegement.jsp").forward(request, response);

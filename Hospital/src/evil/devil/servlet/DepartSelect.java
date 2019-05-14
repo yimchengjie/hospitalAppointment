@@ -60,21 +60,15 @@ public class DepartSelect extends HttpServlet {
 //		} else if (way.equals("specialist")) {// 第二次来还是要传入way allDeparts =new
 //			DepartmentMapperImpl().getSpecialist();
 //		}
-		System.out.println(way+"---------------");
 		if (way.equals("all")) {
 			for (Department department : allDeparts) {// 全部放进了map
-				System.out.println(department.getName());
 				List<Doctor> doctors = new DoctorMapperImpl().getByDeaprt(department.getId());
-				for (Doctor doctor : doctors) {
-					System.out.println(doctor.getName());
-				}
 				ddMap.put(department, doctors);
 			}
 		}
 
 		else if (way.equals("ordinary")) {
 			for (Department department : allDeparts) {// 全部放进了map
-				System.out.println(department.getName());
 				List<Doctor> doctors1 = new DoctorMapperImpl().getByDeaprt(department.getId());
 				List<Doctor> doctors=new ArrayList<Doctor>();
 				for (Doctor doctor : doctors1) {
@@ -86,12 +80,10 @@ public class DepartSelect extends HttpServlet {
 			}
 		} else if (way.equals("specialist")) {
 			for (Department department : allDeparts) {// 全部放进了map
-				System.out.println(department.getName());
 				List<Doctor> doctors1 = new DoctorMapperImpl().getByDeaprt(department.getId());
 				List<Doctor> doctors=new ArrayList<Doctor>();
 				for (Doctor doctor : doctors1) {
 					if (doctor.getType().equals("专家")) {
-						System.out.println(doctor);
 						doctors.add(doctor);
 					}
 				}

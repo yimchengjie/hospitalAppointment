@@ -14,8 +14,9 @@ public class UserServiceImpl implements UserService {
 		UserMapper userMapper=new UserMapperImpl();
 		List<User> users=userMapper.selectAll();
 		for (User user : users) {
-			if(user.getTel().equals(username)&&user.getPassword().equals(password))
+			if(user.getTel().equals(username)&&user.getPassword().equals(password)) {
 				return user;
+			}
 		}
 		return null;
 	}
@@ -42,15 +43,11 @@ public class UserServiceImpl implements UserService {
 		int flag=ifUser(user.getIdcard(),user.getTel(),user.getId());
 		if(flag!=0)
 			return flag;
-		
 		return userMapper.updateByPrimaryKey(user);
 	}
 	int ifUser(String idcard ,Long tel,Integer id) {
 		UserMapper userMapper=new UserMapperImpl();
 		List<User> users=userMapper.selectAll();
-		System.out.println(id);
-		System.out.println(tel);
-		System.out.println(idcard);
 		for (User user : users) {
 			if(user.getIdcard().equals(idcard)||user.getTel().equals(tel)) {
 				if(user.getId()!=id) {

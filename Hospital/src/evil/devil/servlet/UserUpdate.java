@@ -53,7 +53,6 @@ public class UserUpdate extends HttpServlet {
 		user.setPassword(password);
 		user.setType(0);
 		user.setId(id);
-		System.out.println(username);
 		UserService userService=new UserServiceImpl();
 		int flag=userService.Update(user);
 		if(flag==1) {

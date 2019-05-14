@@ -63,10 +63,14 @@
 				json.username=$("#username").val(),
 				json.password=$("#password").val(),
 				json.type=$("[name=checkbox]:checked").val()=="on"?"admin":"user";
-				var reg = /^1[34578]\d{9}$/;
+				var flag=true;
+				if(json.type=="user"){
+					var reg = /^1[34578]\d{9}$/;
+					falg=reg.test(json.username)
+				}
 				//输入为空不提交
-				 if(json.username==""||json.password=="" ||reg.test(json.username)==false){
-					 if(reg.test(json.username) == false){			
+				 if(json.username==""||json.password=="" || flag==false){
+					 if(falg == false){			
 							alert("登录失败,用户名或密码错误");
 							return;
 						}
@@ -81,10 +85,10 @@
 					success: function(data) {
 						//$(".loading").css("display","none");
 						if(data=="success"){
-							if(json.type=="user")
-							window.location = "index.jsp";
-							else if(json.type=="admin")
-								window.location = "UserManegeMain.jsp";
+							//if(json.type=="user")
+							//window.location = "index.jsp";
+							//else if(json.type=="admin")
+								window.location = "goindex?type="+json.type;
 						}
 						else if(data=="error"){
 							alert("登录失败,用户名或密码错误");	
