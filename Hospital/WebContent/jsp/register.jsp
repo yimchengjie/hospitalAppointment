@@ -332,17 +332,7 @@
 								<div class="card-footer text-center">
 									<button disabled="disabled" id="register"class="btn btn-primary btn-round btn-lg btn-block">注册</button>
 
-										<!--<div style="margin-left: 230px;"><input type="checkbox" checked name="checkbox" class="bootstrap-switch" size="5" data-on-label="管理员" data-off-label="用户" /></div>-->
-									<!--<div class="pull-left">
-										  <h6>
-						                    <a href="#pablo" class="link">Create Account</a>
-						                  </h6>
-										</div>
-										<div class="pull-right">
-										  <h6>
-						                    <a href="#pablo" class="link">Need Help?</a>
-						                  </h6>
-										</div>-->
+										
 							</div>
 							<!-- </form> -->
 							</div>
@@ -350,7 +340,7 @@
 					</div>
 				</div>
 			</div>
-			<footer class="footer">
+			<!-- <footer class="footer">
 				
 				<div class=" container ">
 				<nav>
@@ -373,16 +363,14 @@
 					</ul>
 				</nav>
 				</div>
-			<!--<div class=" container ">
+			<div class=" container ">
 					<div class="copyright" id="copyright">
 						&copy;2019 Designed by
 						<a href="#" target="_blank">Swq&Jrc&Ycj</a>. Coded by
 						<a href="#" target="_blank">Jjw&Xac</a>.
 					</div>
-				</div> -->
-			</footer>
-
-		</div>
+				</div>
+			</footer> -->
 		<!--   Core JS Files   -->
 		<script src="../js/core/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/core/popper.min.js" type="text/javascript"></script>

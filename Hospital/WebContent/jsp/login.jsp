@@ -85,9 +85,6 @@
 					success: function(data) {
 						//$(".loading").css("display","none");
 						if(data=="success"){
-							//if(json.type=="user")
-							//window.location = "index.jsp";
-							//else if(json.type=="admin")
 								window.location = "goindex?type="+json.type;
 						}
 						else if(data=="error"){
@@ -95,8 +92,8 @@
 							window.location = "login.jsp";
 						}
 						else if(data=="stateerror"){
-							alert("登录失败,该用户已登录！已强制注销！");	
-							window.location = "login.jsp";
+							alert("该用户已登录！已登录的用户已强制注销！！");	
+							window.location = "goindex?type="+json.type;
 						}
 					},
 					error: function() {
@@ -217,7 +214,7 @@
 			
 
 			
-			<footer class="footer">
+			<!-- <footer class="footer">
 				
 				<div class=" container ">
 				<nav>
@@ -240,14 +237,14 @@
 					</ul>
 				</nav>
 				</div>
-			<!--<div class=" container ">
+			<div class=" container ">
 					<div class="copyright" id="copyright">
 						&copy;2019 Designed by
 						<a href="#" target="_blank">Swq&Jrc&Ycj</a>. Coded by
 						<a href="#" target="_blank">Jjw&Xac</a>.
 					</div>
-				</div> -->
-			</footer>
+				</div>
+			</footer> -->
 		<!--   Core JS Files   -->
 		<script src="../js/core/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/core/popper.min.js" type="text/javascript"></script>

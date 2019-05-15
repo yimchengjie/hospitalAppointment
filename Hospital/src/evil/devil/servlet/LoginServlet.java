@@ -60,12 +60,6 @@ public class LoginServlet extends HttpServlet {
 			UserService userService=new UserServiceImpl();
 			User user=userService.Login(Long.parseLong(username), password);
 			if(user!=null) {
-				if(user.getType()==1) {
-					user.setType(0);
-					userService.Update(user);
-					response.getWriter().append("stateerror");
-				}
-				else {
 					//把user存入session
 					request.getSession().setAttribute("user", user );
 					//用户登录状态监听
@@ -79,8 +73,12 @@ public class LoginServlet extends HttpServlet {
 					map.put(user.getId(), request.getSession().getId());
 					request.getServletContext().setAttribute("UserSession", map);
 					request.getSession().setAttribute("LoginType", userOnlineListener );
-					response.getWriter().append("success");
-				}
+					if(user.getType()==1) {
+						response.getWriter().append("stateerror");
+					}
+					else {
+						response.getWriter().append("success");
+					}
 			}
 			else {
 				response.getWriter().append("error");

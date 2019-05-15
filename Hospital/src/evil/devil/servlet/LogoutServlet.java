@@ -1,6 +1,8 @@
 package evil.devil.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,9 @@ public class LogoutServlet extends HttpServlet {
 			UserService userService=new UserServiceImpl();
 			userService.Update(user);
 			request.getSession().removeAttribute("user");
+			HashMap<Integer, String> map=(HashMap<Integer, String>) request.getServletContext().getAttribute("UserSession");
+			map.remove(user.getId());
+			request.getServletContext().setAttribute("UserSession", map);
 			request.getSession().removeAttribute("LonginType");
 		}
 		else {

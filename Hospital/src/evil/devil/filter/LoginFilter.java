@@ -67,7 +67,6 @@ public class LoginFilter implements Filter {
 		HashMap<Integer, String> map=(HashMap<Integer, String>) req.getServletContext().getAttribute("UserSession");
 		if(map!=null) {
 			if(map.get(user.getId()).equals(req.getSession().getId()) && user!=null) {
-					System.out.println("本人");
 					chain.doFilter(request, response);
 				}
 				else {
@@ -75,8 +74,6 @@ public class LoginFilter implements Filter {
 						request.getRequestDispatcher("login.jsp").forward(request, response);
 					}
 					else if(!map.get(user.getId()).equals(req.getSession().getId())) {
-
-						System.out.println("不是本人");
 						PrintWriter out = response.getWriter();
 						out.print("<script>alert('你的帐号在别处登录，请确认后重新登录！');window.location.href='login.jsp'</script>");
 					}
