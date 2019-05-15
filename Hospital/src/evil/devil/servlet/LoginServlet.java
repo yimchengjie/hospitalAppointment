@@ -2,7 +2,9 @@ package evil.devil.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -69,6 +71,13 @@ public class LoginServlet extends HttpServlet {
 					//用户登录状态监听
 					UserOnlineListener userOnlineListener=new UserOnlineListener();
 					userOnlineListener.setId(user.getId());
+					HashMap<Integer, String> map=null;
+					map=(HashMap<Integer, String>) request.getServletContext().getAttribute("UserSession");
+					if(map==null) {
+						map=new HashMap<Integer,String>();
+					}
+					map.put(user.getId(), request.getSession().getId());
+					request.getServletContext().setAttribute("UserSession", map);
 					request.getSession().setAttribute("LoginType", userOnlineListener );
 					response.getWriter().append("success");
 				}

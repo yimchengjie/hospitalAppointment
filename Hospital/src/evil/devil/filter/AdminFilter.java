@@ -15,6 +15,18 @@ import javax.servlet.http.HttpServletRequest;
  */
 @WebFilter(
 		urlPatterns = {
+				"/jsp/accountManegeMain.jsp",
+				"/jsp/departManegeMain.jsp",
+				"/jsp/doctorDetailManegement.jsp", 
+				"/jsp/doctorManegement.jsp" ,
+				"/jsp/UserManegeMain.jsp",
+				"/jsp/addDoctor.jsp",
+				"/jsp/DepartSelect",
+				"/jsp/AccountSelect",
+				"/jsp/DoctorEditAdd",
+				"/jsp/DoctorSelect",
+				"/jsp/UserSelect",
+				"/jsp/UserShow"
 		}  
 		)
 public class AdminFilter implements Filter {

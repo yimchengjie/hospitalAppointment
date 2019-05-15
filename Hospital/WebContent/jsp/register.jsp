@@ -4,7 +4,6 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="../img/.png">
 		<!--这里可以链接一张照片-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<title>

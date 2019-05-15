@@ -378,7 +378,7 @@
         							json.gender = $("[name=gender]:checked").val();
         							json.idcard = $("#idcard").val();
         							json.tel = $("#Ptel").val();
-        							if(json.username=="${user.name}" && json.userpwd==${user.password} && json.gender=="${user.gender}" && json.idcard==${user.idcard} && json.tel==${user.tel})
+        							if(json.username=="${user.name}" && json.userpwd=="${user.password}" && json.gender=="${user.gender}" && json.idcard=="${user.idcard}" && json.tel=="${user.tel}")
         							{
         								window.location = "index.jsp";
         							}
@@ -405,7 +405,7 @@
     									});
         							}
         						})
-        	})
+	})
 </script>
 
 </head>
@@ -970,17 +970,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="modal fade" id="resever" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">請付款</h4>
-						</div>
-						<div class="modal-body"><img src="../images/pay.jpg"></div>
-					</div>
-				</div>
-			</div> -->
 <div class="modal fade" id="payModel" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">

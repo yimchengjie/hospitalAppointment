@@ -40,12 +40,17 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//退出登录删除user在session存的值
-		User user=(User) request.getSession().getAttribute("user");
-		user.setType(0);
-		UserService userService=new UserServiceImpl();
-		userService.Update(user);
-		request.getSession().removeAttribute("user");
-		request.getSession().removeAttribute("LonginType");
+		if(request.getSession().getAttribute("user")!=null) {
+			User user=(User) request.getSession().getAttribute("user");
+			user.setType(0);
+			UserService userService=new UserServiceImpl();
+			userService.Update(user);
+			request.getSession().removeAttribute("user");
+			request.getSession().removeAttribute("LonginType");
+		}
+		else {
+			request.getSession().removeAttribute("admin");
+		}
 		response.sendRedirect("login.jsp");
 	}
 
