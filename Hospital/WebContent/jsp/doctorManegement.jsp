@@ -26,7 +26,6 @@
 			//绑定事件
 			$(function() {
 				$(".departchange").click(function() { //直接传递到后台，返回是刷新的
-					alert($(this).attr("name"));
 					var json = {};
 					json.departid = $(this).attr("name");
 					$.ajax({

@@ -233,7 +233,6 @@
 			//得到一个新的list，并且遍历这个list
 			var selectmsg = $("#selectmsg").val();
 			var way = $("#way").val();
-			alert(selectmsg + way);
 			/* location.href ="UserSelect?way="+way+'&selectmsg='+selectmsg; */
 			$.ajax({
 				type : "post",
@@ -242,7 +241,6 @@
 				data : 'way=' + way + '&selectmsg=' + selectmsg,
 				dataType : "text",
 				success : function(data) {
-					alert(data);
 					window.location = "UserManegeMain.jsp";
 				}
 			});

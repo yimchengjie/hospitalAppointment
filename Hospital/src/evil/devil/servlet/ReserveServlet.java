@@ -3,12 +3,16 @@ package evil.devil.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.glass.ui.Application;
 
 import evil.devil.dao.AccountMapper;
 import evil.devil.dao.DepartmentMapper;
@@ -51,6 +55,7 @@ public class ReserveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		getmessage(request);
 		String name=request.getParameter("name");
 		Long tel=Long.parseLong(request.getParameter("tel"));
 		Integer doctor_id=Integer.parseInt(request.getParameter("doctor_id"));
@@ -89,5 +94,11 @@ public class ReserveServlet extends HttpServlet {
 		else
 			response.getWriter().append("error");	
 	}
+	
+	
+	protected void getmessage(HttpServletRequest request) throws ServletException, IOException { 	
+		String agent = request.getHeader("User-Agent").toLowerCase();
+		System.out.println(agent);
+}
 
 }

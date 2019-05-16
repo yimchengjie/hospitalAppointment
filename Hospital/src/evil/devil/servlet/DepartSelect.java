@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import evil.devil.dao.impl.DepartmentMapperImpl;
 import evil.devil.dao.impl.DoctorMapperImpl;
 import evil.devil.entity.Department;
