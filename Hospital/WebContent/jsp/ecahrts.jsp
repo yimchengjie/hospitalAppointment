@@ -148,7 +148,6 @@
         	 // 基于准备好的dom，初始化echarts图表
              var myChart = echarts.init(document.getElementById('main')); 
              var myChart2 = echarts.init(document.getElementById('main2')); 
-
             var hello=[];
             $.ajax({
             	type:"post",
@@ -156,10 +155,11 @@
    			    url:"DoctorSelect",
    			    dataType:"json",
    			    success:function(result){
+   			    	
    			    	if(result){
    			    		var obj = eval(result);
    		                console.info(obj);
-   		               // alert(obj);
+   		               
    			    		for(var i=0;i<result.length;i++){      
    			    			depart=new Object();
    			    			depart.value=result[i].doctorNum;

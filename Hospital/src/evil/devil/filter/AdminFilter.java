@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @WebFilter(
 		urlPatterns = {
+				"/jsp/ecahrts.jsp",
 				"/jsp/accountManegeMain.jsp",
 				"/jsp/departManegeMain.jsp",
 				"/jsp/doctorDetailManegement.jsp", 
