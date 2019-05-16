@@ -358,7 +358,7 @@
 </div>
 <!-- //footer -->
 <!-- 模态框1 -->
-<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -366,7 +366,7 @@
 							<h4 class="modal-title" id="myModalLabel">历史病历</h4>
 						</div>
 						
-						<div class="modal-body">
+						<div class="modal-body" style="height:600px;overflow-y:auto;">
 							<c:forEach items="${accounts}" var="account" varStatus="loop">
 								<div class="panel panel-primary">
 									<div class="panel-heading"><span class="glyphicon glyphicon-time">${account.dateTime}</span></div>

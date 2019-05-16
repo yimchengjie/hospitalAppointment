@@ -32,6 +32,7 @@
 	<!--//fonts-->
 	 <script src="../js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
+      
         	//再次预约时，在选取部门后用来选取再次预约的医生
         	function changedoctor(doctor){
         	   $("#country2").children().each(function(i,n){
@@ -40,6 +41,7 @@
         		    	obj.attr("selected",true);
         		    }); 
            }
+        	
            
             //通过后台调取医生当天的预约显示未被预约的时间段
             function datetime(){
@@ -221,6 +223,22 @@
                 })
                 //日期选定后在医生选定的条件下显示预约时间段
                  $("#datepicker").change(function(){
+                	 /* var date=$("#datepicker").val();
+                     var arr=new Array();
+                     arr=date.split("/");
+                     var mydate = new Date();
+                     var year=mydate.getFullYear();
+                     var month=mydate.getMonth()+1;
+                     var day=mydate.getDate();
+                   //| 取得当前日期所在月的最大天数 
+                         var ary = day.toArray();  
+                         var date1 = (new Date(ary[0],ary[1]+1,1));  
+                         var date2 = date1.dateAdd(1,'m',1);  
+                         var result = dateDiff(date1.Format('yyyy-MM-dd'),date2.Format('yyyy-MM-dd'));    
+                      alert(reasult);
+                    alert(arr[0]);
+                    alert(arr[1]);
+                    alert(arr[2]); */
                 	datetime();
                 })
              	
@@ -941,7 +959,7 @@
 				</div>
 			</div>
 	
-			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal fade" id="Historical" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -949,7 +967,7 @@
 							<h4 class="modal-title" id="myModalLabel">历史病历</h4>
 						</div>
 						
-						<div class="modal-body">
+						<div class="modal-body" style="height:600px;overflow-y:auto;" >
 							<c:forEach items="${accounts}" var="account" varStatus="loop">
 								<div class="panel panel-primary">
 									<div class="panel-heading"><span class="glyphicon glyphicon-time">${account.dateTime}</span></div>
