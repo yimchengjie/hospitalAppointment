@@ -71,7 +71,7 @@ public class UserSelect extends HttpServlet {
 		if (count!=0) {
 			totalPage=count%pagesize==0?count/pagesize:count/pagesize+1;
 			users=new UserMapperImpl().getPage(pagesize,currentPage,totalPage,allUsers);
-			System.err.println("totalPage"+totalPage);
+			
 				//List<Student> list= 传入一个当前页面和size
 				request.getSession().setAttribute("allUsers", allUsers);
 				request.getSession().setAttribute("users", users);

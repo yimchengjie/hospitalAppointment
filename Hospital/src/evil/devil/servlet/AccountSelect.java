@@ -54,9 +54,8 @@ public class AccountSelect extends HttpServlet {
 		}
 		else if (way.equals("userid")) {
 			allAccounts = new AccountMapperImpl().selectByUser(Integer.parseInt(selectmsg));
-			for (Account account : allAccounts) {
-				System.err.println(account);
-			}
+		
+			
 			
 		}else if (way.equals("doctorid")) {
 			allAccounts =new AccountMapperImpl().selectByDoctor(Integer.parseInt(selectmsg));

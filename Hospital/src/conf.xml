@@ -7,7 +7,7 @@
             <!-- 配置数据库连接信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://192.168.21.103:3306/hospital" />
+                <property name="url" value="jdbc:mysql://localhost:3306/hospital" />
                 <property name="username" value="root" />
                 <property name="password" value="root" />
             </dataSource>

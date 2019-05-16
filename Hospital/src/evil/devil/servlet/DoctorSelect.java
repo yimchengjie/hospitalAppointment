@@ -55,7 +55,6 @@ public class DoctorSelect extends HttpServlet {
 		Departments=new DepartmentMapperImpl().selectAll();
 		if ("charset".equals(request.getParameter("key"))) {
 			String message=JSON.toJSON(Departments).toString();
-			System.out.println(message+"message");
 			response.getWriter().append(message);
 		}
 		

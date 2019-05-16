@@ -244,7 +244,7 @@
 					data: "key=key",
 					dataType : "text",
 					success : function(data) {
-					alert(data);
+					
 					var departments = eval(data);
    		                console.info(departments);
    		                

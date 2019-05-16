@@ -198,8 +198,6 @@
 										<option value="all">查找所有</option>
 										<option value="userid">根据患者id查找</option>
 										<option value="doctorid">根据医生id查找</option>
-										<option value="accounttime">根据订单时间查找</option>
-										<option value="datetime">根据预约时间查找</option>
 									</select> <input type="text" class="form-control" id="selectmsg" style="width: 150px;">
 
 									<button type="button" id="select" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>查找</button>

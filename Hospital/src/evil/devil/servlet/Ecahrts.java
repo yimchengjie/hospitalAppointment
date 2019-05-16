@@ -50,7 +50,6 @@ public class Ecahrts extends HttpServlet {
 		map.put(department.getName(), earning);
 	}
 		String jsonmap=JSON.toJSONString(map);
-		System.out.println(jsonmap);
 		response.getWriter().append(jsonmap);
 	}
 

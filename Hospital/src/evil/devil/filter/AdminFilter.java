@@ -51,7 +51,6 @@ public class AdminFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest) request;
-		System.out.println("hahahh");
 			if(req.getSession().getAttribute("admin")==null) {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
